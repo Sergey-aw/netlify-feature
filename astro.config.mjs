@@ -11,7 +11,7 @@ export default defineConfig({
     canonicalURL: 'https://feature-tour.netlify.app'
   }), tailwind(), 
 
- 
+ ]
 });
 
 
