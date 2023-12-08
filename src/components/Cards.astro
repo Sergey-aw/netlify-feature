@@ -1,0 +1,15 @@
+---
+const { title1, description1, link1, home = false } = Astro.props;
+---
+
+
+<section class="step">
+    <h2 class=" text-2xl hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300"><a href={link1} class="">{title1}</a></h2>
+    <p>
+      {description1}
+    </p>
+    <a href={link1} class="button">
+      Узнать больше
+      <span class="sr-only">about Instant Rollbacks</span>
+    </a>
+  </section>
