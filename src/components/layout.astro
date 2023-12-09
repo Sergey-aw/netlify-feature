@@ -26,9 +26,12 @@ const { title, description, home = false } = Astro.props;
   
 
     body {
-  
-      padding: 5rem;
-      max-width: 1500px;
+      @apply sm:p-8;
+      @apply lg:p-20;
+      @apply md:p-20;
+      @apply xl:p-20;
+    
+      max-width: 1200px;
     }
    
     .druk {
@@ -48,12 +51,27 @@ const { title, description, home = false } = Astro.props;
   
   <header class="container">
     <div id="container" class="md:w-3/4 w-fit h-fit">
-    <h1 class="red-text text-3xl pb-5 font-sans druk">{title}</h1>
+
+
+    {home !== true && (
+    
+    <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
+    
+  )}
+
+
+
+    {home == true && (
+    
+        <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
+      
+    )}
+
 
     <p class="description">{description}</p>
   </div>
     {home !== true && (
-      <p>
+      <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
         <a href="/">&larr; назад</a>
       </p>
     )}
@@ -61,7 +79,8 @@ const { title, description, home = false } = Astro.props;
 
   <slot />
 
-  <footer class="footer">
+  <div class="grid pt-20 h-fit">
+  <footer>
     <nav>
       <ul>
         <li>
@@ -70,6 +89,6 @@ const { title, description, home = false } = Astro.props;
       </ul>
     </nav>
   </footer>
-
+</div>
 </body>
 </html>

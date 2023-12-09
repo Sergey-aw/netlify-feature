@@ -6,7 +6,7 @@ import Cards from '../components/Cards.astro';
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'Title1', description1: 'dfhkgjhdfkgjhdk fghkdhf gkdhfkhdgjd', id:'1', link1: '/page1' },
+  { title1: 'кофейный консалтинг', description1: 'dfhkgjhdfkgjhdk fghkdhf gkdhfkhdgjd', id:'1', link1: '/coffee' },
   { title1: 'Title2', description1: 'shdf jkshd fksjhdfk hs', id:'2',link1: '/page2' },
   { title1: 'Title3', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
   { title1: 'Title4', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
@@ -74,7 +74,7 @@ druk {
 
   <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
   
-<div class="h-screen grid content-center w-fit">
+<div class="h-screen grid lg:content-center w-fit sm:content-center ">
 {data.map((item, index) => <Cards key={index} {...item} />)}
 </div>
 
