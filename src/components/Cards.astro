@@ -1,15 +1,76 @@
 ---
-const { title1, description1, link1, home = false } = Astro.props;
+const { title1, description1, link1, id, home = false } = Astro.props;
+
+
 ---
+<style>
+@font-face {
+    font-family: "Druk";
+  
+    src: url('/fonts/Druk.ttf') format('truetype');
+    }
+
+h2, .druk {
+    font-family: Druk, "sans-serif";
+}
+</style>
 
 
-<section class="step">
-    <h2 class=" text-2xl hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300"><a href={link1} class="">{title1}</a></h2>
+<style>
+
+    #container1 {
+    width: fit-content;
+    height: fit-content;
+    background-color: lime;
+    }
+
+
+    #hidden-img-div-1{
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s, transform 0.5s;
+        position: absolute;
+        
+    }
+    #hidden-img-div-2{
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s, transform 0.5s;
+        position: absolute;
+    }
+    #hidden-img-div-3{
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s, transform 0.5s;
+        position: absolute;
+    }
+    #hidden-img-div-4{
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s, transform 0.5s;
+        position: absolute;
+    }
+
+
+</style>
+
+
+<astro-greet data-message={id}>
+  </astro-greet>
+
+<div id="container1" class="w-screen absolute right-1/2 top-1/2">
+  
+    <div id={`hidden-img-div-${id}`} style="width:350px"><img src={`/images/img-${id}.jpg`} alt="" width="100%" class="rounded-lg"/></div>
+  </div>
+
+<section class="step pb-5" w-fit>
+    <h2 id={`hidden-img-${id}`} class="text-2xl hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300 druk"><a href={link1} class="">{title1}</a></h2>
     <p>
       {description1}
     </p>
-    <a href={link1} class="button">
-      Узнать больше
-      <span class="sr-only">about Instant Rollbacks</span>
-    </a>
+    
   </section>

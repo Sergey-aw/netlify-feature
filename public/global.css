@@ -1,4 +1,23 @@
+@font-face {
+  font-family: Normalidad;
+  src: url("/fonts/NormalidadVar-Regular.woff2");
+}
+
+.red
+{
+background-color: #F53409;
+
+}
+
+.red-text
+{
+color: #F53409;
+
+}
+
+
 :root {
+  --red-color: 
   --border-radius-1: 2px;
   --border-radius-2: 4px;
   --border-radius-3: 8px;

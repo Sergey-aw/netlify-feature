@@ -1,14 +1,15 @@
 ---
 import Layout from '../components/layout.astro';
 import Cards from '../components/Cards.astro';
-import { storyblokEditable } from "@storyblok/astro";
-import { Code, Debug } from 'astro:components';
+
+
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'Title 1', description1: 'dfhkgjhdfkgjhdk fghkdhf gkdhfkhdgjd', link1: '/page1' },
-  { title1: 'Title 2', description1: 'shdf jkshd fksjhdfk hs', link1: '/page2' },
-  { title1: 'Title 3', description1: 'shdf jkshd fksjhdfk hs', link1: '/page2' },
+  { title1: 'Title1', description1: 'dfhkgjhdfkgjhdk fghkdhf gkdhfkhdgjd', id:'1', link1: '/page1' },
+  { title1: 'Title2', description1: 'shdf jkshd fksjhdfk hs', id:'2',link1: '/page2' },
+  { title1: 'Title3', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
+  { title1: 'Title4', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
   // Add more data as needed
 ];
 ---
@@ -47,6 +48,10 @@ const data = [
   padding: 1rem 1.5rem 1.5rem;
   text-align: left;
   box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
 }
 
 .stepHeading {
@@ -56,18 +61,49 @@ const data = [
 }
 
 
+
 </style>
 
 <Layout
   title="Sergey Gordeev"
-  description="This is a small site to show the most powerful features of Netlify quickly!"
+  description="Уже больше 8 лет я консультирую кофейни и рестораны по улучшению качества кофе и сервиса вокруг него, помогаю в выборе поставщиков, работаю с дизайнерами и архитекторами над интерьерами, тренерами и шеф-бариста для обучения персонала. Помогаю составить бизнес-модель, разработать бренд и концепцию заведения, выбрать достойных поставщиков зерна и обрудования и открыть кофейню."
   home
 >
 
 <main>
 
-{data.map((item, index) => <Cards key={index} {...item} />)}
-
+  <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
   
+<div class="h-screen grid content-center w-fit">
+{data.map((item, index) => <Cards key={index} {...item} />)}
+</div>
+
+ 
+
+
   </main>
 </Layout>
+<script>
+  for (let id = 1; id <= 3; id++) {
+    const el = document.getElementById(`hidden-img-${id}`);
+    const hiddenDiv = document.getElementById(`hidden-img-div-${id}`);
+
+    // ✅ Show hidden DIV on hover
+    el.addEventListener('mouseenter', function handleMouseEnter() {
+      hiddenDiv.style.display = 'block';
+      setTimeout(() => {
+        hiddenDiv.style.opacity = '1';
+        hiddenDiv.style.transform = 'translateY(0)';
+      }, 0);
+    });
+
+    // ✅ (optionally) Hide DIV on mouse out
+    el.addEventListener('mouseleave', function handleMouseLeave() {
+      hiddenDiv.style.opacity = '0';
+      hiddenDiv.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        hiddenDiv.style.display = 'none';
+      }, 500); // Adjust the timing to match your transition duration
+    });
+  }
+</script>
