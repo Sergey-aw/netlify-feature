@@ -6,10 +6,8 @@ import Cards from '../components/Cards.astro';
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'кофейный консалтинг', description1: 'dfhkgjhdfkgjhdk fghkdhf gkdhfkhdgjd', id:'1', link1: '/coffee' },
-  { title1: 'Title2', description1: 'shdf jkshd fksjhdfk hs', id:'2',link1: '/page2' },
-  { title1: 'Title3', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
-  { title1: 'Title4', description1: 'shdf jkshd fksjhdfk hs', id:'3',link1: '/page2' },
+  { title1: 'кофейный консалтинг', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: '/coffee' },
+ 
   // Add more data as needed
 ];
 ---
@@ -65,8 +63,8 @@ druk {
 </style>
 
 <Layout
-  title="Sergey Gordeev"
-  description="Уже больше 8 лет я консультирую кофейни и рестораны по улучшению качества кофе и сервиса вокруг него, помогаю в выборе поставщиков, работаю с дизайнерами и архитекторами над интерьерами, тренерами и шеф-бариста для обучения персонала. Помогаю составить бизнес-модель, разработать бренд и концепцию заведения, выбрать достойных поставщиков зерна и обрудования и открыть кофейню."
+  title="Сергей Гордеев"
+  description="Предприниматель, сооснователь сервиса кикшеринга Берисамокат, занимаюсь кофейным конслантингом, развиваю направление e-commerce в русской чайной «Нитка», продюсер мерча для Никола-Ленивца, Архстояния 2022-2023. Моя страсть к кофе сочетается с увлечением фотографией, путешествиями и программированием. В поисках новых вызовов и возможностей для роста, я активно ищу интересные российские и международные стартапы. "
   home
 >
 
@@ -74,7 +72,7 @@ druk {
 
   <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
   
-<div class="h-screen grid lg:content-center w-fit sm:content-center ">
+<div class="grid lg:content-center w-fit sm:content-center" style="height:45vh;">
 {data.map((item, index) => <Cards key={index} {...item} />)}
 </div>
 
