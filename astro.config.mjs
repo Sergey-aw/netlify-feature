@@ -8,13 +8,9 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://feature-tour.netlify.app',
-  integrations: [ preact({
-    include: ['**/preact/*'],
-  }),
-  react({
-    include: ['**/react/*'],
-  }),
-   sitemap({
+  integrations: [ preact(),
+                  react(),
+                  sitemap({
     canonicalURL: 'https://feature-tour.netlify.app'
   }), tailwind(), 
 
