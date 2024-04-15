@@ -1,5 +1,5 @@
 ---
-const { title1, description1, link1, id, home = false } = Astro.props;
+const { title1, description1, color, link1, id, home = false } = Astro.props;
 
 
 ---
@@ -65,7 +65,7 @@ h2, .druk {
 
 
 <section class="step lg:pb-40 md:pb-40 sm:pb-32 w-fit">
-    <h2 id={`hidden-img-${id}`} class="text-2xl red-text druk pb-2">{title1}</h2>
+    <h2 id={`hidden-img-${id}`} class={color}>{title1}</h2>
     <p>
       {description1}
     </p>

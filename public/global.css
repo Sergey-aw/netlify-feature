@@ -15,6 +15,21 @@ color: #F53409;
 
 }
 
+.blue-text {
+color:#0075FF;
+}
+
+.green-text {
+color: #252525; 
+}
+
+.gray-bg {
+background-color: #E7E7E7;
+}
+.green-bg {
+background-color: #CCF626;
+}
+
 
 :root {
   --red-color: 
