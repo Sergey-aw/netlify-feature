@@ -1,6 +1,6 @@
 ---
-import Footer from '../components/footer.astro';
-const { title, description, home = false } = Astro.props;
+import Footer from "../components/footer.astro";
+const { title, description,home = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@ const { title, description, home = false } = Astro.props;
     }
   </style>
 </head>
-<body class="text-gray-900 bg-orange-50">
+<body class="text-gray-900 gray-bg">
   
   <header class="container">
     <div id="container" class="md:w-3/4 w-fit h-fit">
@@ -56,7 +56,7 @@ const { title, description, home = false } = Astro.props;
 
     {home !== true && (
     
-    <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
+    <h1 class="green-text text-3xl pb-5 font-sans druk uppercase">{title}</h1>
     
   )}
 
@@ -64,7 +64,7 @@ const { title, description, home = false } = Astro.props;
 
     {home == true && (
     
-        <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
+        <h1 class="green-text text-3xl pb-5 font-sans druk ">{title}</h1>
       
     )}
 
@@ -72,15 +72,13 @@ const { title, description, home = false } = Astro.props;
     <p class="description">{description}</p>
   </div>
     {home !== true && (
-      <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
+      <p class="pt-5 hover:text-blue-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
         <a href="/">&larr; назад</a>
       </p>
     )}
   </header>
 
   <slot />
-
 <Footer/>
-
 </body>
 </html>
