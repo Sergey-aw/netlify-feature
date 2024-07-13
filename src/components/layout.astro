@@ -1,6 +1,9 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import Footer from '../components/footer.astro';
 const { title, description, home = false } = Astro.props;
+
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +22,7 @@ const { title, description, home = false } = Astro.props;
   <link rel="manifest" href="/site.webmanifest" />
 
   <meta name="msapplication-TileColor" content="#5cebdf" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#FFF7ED" />
   <title>{title}</title>
 
   <link rel="stylesheet" href="/global.css">
@@ -73,7 +76,8 @@ const { title, description, home = false } = Astro.props;
   </div>
     {home !== true && (
       <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-        <a href="/">&larr; назад</a>
+       <a href='/'>&larr; назад</a>
+        
       </p>
     )}
   </header>
