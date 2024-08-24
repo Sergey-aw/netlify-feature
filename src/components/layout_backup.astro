@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import Footer from '../components/footer.astro';
+import Footer from './footer.astro';
 const { title, description, home = false } = Astro.props;
 
 
@@ -54,61 +54,35 @@ const { title, description, home = false } = Astro.props;
 <body class="text-gray-900 bg-orange-50">
   
   <header class="container">
-    <div id="container" class="container mx-auto h-fit w-fit">
+    <div id="container" class="md:w-3/4 w-fit h-fit">
 
 
     {home !== true && (
     
     <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
-    <div class="flex flex-wrap">
-            <div class="w-full md:w-3/4 mb-4 pr-4 sm:w-full">
-              <div class="h-full">
-          <p class="description">{description}</p>
-          <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-         <a href='/'>&larr; назад</a>
-          
-        </p>
     
-          <slot />
-        </div></div>
-        <div class="w-full md:w-1/4">
-          <div class="h-full -p-5 pl-0">
-            
-          </div>
-          </div>
-        </div>
-      
-      
-
   )}
 
-  
-    </header>
+
 
     {home == true && (
     
         <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
-        <div class="flex flex-wrap">
-            <div class="w-full md:w-1/2 mb-4 md:mb-0 pr-4">
-              <div class="h-full">
-          <p class="description">{description}</p>
-          <slot />
-        </div></div>
-        <div class="w-full md:w-1/2">
-          <div class="h-full -p-5 pl-0">
-            <img src="/images/me_studio_wb.png" alt="Image Description" class="object-cover h-full w-full rounded-3xl">
-          </div>
-          </div>
-        </div>
       
-     
     )}
-  
 
- 
- 
 
- 
+    <p class="description">{description}</p>
+  </div>
+    {home !== true && (
+      <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
+       <a href='/'>&larr; назад</a>
+        
+      </p>
+    )}
+  </header>
+
+  <slot />
 
 <Footer/>
 
