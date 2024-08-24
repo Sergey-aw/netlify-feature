@@ -1,14 +1,15 @@
 ---
-import Layout from '../components/layout.astro';
-import Cards from '../components/Cards.astro';
-import Color from '../components/react/Color';
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Layout from '../../components/layout.astro';
+import Cards from '../../components/Cards.astro';
+
 
 const { blok } = Astro.props
 
-
 const data = [
-  { title1: 'кофейный консалтинг', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: '/coffee' },
-  { title1: 'кикшеринг Берисамокат', description1: 'сервис краткосрочной аренды самокатов', id:'2', link1: '/berisamocat' },
+  { title1: 'coffee consulting', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: 'coffee' },
+  { title1: 'кикшеринг Берисамокат', description1: 'сервис краткосрочной аренды самокатов', id:'2', link1: 'berisamocat' },
 
  
   // Add more data as needed
@@ -66,13 +67,13 @@ druk {
 </style>
 
 <Layout
-  title="Сергей Гордеев"
-  description="Предприниматель, сооснователь сервиса кикшеринга Берисамокат, занимаюсь кофейным консалтингом, развиваю направление e-commerce в русской чайной «Нитка», продюсер мерча для Никола-Ленивца, Архстояния 2022-2023. Моя страсть к кофе сочетается с увлечением фотографией, путешествиями и технологиями. В поисках новых вызовов и возможностей для роста, я активно ищу интересные российские и международные стартапы."
+  title="Sergey Gordeev"
+  description="Entrepreneur, co-founder of the scooter sharing service Berisamokat, developing e-commerce in the Russian tea company Nitka, producer of merchandise for Nikola-Lenivets (largest art-park in Eastern Europe). My passion in technology and innovations is combined with an interest in businesses, travel, and photograpy. Looking for new challenges and opportunities for growth, I actively search for interesting Russian and international tech startups as co-founder or CEO."
   home
 >
 
 <main>
-  <!-- <Color/>-->
+
   <div class="absolute -left-32 sm:top-1/2 md:top-1/3 lg:top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
 
   <div class="absolute -right-2 top-2/3 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
