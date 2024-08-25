@@ -1,0 +1,133 @@
+---
+import LayoutCV from '../components/layout_cv.astro';
+import Cardsinside from '../components/Cards-inside.astro';
+
+
+const { blok } = Astro.props
+
+const data = [
+  { title1: 'опыт', description1: '<p class="font-formabold">Июнь, 2020 - настоящее время</p><ul class="list-disc"><li>Первый год руководил R&D, контролируя исследования модулей IoT и  протоколов обработки данных с электросамокатами.</li><li>Вел переговоры с глобальными производителями самокатов и IoT-модулей и инженерами</li><li>Разработал бизнес-модель и  юнит-экономику для расширения бизнес по модели франчайзинга</li><li>Сформулировал и реализовал стратегию развития продукта мобильного приложения и платформы управления IoT</li><li>Компания выросла с 1 города до 28 с 2020 по 2024 год</li></ul>', subtitle1:"Сооснователь & CEO, Берисамокат", id:'1', link1: '/page1' },
+  { subtitle1: "Сооснователь & COO, кофейни Кофе Культ", description1: '<p class="font-formabold">май, 2014 - январь 2020</p><ul class="list-disc"><li>Расширил сеть кофеен с момента запуска первой до 10 точек, сгенерировав годовой оборот в 150 миллионов рублей</li><li>Открыл школу бариста, чтобы обучать персонал с использованием собственной программы.</li><li>Реализовал маркетинговую стратегию, сделав Кофе Культ самой большой сетью кофеен в регионе</li><li>Запустил программу франшизы</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'образование', subtitle1: 'Магистр, авиа- и ракетостроение', description1: '<p class="font-formabold">Сентябрь, 2005 - Февраль, 2012</p><ul class="list-disc"><li>Тульский Государственный университет</li></ul>', id:'3', link1: '/page1' },
+  { subtitle1: 'Дополнительное образование' ,description1: '<p class="font-formabold">2018 - 2024</p><ul class="list-disc"><li>Stanford Online, CS229 Machine Learning, Open Course, 2023</li><li>Harvard CS50 online, 2022</li><li>University of Toronto (Coursera), Neural Networks for Machine Learning, 2019</li><li>University of Michigan (Coursera), Python, 2018</li></ul>', id:'4', link1: '/page1' },
+
+
+];
+
+const data2 = [
+  { title1: 'навыки', description1: '<ul class="list-disc"><li>Использую научные принципы и передовые технологии для решения бизнес-задач.</li><li>Способность создавать и разрабатывать продукты с нуля, охватывая все аспекты от бизнес-моделей до маркетинговых стратегий и продаж.</li><li>Экспертиза в сфере построения команды, планирования развития продукта на основе данных и опыта пользователей.</li></ul>', id:'1', link1: '/page1' },
+  { title1: 'Software / Tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Scikit, PyTorch), PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Notion</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'академические достижения', subtitle1: 'Научные форумы и работы', description1: '<p class="font-formabold">Январь, 2012</p><ul class="list-disc"><li>Приз за лучшую научную работу, МГТУ им. Баумана</li></ul>', id:'3', link1: '/page1' },
+  { subtitle1: 'Публикации', description1: '<ul class="list-disc"><li>Научная статья в сборнике работ международного форума «Инженерные системы»</li><li>Научная статья на форуме «Гагаринские чтения», МАТИ</li></ul>', id:'3', link1: '/page1' },
+  { subtitle1: 'Иностранный язык', description1: '<ul class="list-disc"><li>Английский, С1</li></ul>', id:'4', link1: '/page1' },
+];
+
+
+
+
+const title  = "Сергей Гордеев"
+const description = "Ориентированный на результат предприниматель и технический лидер с бэкграундом в ракетостроении и успешным опытом создания и масштабирования бизнесов. В поиске нового опыта и профессионального развития. Развивал шеринг самокатов с нуля последние 4-года в качество сооснователя и CEO, участвовал в разработке и выполнении стратегий, способствующих развитию продукта и росту бизнеса."
+const home = "false"
+ 
+---
+
+<style>
+.steps {
+  background: var(--light);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: min(90vw, 250px);
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 5rem 5vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+  }
+}
+
+@media (min-width: 1050px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+  }
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
+}
+
+.stepHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+</style>
+
+<LayoutCV
+  title="Сергей Гордеев"
+  description="Уже больше 8 лет я консультирую кофейни и рестораны по улучшению качества кофе и сервиса вокруг него, помогаю в выборе поставщиков, работаю с дизайнерами и архитекторами над интерьерами, тренерами и шеф-бариста для обучения персонала. Помогаю составить бизнес-модель, разработать бренд и концепцию заведения, выбрать достойных поставщиков зерна и обрудования и открыть кофейню."
+  home="false"
+>
+
+<main>
+
+  <div class="absolute -left-32 top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+
+  <div class="absolute -right-2 top-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+
+  <div class="absolute -left-12 -bottom-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 rotate-30"></div>
+  
+
+
+  <h1 class="text-3xl pb-5 font-sans druk red-text"><a class="pt-0  hover:text-red-500 transition transform ease-in-out duration-300 cursor-pointer " href="/">{title}</a></h1>
+  <div class="flex flex-wrap">
+          <div class="w-full md:w-2/3 mb-4 md:pr-20 sm:w-full">
+            <div class="h-full">
+        <p class="description fon">{description}</p>
+        <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300 ">
+       <a href='/'>Телеграм →</a>
+      </p>
+
+      <p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300 ">
+        <a href='/'>Email →</a>
+       </p>
+
+
+<div class="grid content-start pt-40 w-fit">
+
+
+{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-4"/>)}
+</div>
+
+</div></div>
+<div class="w-full md:w-1/3">
+  <div class="h-full -p-5 pl-0">
+    <img src="/images/me_studio_sm.jpg" alt="Image Description" class="object-cover w-full pb-12">
+    {data2.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-2"/>)}
+  </div>
+  </div>
+</div>
+
+
+  </main>
+</LayoutCV>
+
+<p class="text-sm">Обновлено 25 августа, 2024</p>

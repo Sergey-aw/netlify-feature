@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import Footer from '../components/footer.astro';
-const { title, description, home = false } = Astro.props;
+import Footer from './footer.astro';
+const { title, home = false } = Astro.props;
 
 
 ---
@@ -58,58 +58,18 @@ const { title, description, home = false } = Astro.props;
     <div id="container" class="container mx-auto h-fit w-fit">
 
 
-    {home !== true && (
+ 
     
-    <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
-    <div class="flex flex-wrap">
-            <div class="w-full md:w-3/4 mb-4 pr-4 sm:w-full">
-              <div class="h-full">
-          <p class="description fon">{description}</p>
-          <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-         <a href='/'>&larr; назад</a>
-          
-        </p>
-    
-          <slot />
-        </div></div>
-        <div class="w-full md:w-1/4">
-          <div class="h-full -p-5 pl-0">
-            
-          </div>
-          </div>
-        </div>
+   <slot/>
       
       
 
-  )}
+  
 
   
     </header>
 
-    {home == true && (
-    
-        <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
-        <div class="flex flex-wrap">
-            <div class="w-full md:w-1/2 mb-4 md:mb-0 pr-4">
-              <div class="h-full">
-          <p class="description">{description}</p>
-          <slot />
-        </div></div>
-        <div class="w-full md:w-1/2">
-          <div class="h-full -p-5 pl-0">
-            <img src="/images/me_studio_wb.png" alt="Image Description" class="object-cover h-full w-full rounded-3xl">
-          </div>
-          </div>
-        </div>
-      
-     
-    )}
-  
 
- 
- 
-
- 
 
 <Footer/>
 
