@@ -8,16 +8,15 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://feature-tour.netlify.app',
+  site: 'https://sgordeev.xyz',
   integrations: [ preact({
     include: ['**/preact/*'],
   }),
                   react({
                     include: ['**/react/*'],
                   }),
-                  sitemap({
-    canonicalURL: 'https://feature-tour.netlify.app'
-  }), tailwind(), 
+                  sitemap(),
+                  tailwind(), 
                 ],
   i18n: {
                   defaultLocale: "ru",
