@@ -1,5 +1,5 @@
 ---
-const { title1, description1, color, link1, id, home = false } = Astro.props;
+const { title1, description1, subtitle1, color, link1, id, home = false } = Astro.props;
 
 
 ---
@@ -31,6 +31,8 @@ h2, .druk {
         transform: translateY(-10px);
         transition: opacity 0.5s, transform 0.5s;
         position: absolute;
+        
+        
         
     }
     #hidden-img-div-2{
@@ -64,10 +66,11 @@ h2, .druk {
 
 
 
-<section class="step lg:pb-20 md:pb-20 sm:pb-32 w-fit">
+<section class="step lg:pb-10 md:pb-10 sm:pb-32 w-fit">
     <h2 id={`hidden-img-${id}`} class={color}>{title1}</h2>
+    <h3 class="red-text font-formabold">{subtitle1}</h3> 
     <p>
-      {description1}
+    <Fragment set:html={description1}/>
     </p>
     
   </section>
