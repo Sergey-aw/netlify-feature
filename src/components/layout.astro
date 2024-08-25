@@ -84,15 +84,15 @@ const { title, description, home = false } = Astro.props;
   )}
 
   
-    </header>
+    
 
-    {home == true && (
+  {home == true && (
     
         <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
         <div class="flex flex-wrap">
             <div class="w-full md:w-1/2 mb-4 md:mb-0 pr-4">
               <div class="h-full">
-          <p class="description">{description}</p>
+          <p class="description"><Fragment set:html={description}/></p>
           <slot />
         </div></div>
         <div class="w-full md:w-1/2">
@@ -103,9 +103,9 @@ const { title, description, home = false } = Astro.props;
         </div>
       
      
-    )}
+  )}
   
-
+  </header>
  
  
 
