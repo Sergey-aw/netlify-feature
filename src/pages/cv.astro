@@ -1,6 +1,6 @@
 ---
 import LayoutCV from '../components/layout_cv.astro';
-import Cardsinside from '../components/Cards-inside.astro';
+import Cardsinside from '../components/Cards-cv.astro';
 
 
 const { blok } = Astro.props
@@ -102,19 +102,19 @@ druk {
           <div class="w-full md:w-2/3 mb-4 md:pr-20 sm:w-full">
             <div class="h-full">
         <p class="description fon">{description}</p>
-        <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300 ">
-       <a href='/'>Телеграм →</a>
-      </p>
-
-      <p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300 ">
-        <a href='/'>Email →</a>
+       
+        <p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+       <a href='https://t.me/sergey_wa/'>написать в телеграм →</a></p>
+       <p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+        <a href='mailto:hello@sgordeev.xyz'>написать на email →</a>
        </p>
-
+       
+       
 
 <div class="grid content-start pt-40 w-fit">
 
 
-{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-4"/>)}
+{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-2 pt-2"/>)}
 </div>
 
 </div></div>
@@ -128,6 +128,8 @@ druk {
 
 
   </main>
-</LayoutCV>
 
+</LayoutCV>
+<p class="hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a href='/images/CV_SGordeev.pdf'>Скачать резюме в pdf</a></p>
 <p class="text-sm">Обновлено 25 августа, 2024</p>
