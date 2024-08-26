@@ -16,7 +16,7 @@ const data = [
 
 const data2 = [
   { title1: 'навыки', description1: '<ul class="list-disc"><li>Использую научные принципы и передовые технологии для решения бизнес-задач.</li><li>Способность создавать и разрабатывать продукты с нуля, охватывая все аспекты от бизнес-моделей до маркетинговых стратегий и продаж.</li><li>Экспертиза в сфере построения команды, планирования развития продукта на основе данных и опыта пользователей.</li></ul>', id:'1', link1: '/page1' },
-  { title1: 'Software / Tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Scikit, PyTorch), PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Notion</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'software / tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Scikit, PyTorch), PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Notion</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
   { title1: 'академические достижения', subtitle1: 'Научные форумы и работы', description1: '<p class="font-formabold">Январь, 2012</p><ul class="list-disc"><li>Приз за лучшую научную работу, МГТУ им. Баумана</li></ul>', id:'3', link1: '/page1' },
   { subtitle1: 'Публикации', description1: '<ul class="list-disc"><li>Научная статья в сборнике работ международного форума «Инженерные системы»</li><li>Научная статья на форуме «Гагаринские чтения», МАТИ</li></ul>', id:'3', link1: '/page1' },
   { subtitle1: 'Иностранный язык', description1: '<ul class="list-disc"><li>Английский, С1</li></ul>', id:'4', link1: '/page1' },
@@ -119,8 +119,8 @@ druk {
 
 </div></div>
 <div class="w-full md:w-1/3">
-  <div class="h-full -p-5 pl-0">
-    <img src="/images/me_studio_sm.jpg" alt="Image Description" class="object-cover w-full pb-12">
+  <div class="h-full -p-5 pl-0 md:-mt-16 sm:-mt-8">
+    <img src="/images/me_studio_sm.jpg" alt="Image Description" class="object-cover w-full pb-8">
     {data2.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-2"/>)}
   </div>
   </div>

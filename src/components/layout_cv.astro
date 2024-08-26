@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import Footer from './footer.astro';
 const { title, home = false } = Astro.props;
+import Metrika from '../components/metrika.astro';
 
 
 ---
@@ -68,6 +69,6 @@ const { title, home = false } = Astro.props;
 
 
 <Footer/>
-
+<Metrika/>
 </body>
 </html>
