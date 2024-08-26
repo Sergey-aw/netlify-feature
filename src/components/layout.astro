@@ -1,10 +1,10 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import Footer from '../components/footer.astro';
+import Metrika from '../components/metrika.astro';
 const { title, description, home = false } = Astro.props;
-
-
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,6 +112,6 @@ const { title, description, home = false } = Astro.props;
  
 
 <Footer/>
-
+<Metrika/>
 </body>
 </html>
