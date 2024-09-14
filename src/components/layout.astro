@@ -3,6 +3,16 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import Footer from '../components/footer.astro';
 import Metrika from '../components/metrika.astro';
 const { title, description, home = false } = Astro.props;
+
+const currentLocale = Astro.currentLocale;
+
+function backText() {
+  if (currentLocale === 'ru') {
+    return 'назад'
+  }
+    return  'back'
+}
+
 ---
 
 <!DOCTYPE html>
@@ -66,7 +76,7 @@ const { title, description, home = false } = Astro.props;
   <header class="container">
     <div id="container" class="container mx-auto h-fit w-fit">
 
-
+    
     {home !== true && (
     
     <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
@@ -75,7 +85,7 @@ const { title, description, home = false } = Astro.props;
               <div class="h-full">
           <p class="description fon">{description}</p>
           <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-         <a href='/'>&larr; назад</a>
+         <a href='/'>&larr; {backText()}</a>
           
         </p>
     

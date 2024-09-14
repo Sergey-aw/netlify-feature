@@ -1,15 +1,16 @@
 ---
+const { blok } = Astro.props
 
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import Layout from '../../components/layout.astro';
 import Cards from '../../components/Cards.astro';
 
+const currentLocale = Astro.currentLocale;
 
-const { blok } = Astro.props
 
 const data = [
-  { title1: 'coffee consulting', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: 'coffee' },
-  { title1: 'кикшеринг Берисамокат', description1: 'сервис краткосрочной аренды самокатов', id:'2', link1: 'berisamocat' },
+  { title1: 'merch of Tula &#x2197;', description1: 'we made a hoodie with the circus logo', id:'3', link1: 'https://hooodie.ru' },
+  { title1: 'coffee consulting', description1: 'consulting for opening a coffee shop', id:'1', link1: 'coffee' },
+  { title1: 'e-scooter sharing service', description1: 'running Berisamocat company', id:'2', link1: 'berisamocat' },
 
  
   // Add more data as needed
@@ -74,6 +75,9 @@ druk {
 
 <main>
 
+  <p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+    <a href='/en/cv/'>Resume &rarr;</a></p>
+
   <div class="absolute -left-32 sm:top-1/2 md:top-1/3 lg:top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
 
   <div class="absolute -right-2 top-2/3 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
@@ -87,6 +91,9 @@ druk {
 
   </main>
 </Layout>
+<p class="pt-0 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  {currentLocale === 'ru' ? <a class="footer-link" href="/en/">En</a> : <a class="footer-link" href="/">Ru</a> }
+  </a></p>
 <script>
   for (let id = 1; id <= 3; id++) {
     const el = document.getElementById(`hidden-img-${id}`);
