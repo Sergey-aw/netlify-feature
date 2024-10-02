@@ -1,8 +1,8 @@
 ---
-import Footer from "../components/footer.astro";
-import { getRelativeLocaleUrl } from 'astro:i18n';
-const { title, description,home = false } = Astro.props;
-import Metrika from '../components/metrika.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import Footer from './footer.astro';
+const { title, description, home = false } = Astro.props;
+
 
 ---
 <!DOCTYPE html>
@@ -14,7 +14,6 @@ import Metrika from '../components/metrika.astro';
   <link rel="preload" href="/fonts/MulishVar-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/NormalidadVar-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/Druk.ttf" as="font" type="font/truetype" crossorigin>
-  <link rel="preload" href="/fonts/Forma-Regular.woff" as="font" type="font/woff" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -23,7 +22,7 @@ import Metrika from '../components/metrika.astro';
   <link rel="manifest" href="/site.webmanifest" />
 
   <meta name="msapplication-TileColor" content="#5cebdf" />
-  <meta name="theme-color" content="#e7e7e7" />
+  <meta name="theme-color" content="#FFF7ED" />
   <title>{title}</title>
 
   <link rel="stylesheet" href="/global.css">
@@ -52,7 +51,7 @@ import Metrika from '../components/metrika.astro';
     }
   </style>
 </head>
-<body class="text-gray-900 gray-bg font-forma text-lg">
+<body class="text-gray-900 bg-orange-50">
   
   <header class="container">
     <div id="container" class="md:w-3/4 w-fit h-fit">
@@ -60,7 +59,7 @@ import Metrika from '../components/metrika.astro';
 
     {home !== true && (
     
-    <h1 class="green-text text-3xl pb-5 font-sans druk uppercase">{title}</h1>
+    <h1 class="text-3xl pb-5 font-sans druk uppercase">{title}</h1>
     
   )}
 
@@ -68,7 +67,7 @@ import Metrika from '../components/metrika.astro';
 
     {home == true && (
     
-        <h1 class="green-text text-3xl pb-5 font-sans druk ">{title}</h1>
+        <h1 class="red-text text-3xl pb-5 font-sans druk ">{title}</h1>
       
     )}
 
@@ -76,16 +75,16 @@ import Metrika from '../components/metrika.astro';
     <p class="description">{description}</p>
   </div>
     {home !== true && (
-      <p class="pt-5 hover:text-blue-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-        <a href="/">&larr; назад</a>
-        
+      <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
+       <a href='/'>&larr; назад</a>
         
       </p>
     )}
   </header>
 
   <slot />
+
 <Footer/>
-<Metrika/>
+
 </body>
 </html>

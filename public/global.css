@@ -1,6 +1,15 @@
 @font-face {
-  font-family: Normalidad;
+  font-family: 'Normalidad';
   src: url("/fonts/NormalidadVar-Regular.woff2");
+}
+
+@font-face {
+  font-family: 'Forma-Regular';
+  src: url("/fonts/Forma-Regular.woff");
+}
+@font-face {
+  font-family: 'Forma-Bold';
+  src: url("/fonts/Forma-Bold.woff");
 }
 
 .red
