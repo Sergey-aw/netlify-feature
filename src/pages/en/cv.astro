@@ -6,17 +6,18 @@ import Cardsinside from '../../components/Cards-cv.astro';
 const { blok } = Astro.props
 
 const data = [
-  { subtitle1:"Co-founder & CEO, e-scooter sharing service Berisamocat", title1: 'track record', description1: '<p class="font-formabold">June 2020 &ndash; present</p><ul class="list-disc"><li>Led R&D efforts in the first year, overseeing the research of IoT modules and data protocols with electric scooters.</li><li>Negotiated with international manufacturers and engineers.</li><li>Developed the business model and unit economics for franchise expansion.</li><li>Formulated and executed the product development strategy for the mobile application and IoT management platform.</li><li>Established a predictive analytics system using ML based on trip data across 28 cities.</li><li>Successfully expanded the company from a single city to 28 cities from 2020 to 2024.</li></ul>', id:'1', link1: '/page1' },
-  { subtitle1: "Co-founder & COO, coffee shop chain of Coffee Cult", description1: '<p class="font-formabold">May 2014 &ndash; January 2020</p><ul class="list-disc"><li>Scaled the coffee shop chain from inception to 10 locations, generating an annual turnover of 150 million rubles.</li><li>Run a barista school to train staff using a proprietary program.</li><li>Реализовал маркетинговую стратегию, сделав Кофе Культ самой большой сетью кофеен в регионе</li><li>Implemented a marketing strategy, making Coffee Cult the largest coffee shop chain in the region.</li><li>Started franchise sales.</li></ul>', id:'2', link1: '/page1' },
-  { title1: 'education', subtitle1: 'M.Sc. Aerospace Engineering', description1: '<p class="font-formabold">September 2005 &ndash; February 2012</p><ul class="list-disc"><li>Tula State University</li></ul>', id:'3', link1: '/page1' },
-  { subtitle1: 'continuing education' ,description1: '<p class="font-formabold">2018 &ndash; 2024</p><ul class="list-disc"><li>Stanford Online, CS229 Machine Learning, Open Course, 2023</li><li>Harvard CS50 online, 2022</li><li>University of Toronto (Coursera), Neural Networks for Machine Learning, 2019</li><li>University of Michigan (Coursera), Python, 2018</li></ul>', id:'4', link1: '/page1' },
+  { subtitle1:"Co-founder & CPO, e-scooter sharing service Berisamocat", title1: 'track record', description1: '<p class="font-formabold">June 2020 &ndash; present</p><ul class="list-disc"><li>Led R&D efforts in the first year, overseeing the research of IoT modules and data protocols with electric scooters.</li><li>Negotiated with international manufacturers and engineers.</li><li>Developed the business model and unit economics for franchise expansion.</li><li>Formulated and executed the product development strategy for the mobile application and IoT management platform.</li><li>Established a predictive analytics system using ML based on trip data across cities.</li><li>Successfully expanded the company from a single city to 50 cities from 2020 to 2024.</li></ul>', id:'1', link1: '/page1' },
+  { subtitle1: "Co-founder & COO, coffee shop chain of Coffee Cult", description1: '<p class="font-formabold">May 2014 &ndash; January 2020</p><ul class="list-disc"><li>Scaled the coffee shop chain from inception to 10 locations, generating an annual turnover of 150 million rubles.</li><li>Run a barista school to train staff using a proprietary program.</li><li>Implemented a marketing strategy, making Coffee Cult the largest coffee shop chain in the region.</li><li>Started franchise sales.</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'education', subtitle1: 'M.Sc. Aerospace Engineering', description1: '<p class="font-formabold">September 2005 &ndash; February 2012</p><ul class="list-disc"><li>Tula State University</li></ul>', id:'3', link1: '' },
+  { subtitle1: 'International student exchange program', description1: '<p class="font-formabold">May 2010 &ndash; September 2010</p><ul class="list-disc"><li>Work & Travel USA</li></ul>', id:'6', link1: '' },
+  { subtitle1: 'Continuing education' ,description1: '<p class="font-formabold">2018 &ndash; 2024</p><ul class="list-disc"><li>Stanford Online, CS229 Machine Learning, Open Course, 2023</li><li>Harvard CS50 online, 2022</li><li>University of Toronto (Coursera), Neural Networks for Machine Learning, 2019</li><li>University of Michigan (Coursera), Python, 2018</li></ul>', id:'4', link1: '/page1' },
 
 
 ];
 
 const data2 = [
   { title1: 'skills', description1: '<ul class="list-disc"><li>Adept at leveraging scientific principles and cutting-edge technologies to devise innovative solutions for business challenges.</li><li>Proven ability to create and develop products from scratch, covering all aspects from business models to marketing strategies and sales.</li><li>Expertise in team building, product development planning based on data and user experience.</li></ul>', id:'1', link1: '/page1' },
-  { title1: 'software / tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Scikit, PyTorch), PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Notion</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'software / tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Streamlit, PyTorch), SQL, PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Postman</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
   { title1: 'academic achievements', subtitle1: 'Conferences and research papers', description1: '<p class="font-formabold">January 2012</p><ul class="list-disc"><li>Prizeman of the Best Scientific Work Award in Russia, Bauman Moscow State Technical University</li></ul>', id:'3', link1: '/page1' },
   { subtitle1: 'Research publications', description1: '<ul class="list-disc"><li>Research paper in the proceedings of the “Engineering systems” international forum</li><li>Scientific paper in the proceedings of the “Gagarin’s Readings” forum, MATI &mdash; Russian State Technological University</li></ul>', id:'3', link1: '/page1' },
   { subtitle1: 'Foreign language', description1: '<ul class="list-disc"><li>English, С1</li></ul>', id:'4', link1: '/page1' },
@@ -120,7 +121,7 @@ druk {
 </div></div>
 <div class="w-full md:w-1/3">
   <div class="h-full -p-5 pl-0 md:-mt-16 sm:-mt-8">
-    <img src="/images/me_studio_sm.jpg" alt="Image Description" class="object-cover w-full pb-8">
+    <img src="/images/me_studio_sm.jpg" alt="Sergey Gordeev — entreprenuer and tech leader" class="object-cover w-full pb-8">
     {data2.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-2"/>)}
   </div>
   </div>
@@ -132,4 +133,4 @@ druk {
 
 <p class="hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
   <a href='/images/CV_SGordeev_en.pdf'>Download as pdf</a></p>
-<p class="text-sm">Updated on 25 August, 2024</p>
+<p class="text-sm">Updated on 25 September, 2024</p>
