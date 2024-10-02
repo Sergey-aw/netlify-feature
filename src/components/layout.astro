@@ -6,6 +6,24 @@ const { title, description, home = false } = Astro.props;
 
 const currentLocale = Astro.currentLocale;
 
+function ogLocale() {
+  if (currentLocale === 'ru') {
+    const res={
+      ogtitle:'Сергей Гордеев',
+      ogdesc:'Сергей Гордеев — предприниматель и технический лидер',
+      ogimgalt:'Сергей Гордеев — предприниматель, CEO Берисамокат',
+    }
+    return res
+  } 
+    const res={
+    ogtitle:'Sergey Gordeev',
+    ogdesc:'Sergey Gordeev — entreprenuer and tech leader',
+    ogimgalt:'Sergey Gordeev — entreprenuer, CEO Berisamocat',
+  }
+    return res
+}
+
+
 function backText() {
   if (currentLocale === 'ru') {
     return 'назад'
@@ -31,13 +49,13 @@ function backText() {
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest" />
-
+    
   <meta property="og:url" content="https://sgordeev.xyz/">
-  <meta property="og:title" content="Сергей Гордеев">
+  <meta property="og:title" content={ogLocale().ogtitle}>
   <meta property="og:type" content="website">
-  <meta property="og:description" content="Сергей Гордеев — предприниматель и технический лидер">
+  <meta property="og:description" content={ogLocale().ogdesc}>
   <meta property="og:image" content="/images/me_studio_wb.webp">
-  <meta property="og:image:alt" content="Сергей Гордеев — предприниматель">
+  <meta property="og:image:alt" content={ogLocale().ogimgalt}>
 
 
 
@@ -116,7 +134,7 @@ function backText() {
         </div></div>
         <div class="w-full md:w-1/2 -mt-16">
           <div class="pl-5">
-            <img src="/images/me_studio_wb.webp" alt="Cергей Гордеев — предприниматель, сооснователь Берисамокат и Кофе Культ" class="object-cover h-full w-full rounded-3xl">
+            <img src="/images/me_studio_wb.webp" alt="Cергей Гордеев — предприниматель, сооснователь Берисамокат и Кофе Культ" class="object-cover h-full w-full rounded-3xl" descrip>
           </div>
           </div>
         </div>

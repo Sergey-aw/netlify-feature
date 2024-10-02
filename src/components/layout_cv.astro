@@ -4,6 +4,25 @@ import Footer from './footer.astro';
 const { title, home = false } = Astro.props;
 import Metrika from '../components/metrika.astro';
 
+const currentLocale = Astro.currentLocale;
+
+function ogLocale() {
+  if (currentLocale === 'ru') {
+    const res={
+      ogtitle:'Сергей Гордеев',
+      ogdesc:'Сергей Гордеев — предприниматель и технический лидер',
+      ogimgalt:'Сергей Гордеев — предприниматель, CEO Берисамокат',
+    }
+    return res
+  } 
+    const res={
+    ogtitle:'Sergey Gordeev',
+    ogdesc:'Sergey Gordeev — entreprenuer and tech leader',
+    ogimgalt:'Sergey Gordeev — entreprenuer, CEO Berisamocat',
+  }
+    return res
+}
+
 
 ---
 <!DOCTYPE html>
@@ -24,11 +43,11 @@ import Metrika from '../components/metrika.astro';
   <link rel="manifest" href="/site.webmanifest" />
 
   <meta property="og:url" content="https://sgordeev.xyz/">
-  <meta property="og:title" content="Сергей Гордеев">
+  <meta property="og:title" content={ogLocale().ogtitle}>
   <meta property="og:type" content="website">
-  <meta property="og:description" content="Сергей Гордеев — предприниматель и технический лидер">
+  <meta property="og:description" content={ogLocale().ogdesc}>
   <meta property="og:image" content="/images/me_studio_wb.webp">
-  <meta property="og:image:alt" content="Сергей Гордеев — предприниматель">
+  <meta property="og:image:alt" content={ogLocale().ogimgalt}>
 
   <meta name="msapplication-TileColor" content="#5cebdf" />
   <meta name="theme-color" content="#FFF7ED" />
