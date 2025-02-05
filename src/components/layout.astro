@@ -3,6 +3,9 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 import Footer from '../components/footer.astro';
 import Metrika from '../components/metrika.astro';
 const { title, description, home = false } = Astro.props;
+const { lang } = Astro.props;
+const backLink = lang === 'en' ? '/en' : '/';
+
 
 const currentLocale = Astro.currentLocale;
 
@@ -101,9 +104,9 @@ function backText() {
     <div class="flex flex-wrap">
             <div class="w-full md:w-3/4 mb-4 pr-4 sm:w-full">
               <div class="h-full">
-          <p class="description fon">{description}</p>
+          <p class="description"><Fragment set:html={description}/></p>
           <p class="pt-5  hover:text-red-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-         <a href='/'>&larr; {backText()}</a>
+         <a href={backLink}>&larr; {backText()}</a>
           
         </p>
     

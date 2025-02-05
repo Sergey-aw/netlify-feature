@@ -7,19 +7,17 @@ import { getRelativeLocaleUrl } from 'astro:i18n'
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'опыт', description1: 'В 2014 году вместе с партнёром мы запустили первый кофейный бар в Туле «Кофе Культ», в котором уже тогда мы начали работать со спешалти кофе, локальными обжарщиками и помогали гостям кофейни разобраться в разновидностях зерна, видах обработки, вкусовых нюансах и способах заваривания. С тех пор сеть выросла до 14 кофеен и продолжает успешно работать. Оборот кофеен более 150 млн руб в год. Также со мной запустились ещё около 15 различных проектов разных масштабов и сложности. ', id:'1', link1: '/page1' },
-  { title1: 'бизнес-модель', description1: 'Помогу составить бизнес-модель с планом окупаемости, калькулятором доходности, бюджетом доходов и расходов. Рассмотрим системы налогообложение, коды ОКВЭД, процесс регистрации ИП или юридического лица. Составим план-график открытия кофейни (диаграмму Ганта) со всеми задачами. ', id:'1', link1: '/page1' },
-  { title1: 'бренд-платформа', description1: 'Разработка бренда начинается с глубинного анализа и понимания аудитории будущей кофейни, аналитики рынка, конкурентов. Бренд-платформа состоит из нескольких основных блоков: миссия бренда, характер, ценности. визуальная коммуникации (Ton of Voice), функциональные и эмоциональные преимущества бренда. В рамках консультации я предлагаю как разработку бренда, так и доработку уже существующего.', id:'1', link1: '/page1' },
-  { title1: 'архитектура и интерьер', description1: 'Интерьер и архитектура помещения должны отражать основные ценности кофейни, сочетать в себе эргономику пространства и актуальность. В этом блоке я расскажу о подходах к подбору помещения, его планировке, расположению и эргономике бара, а также об актуальных решениях в интерьере (свет, мебель, материалы). Поделюсь контактами производств, дизайнеров интерьера и архитекторов для этих задач.', id:'1', link1: '/page1' },
-  { title1: 'оборудование', description1: 'К основному оборудованию я отношу в первую очередь ключевое для кофейни — кофемашину, кофемолки, посуду и барный инвентарь, систему фильтрации воды, аксессуары для приготовления кофе альтернативным способом. Мы выберем с вами оборудование с учётом концепции и бюджета. Помимо барного оборудования, отдельно рассмотрим потребности кухни, системы видеонаблюдения, звук, кассовую систему.', id:'1', link1: '/page1' },
-  { title1: 'касса и crm', description1: 'Сейчас на рынке множество решений для управления общепитом, из которых предстоит выбрать подходящее для вашей будущей кофейни или оптизимировать процессы в уже существующем заведении. Помимо POS-терминала и фискального регистратора предстоит определиться с кассовой системой, которая позволит вести учёт продаж, проводить операции покупок, следить за товарным учётом, вести аналитику и маркетинговые активности. Мы рассмотрим несколько примеров и поможем внедрить в работу оптимальное. Также настроим учёт технологических карт и оптимизируем работу системы для персонала.', id:'1', link1: '/page1' },
-  { title1: 'кофе и меню', description1: 'Расскажу о способах выбора обжарщика и зерна, которое подойдет под аудиторию и концепцию заведения. Об особенностях кофе для эспрессо и фильтра, выбора посуды и настройки оборудования. Подготовим технологические карты на кофейные напитки и отработаем их приготовление с командой. Вместе с тренером бариста разработаем сезонные и авторские напитки.', id:'1', link1: '/page1' },
-  { title1: 'обучение бариста', description1: 'Бариста — лицо заведения, поэтому так важно найти правильного человека, который будет разделять ценности вашего заведения, будет участным в жизни и развитии кофейни. Помимо помощи в подборе кандидатов и организации интервью, организую обучение будущей команды бариста и управляющего, разработаю программу мотивации, внутренние регламенты, расскажу о действующей системе чемпионатов и сертификации.', id:'1', link1: '/page1' },
-  { title1: 'маркетинг', description1: 'Маркетинговые активности на запуске, программа лояльности, дизайн меню и POS-материалов, SMM-маркетинг, работа с трафиком и локацией — это только часть задач, которые помогут наладить коммунацию с аудиторией. ', id:'1', link1: '/page1' },
-  { title1: 'открытие под ключ', description1: 'Для обсуждения вашего проекта по запуску кофейни,  оптимизации бизнес-процессов, запуску программы лояльности, настройки учёта —  вы можете связаться со мной по электронной почте или в телеграме.', id:'1', link1: '/page1' },
-
+  { title1: 'Experience', description1: 'In 2014, together with a partner, we launched the first coffee bar in Tula "Coffee Cult", where we started working with specialty coffee, local roasters, and helped guests understand the varieties of beans, processing methods, flavor nuances, and brewing methods. Since then, the network has grown to 10 coffee shops and continues to operate successfully. The turnover of coffee shops is more than 150 million rubles per year. Additionally, I have launched about 15 different projects of various scales and complexities.', id:'1', link1: '/page1' },
+  { title1: 'Business Model', description1: 'I will help develop a business model with a payback plan, profitability calculator, income and expense budget. We will consider tax systems, OKVED codes, the process of registering an individual entrepreneur or legal entity. We will create a Gantt chart for opening a coffee shop with all the tasks.', id:'1', link1: '/page1' },
+  { title1: 'Brand Platform', description1: 'Brand development begins with an in-depth analysis and understanding of the future coffee shop’s audience, market analytics, and competitors. The brand platform consists of several main blocks: brand mission, character, values, visual communication (Tone of Voice), functional and emotional brand advantages. As part of the consultation, I offer both brand development and refinement of an existing one.', id:'1', link1: '/page1' },
+  { title1: 'Architecture and Interior', description1: 'The interior and architecture of the space should reflect the main values of the coffee shop, combining space ergonomics and relevance. In this block, I will talk about approaches to selecting a space, its layout, bar location and ergonomics, as well as current interior solutions (lighting, furniture, materials). I will share contacts of manufacturers, interior designers, and architects for these tasks.', id:'1', link1: '/page1' },
+  { title1: 'Equipment', description1: 'The main equipment includes the key items for a coffee shop — coffee machine, grinders, utensils, and bar inventory, water filtration system, accessories for alternative coffee brewing methods. We will choose the equipment considering the concept and budget. In addition to bar equipment, we will separately consider kitchen needs, video surveillance systems, sound, and cash register system.', id:'1', link1: '/page1' },
+  { title1: 'Cash Register and CRM', description1: 'There are many solutions on the market for managing catering, from which you need to choose the right one for your future coffee shop or optimize processes in an existing establishment. In addition to the POS terminal and fiscal registrar, you need to decide on a cash register system that will allow you to keep track of sales, conduct purchase operations, monitor inventory, and manage analytics and marketing activities. We will consider several examples and help implement the optimal one. We will also set up the accounting of technological maps and optimize the system for staff.', id:'1', link1: '/page1' },
+  { title1: 'Coffee and Menu', description1: 'I will talk about ways to choose a roaster and beans that suit the audience and concept of the establishment. About the features of coffee for espresso and filter, choosing utensils and setting up equipment. We will prepare technological maps for coffee drinks and work on their preparation with the team. Together with the barista trainer, we will develop seasonal and signature drinks.', id:'1', link1: '/page1' },
+  { title1: 'Barista Training', description1: 'The barista is the face of the establishment, so it is important to find the right person who will share the values of your establishment and be involved in the life and development of the coffee shop. In addition to helping with candidate selection and organizing interviews, I will organize training for the future barista team and manager, develop a motivation program, internal regulations, and talk about the existing system of championships and certification.', id:'1', link1: '/page1' },
+  { title1: 'Marketing', description1: 'Marketing activities at launch, loyalty program, menu design and POS materials, SMM marketing, working with traffic and location — these are just some of the tasks that will help establish communication with the audience.', id:'1', link1: '/page1' },
+  { title1: 'Turnkey Opening', description1: 'To discuss your project for opening a coffee shop, optimizing business processes, launching a loyalty program, setting up accounting — you can contact me via email or Telegram.', id:'1', link1: '/page1' },
   
- 
   // Add more data as needed
 ];
 ---
@@ -75,9 +73,10 @@ druk {
 </style>
 
 <Layout
-  title="Кофейный консалтинг"
-  description="Уже больше 8 лет я консультирую кофейни и рестораны по улучшению качества кофе и сервиса вокруг него, помогаю в выборе поставщиков, работаю с дизайнерами и архитекторами над интерьерами, тренерами и шеф-бариста для обучения персонала. Помогаю составить бизнес-модель, разработать бренд и концепцию заведения, выбрать достойных поставщиков зерна и обрудования и открыть кофейню."
+  title="Coffee Consulting"
+  description="For more than 8 years, I have been consulting cafes and restaurants on improving the quality of coffee and the service around it, helping in the selection of suppliers, working with designers and architects on interiors, and with trainers and head baristas to train staff. I help to develop a business model, create a brand and concept for the establishment, choose worthy suppliers of beans and equipment, and open a cafe."
   home="false"
+  lang="en"
 >
 
 <main>
@@ -92,10 +91,7 @@ druk {
 {data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl red-text druk pb-2"/>)}
 </div>
 
- 
-
-
-  </main>
+</main>
 </Layout>
 <script>
   for (let id = 1; id <= 3; id++) {

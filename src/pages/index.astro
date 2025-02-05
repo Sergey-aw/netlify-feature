@@ -2,6 +2,7 @@
 import Layout from '../components/layout.astro';
 import Cards from '../components/Cards.astro';
 import Color from '../components/react/Color';
+import { ExternalLink } from 'lucide-astro'
 
 const { blok } = Astro.props
 
@@ -10,7 +11,7 @@ const data = [
 
   { title1: 'кикшеринг Берисамокат', description1: 'сервис краткосрочной аренды самокатов', id:'2', link1: '/berisamocat' },
   { title1: 'кофейный консалтинг', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: '/coffee' },
-  { title1: 'худи Цирк &UpperRightArrow;', description1: 'лимитированный худи с авторским дизайном от горожан, которым не всё равно', id:'3', link1: 'https://hooodie.ru' },
+  { title1: 'худи Цирк', description1: 'лимитированный худи с авторским дизайном от горожан, которым не всё равно', id:'3', link1: 'https://hooodie.ru', external: true},
 
 ];
 ---
@@ -81,7 +82,10 @@ druk {
   <div class="absolute -right-2 top-2/3 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
   
 <div class="grid lg:content-center w-fit sm:content-center" style="height:70vh;">
-{data.map((item, index) => <Cards key={index} {...item} />)}
+{data.map((item, index) => <Cards key={index} {...item}>
+  {item.external && <ExternalLink size={24} class="inline ml-2 mb-1" />}
+</Cards>
+)}
 </div>
 
  

@@ -1,12 +1,13 @@
 ---
 import Layout from '../../components/layout.astro';
 import Cardsinside from '../../components/Cards-inside.astro';
+import { ExternalLink } from 'lucide-astro';
 
 
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'опыт', description1: 'Первый год руководил R&D, контролируя исследования модулей IoT и протоколов обработки данных электросамокатов. Вёл переговоры с глобальными производителями самокатов и IoT- модулей и инженерам. Разработал бизнес-модель и юнит-экономику для расширения бизнес по модели франчайзинг. Сформулировал и реализовал стратегию развития продукта мобильного приложения и платформы управления IoT. Успешно расширил компанию с одного города до 28 городов с 2020 по 2023 год', id:'1', link1: '/page1' },
+  { title1: '', description1: '', id:'1', link1: '/page1' },
   
  
   // Add more data as needed
@@ -64,9 +65,10 @@ druk {
 </style>
 
 <Layout
-  title="Берисамокат"
-  description="Первый год руководил R&D, контролируя исследования модулей IoT и протоколов обработки данных электросамокатом. Вёл переговоры с глобальными производителями самокатов и IoT- модулей и инженерам. Разработал бизнес-модель и юнит-экономику для расширения бизнес по модели франчайзинг. Сформулировал и реализовал стратегию развития продукта мобильного приложения и платформы управления IoT. Успешно расширил компанию с одного города до 28 городов с 2020 по 2023 год"
+  title="Berisamocat"
+  description={`In the first year, I led R&D, overseeing research on IoT modules and data processing protocols for e-scooters. I negotiated with global scooter and IoT module manufacturers, as well as engineers. Developed the business model and unit economics to scale the business through a franchise model. Defined and implemented the product development strategy for the mobile app and IoT management platform. Successfully expanded the company from a single city to 30 cities between 2020 and 2024.<p class='pt-2'><a href='https://berisamocat.ru' class='underline underline-offset-2 decoration-red-500/50 hover:text-red-500 inline-flex items-center'>Berisamocat.ru <ExternalLink size={16} class='inline ml-1' /></a></p>`}
   home="false"
+  lang="en"
 >
 
 <main>
@@ -82,27 +84,4 @@ druk {
 
   </main>
 </Layout>
-<script>
-  for (let id = 1; id <= 3; id++) {
-    const el = document.getElementById(`hidden-img-${id}`);
-    const hiddenDiv = document.getElementById(`hidden-img-div-${id}`);
 
-    // ✅ Show hidden DIV on hover
-    el.addEventListener('mouseenter', function handleMouseEnter() {
-      hiddenDiv.style.display = 'block';
-      setTimeout(() => {
-        hiddenDiv.style.opacity = '1';
-        hiddenDiv.style.transform = 'translateY(0)';
-      }, 0);
-    });
-
-    // ✅ (optionally) Hide DIV on mouse out
-    el.addEventListener('mouseleave', function handleMouseLeave() {
-      hiddenDiv.style.opacity = '0';
-      hiddenDiv.style.transform = 'translateY(-20px)';
-      setTimeout(() => {
-        hiddenDiv.style.display = 'none';
-      }, 500); // Adjust the timing to match your transition duration
-    });
-  }
-</script>
