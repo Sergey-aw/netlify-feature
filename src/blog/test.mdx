@@ -5,10 +5,16 @@ relatedPosts:
 - post2 # references `src/blog/post2.md`
 ---
 
+import { Image } from 'astro:assets';
+import post2 from "/src/images/post2.jpeg";
+
 # Sergey Gordeev
 ### Sergey 
 
 - sergey
 - sergey
+
+<Image src={post2} alt="A rocketship in space." class="rounded-xl" />
+
 
 [Hey!](https://sgordeev.xyz)

@@ -4,20 +4,23 @@
     "authors": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
-        "portfolio": {
-          "type": "string",
-          "format": "uri"
+        "bio": {
+          "type": "string"
         },
         "$schema": {
           "type": "string"
         }
       },
       "required": [
+        "id",
         "name",
-        "portfolio"
+        "bio"
       ],
       "additionalProperties": false
     }
