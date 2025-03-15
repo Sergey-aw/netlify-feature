@@ -1,5 +1,17 @@
 {
-  "moduleResolution": "node"
+  "moduleResolution": "node",
+
+  "compilerOptions": {
+
+  "strictNullChecks": true, 
+  "baseUrl": ".",
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ]
+  }
+  
 }
 
+}
 

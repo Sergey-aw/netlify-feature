@@ -1,0 +1,14 @@
+---
+import Layout from '../components/layout.astro';
+import { Button } from '@/components/ui/button';
+
+---
+
+<Layout title="ShadCN UI Test" description="Testing ShadCN UI components">
+  
+  <div class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">Button Test</h2>
+    <div class="flex flex-wrap gap-4">
+      <Button client:only="react" variant="default">Default</Button>
+     </div></div>
+</Layout>
