@@ -1,0 +1,38 @@
+---
+title: "Post2"
+author: ben-holmes # references `src/data/authors/ben-holmes.json`
+relatedPosts:
+- test # references `src/blog/test.md`
+---
+import { Image } from 'astro:assets';
+import post2 from "/src/images/post2.jpeg";
+
+# Sergey Gordeev
+Hello World [hello](#hello)
+
+## Header two
+Plain text
+
+```python
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.linear_model import LogisticRegression
+
+pipe_nb = make_pipeline(CountVectorizer(), OneVsRestClassifier(LogisticRegression(max_iter=1000)))
+pipe_nb.fit(X_train, y_train)
+print("Training Acc.: ", pipe_nb.score(X_train, y_train))
+print("Valid Acc.: ", pipe_nb.score(X_test, y_test))
+```
+
+> The first rule about fight club is you don’t talk about fight club. The first rule about fight club is you don’t talk about fight club. The first rule about fight club is you don’t talk about fight club. The first rule about fight club is you don’t talk about fight club. The first rule about fight club is you don’t talk about fight club.
+
+| Item              | In Stock | Price |
+| :---------------- | :-------:| ----: |
+| 
+|<Image src={post2} alt="A rocketship in space." class="rounded-xl" /> |<Image src={post2} alt="A rocketship in space." class="rounded-xl" />   | <Image src={post2} alt="A rocketship in space." class="rounded-xl" /> |
+| SQL Hat           |   True   | 23.99 |
+| Codecademy Tee    |  False   | 19.99 |
+| Codecademy Hoodie |  False   | 42.99 |
+
+Think of Pieces as a technical Tinkerbell from Peter Pan[^2].
+
+[^2]: This is a fairytale about a forever young boy who takes a group of British children to his home island, Neverland.

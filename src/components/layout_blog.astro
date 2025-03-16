@@ -81,20 +81,64 @@ function backText() {
       max-width: 1200px;
     }
     h1 {
-      font-size: 1.5rem;      
+      font-size: 2.5rem;
+      padding-bottom: 0.5rem;
+      padding-top: 1rem;
+      
     }
-   
+    h2 {
+      font-size: 1.5rem;
+      padding-top: 1rem;
+      /* padding-bottom: 0.5rem; */
+    }
+    .astro-code {
+      padding: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 14px;
+      
+    }
+    #markdown a  {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: rgb(239 68 68 / 0.4);
+      
+    }
+    #markdown a:hover  {
+    
+      color: rgb(239 68 68);
+    }
+
+    #markdown img {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      margin-top: 1.0rem;
+    }
+
+    blockquote p
+    {
+      padding: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      
+      border-left: 2px;
+      border-color: rgb(239 68 68 / 0.8);;
+      border-style:solid;
+
+    }
     .druk {
       font-family: Druk, Verdana, Geneva, Tahoma, sans-serif;
     }
     
-    .maintext
+    /* .maintext
     {
       font-family: Normalidad, Verdana, Geneva, Tahoma, sans-serif;
       font-weight: 100;
       font-size: 1.0rem;
 
-    }
+    } */
   </style>
 </head>
 <body class="text-gray-900 bg-orange-50 font-forma text-lg">
@@ -114,8 +158,9 @@ function backText() {
          <a href={backLink}>&larr; {backText()}</a>
           
         </p>
-    
-          <slot set:html/>
+        <div id="markdown">
+          <slot />
+        </div>
         </div></div>
         <div class="w-full md:w-1/4">
           <div class="h-full -p-5 pl-0">

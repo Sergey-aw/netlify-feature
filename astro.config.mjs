@@ -4,7 +4,9 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import mdx from '@astrojs/mdx';
-
+import remarkRehype from "remark-rehype";
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,11 +22,17 @@ export default defineConfig({
     tailwind(),
     mdx(),
   ],
-  i18n: {
-                  defaultLocale: "ru",
-                  locales: ["en","ru"],
+  markdown: {
+    remarkPlugins: [
+      remarkMath,
+      remarkRehype
+    ],
+    rehypePlugins: [
+      rehypeKatex
+    ],
   },
-}
-);
-
-
+  i18n: {
+    defaultLocale: "ru",
+    locales: ["en", "ru"],
+  },
+});
