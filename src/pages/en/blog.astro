@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+const posts = await getCollection('blog');
+
+import Layout from '@/components/layout_green.astro';
+import Cards from '@/components/Cards_blog.astro';
+---
+
+<style>
+  .steps {
+    background: var(--light);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: min(90vw, 250px);
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 5rem 5vw;
+    width: 100vw;
+  }
+
+  @media (min-width: 550px) {
+    .steps {
+      grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+    }
+  }
+
+  @media (min-width: 1050px) {
+    .steps {
+      grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+    }
+  }
+
+  .step {
+    background: var(--white);
+    border: 1px solid var(--lightBorder);
+    border-radius: var(--card-radius);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    padding: 1rem 1.5rem 1.5rem;
+    text-align: left;
+    box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+    width: fit-content;
+  }
+  druk {
+    font-family: Druk, Tahoma, sans-serif;
+  }
+
+  .stepHeading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+</style>
+
+<Layout
+  title="Blog"
+  description="Blog posts"
+  home="false"
+  lang="en"
+>
+  <main>
+    <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full -z-10" style="background-color: var(--purple-700);"></div>
+
+    <div class="grid content-start pt-40 w-fit">
+      {posts.map(post => (
+        <Cards key={post.id} title1={post.data.title} link1={`/en/posts/${post.id}`} description1={post.data.author.id}/>
+      ))}
+    </div>
+  </main>
+</Layout>
