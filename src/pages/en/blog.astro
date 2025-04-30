@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 const posts = await getCollection('blog_en');
 
-import Layout from '@/components/layout_green.astro';
+import Layout from '@/components/layout_orange_bright.astro';
 import Cards from '@/components/Cards_blog.astro';
 ---
 
@@ -60,7 +60,7 @@ import Cards from '@/components/Cards_blog.astro';
   lang="en"
 >
   <main>
-    <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full -z-10" style="background-color: var(--purple-700);"></div>
+    <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full -z-10" style="background-color: var(--blue-300);"></div>
 
     <div class="grid content-start pt-40 w-fit">
       {posts.map(post => (

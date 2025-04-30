@@ -40,6 +40,16 @@ color: #252525;
 .gray-bg {
 background-color: #E7E7E7;
 }
+
+.dark-gray-bg {
+  background-color: #182938;
+  }
+  
+.orange-bright-bg {
+  background-color: #FFD2B4;
+}
+    
+  
 .green-bg {
 background-color: #CCF626;
 }
