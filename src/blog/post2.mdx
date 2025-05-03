@@ -6,9 +6,14 @@ relatedPosts:
 ---
 import { Image } from 'astro:assets';
 import post2 from "/src/images/post2.jpeg";
+import StoriesApp from '../components/react/StoriesApp.jsx';
+
+
 
 # Сергей Гордеев
 Hello World [hello](#hello)
+
+<StoriesApp client:only="react"/>
 
 ## Header two
 Plain text

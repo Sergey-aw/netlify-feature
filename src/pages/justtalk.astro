@@ -1,6 +1,7 @@
 ---
 import Layout from '../components/layout_gray.astro';
 import Cardsinside from '../components/Cards-inside.astro';
+import StoriesApp from '../components/react/StoriesApp.jsx';
 
 
 const { blok } = Astro.props
@@ -70,14 +71,14 @@ druk {
 >
 
 <main>
-
+  
   <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full -z-10" style="background-color: var(--blue-700);"></div>
   
 <div class="grid content-start pt-40 w-fit">
 {data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl blue-text druk pb-2" />)}
 </div>
 
- 
+<StoriesApp client:only="react"/> 
 
 
   </main>

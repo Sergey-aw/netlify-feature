@@ -11,16 +11,19 @@ import rehypeKatex from 'rehype-katex';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sgordeev.xyz',
-  integrations: [ 
+  // Integrations: Ensure MDX plugin runs before React integration for MDX support
+  integrations: [
     preact({
       include: ['**/preact/*'],
     }),
+    // MDX support for content files
+    mdx(),
     react({
-      include: ['**/react/*'],
+      // Enable React components in src directory (JSX/TSX only)
+      include: ['src/**/*.{jsx,tsx}'],
     }),
     sitemap(),
     tailwind(),
-    mdx(),
   ],
   markdown: {
     remarkPlugins: [

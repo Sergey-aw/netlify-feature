@@ -4,10 +4,12 @@ author: ben-holmes # references `src/data/authors/ben-holmes.json`
 relatedPosts:
 - post2 # references `src/blog/post2.mdx`
 ---
-import { Image } from 'astro:assets';
+// Removed import of Astro Image; using HTML <img> for images
 import post2 from "/src/images/post2.jpeg";
 
 # Sergey Gordeev
+
+
 Hello World [hello](#hello)
 
 ## Header two
@@ -28,7 +30,7 @@ print("Valid Acc.: ", pipe_nb.score(X_test, y_test))
 | Item              | In Stock | Price |
 | :---------------- | :-------:| ----: |
 | 
-|<Image src={post2} alt="A rocketship in space." class="rounded-xl" /> |<Image src={post2} alt="A rocketship in space." class="rounded-xl" />   | <Image src={post2} alt="A rocketship in space." class="rounded-xl" /> |
+| <img src={post2} alt="A rocketship in space." class="rounded-xl" /> | <img src={post2} alt="A rocketship in space." class="rounded-xl" /> | <img src={post2} alt="A rocketship in space." class="rounded-xl" /> |
 | SQL Hat           |   True   | 23.99 |
 | Codecademy Tee    |  False   | 19.99 |
 | Codecademy Hoodie |  False   | 42.99 |

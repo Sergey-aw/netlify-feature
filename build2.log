@@ -1,0 +1,69 @@
+
+> @example/starter@0.0.1 build
+> astro build
+
+12:06:10 [content] Syncing content
+12:06:10 [content] Synced content
+12:06:10 [types] Generated 202ms
+12:06:10 [build] output: "static"
+12:06:10 [build] mode: "static"
+12:06:10 [build] directory: /Users/sergeygordeev/SF/netlify-feature/dist/
+12:06:10 [build] Collecting build info...
+12:06:10 [build] ✓ Completed in 226ms.
+12:06:10 [build] Building static entrypoints...
+12:06:13 [vite] ✓ built in 3.01s
+12:06:13 [build] ✓ Completed in 3.03s.
+
+ building client (vite) 
+12:06:13 [vite] transforming...
+12:06:14 [vite] ✓ 51 modules transformed.
+12:06:14 [vite] rendering chunks...
+12:06:14 [vite] computing gzip size...
+12:06:14 [vite] dist/_astro/index.BhlDW_pL.js             0.06 kB │ gzip:  0.08 kB
+12:06:14 [vite] dist/_astro/client.DEVtD2fi.js            0.06 kB │ gzip:  0.08 kB
+12:06:14 [vite] dist/_astro/jsx-runtime.CLpGMVip.js       0.73 kB │ gzip:  0.46 kB
+12:06:14 [vite] dist/_astro/index.D1HhiC4m.js             7.87 kB │ gzip:  3.04 kB
+12:06:14 [vite] dist/_astro/signals.module.DCH9LfXR.js    8.46 kB │ gzip:  3.22 kB
+12:06:14 [vite] dist/_astro/client.RZv4zhzx.js           12.14 kB │ gzip:  5.21 kB
+12:06:14 [vite] dist/_astro/button.C1di4rxP.js           25.32 kB │ gzip:  8.71 kB
+12:06:14 [vite] dist/_astro/StoriesApp.0fQVWp8A.js       44.81 kB │ gzip: 12.16 kB
+12:06:14 [vite] dist/_astro/client.D7QT67zq.js          179.43 kB │ gzip: 56.63 kB
+12:06:14 [vite] ✓ built in 519ms
+
+ generating static routes 
+12:06:14 ▶ src/pages/berisamocat.astro
+12:06:14   └─ /berisamocat/index.html (+5ms) 
+12:06:14 ▶ src/pages/blog.astro
+12:06:14   └─ /blog/index.html (+3ms) 
+12:06:14 ▶ src/pages/coffee.astro
+12:06:14   └─ /coffee/index.html (+2ms) 
+12:06:14 ▶ src/pages/cv.astro
+12:06:14   └─ /cv/index.html (+2ms) 
+12:06:14 ▶ src/pages/en/berisamocat.astro
+12:06:14   └─ /en/berisamocat/index.html (+1ms) 
+12:06:14 ▶ src/pages/en/blog.astro
+12:06:14   └─ /en/blog/index.html (+1ms) 
+12:06:14 ▶ src/pages/en/coffee.astro
+12:06:14   └─ /en/coffee/index.html (+2ms) 
+12:06:14 ▶ src/pages/en/cv.astro
+12:06:14   └─ /en/cv/index.html (+2ms) 
+12:06:14 ▶ src/pages/en/posts/[id].astro
+12:06:14   ├─ /en/posts/post1/index.html (+9ms) 
+12:06:14   └─ /en/posts/post2/index.html (+4ms) 
+12:06:14 ▶ src/pages/en/index.astro
+12:06:14   └─ /en/index.html (+2ms) 
+12:06:14 ▶ src/pages/justtalk.astro
+12:06:14   └─ /justtalk/index.html (+1ms) 
+12:06:14 ▶ src/pages/netlify-forms.astro
+12:06:14   └─ /netlify-forms/index.html (+1ms) 
+12:06:14 ▶ src/pages/posts/[id].astro
+12:06:14   ├─ /posts/post1/index.html (+3ms) 
+12:06:14   └─ /posts/post2/index.htmlElement type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+  Hint:
+    This issue often occurs when your MDX component encounters runtime errors.
+  Stack trace:
+    at renderElement (/Users/sergeygordeev/SF/netlify-feature/node_modules/react-dom/cjs/react-dom-server.node.production.js:4692:11)
+    at renderNodeDestructive (/Users/sergeygordeev/SF/netlify-feature/node_modules/react-dom/cjs/react-dom-server.node.production.js:4732:7)
+    at renderElement (/Users/sergeygordeev/SF/netlify-feature/node_modules/react-dom/cjs/react-dom-server.node.production.js:4319:7)
+    at performWork (/Users/sergeygordeev/SF/netlify-feature/node_modules/react-dom/cjs/react-dom-server.node.production.js:5561:13)
+    at /Users/sergeygordeev/SF/netlify-feature/node_modules/react-dom/cjs/react-dom-server.node.production.js:6153:27
