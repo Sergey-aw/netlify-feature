@@ -1,16 +1,17 @@
 import React from 'react';
 import Stories from 'react-insta-stories';
 
+
 const stories = [
-	'/src/images/1.jpeg',
-	'/src/images/2.jpeg',
-    '/src/images/3.jpeg',
-    '/src/images/4.jpeg',
-    '/src/images/5.jpeg',
-    '/src/images/6.jpeg',
-    '/src/images/7.jpeg',
-    '/src/images/8.jpeg',
-    '/src/images/9.jpeg',
+	'/images/1.jpeg',
+    '/images/2.jpeg',
+    '/images/3.jpeg',
+    '/images/4.jpeg',
+    '/images/5.jpeg',
+    '/images/6.jpeg',
+    '/images/7.jpeg',
+    '/images/8.jpeg',
+    '/images/9.jpeg',
 	
 ];
 
