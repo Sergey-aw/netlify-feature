@@ -1,0 +1,110 @@
+---
+import Layout from '../../components/layout.astro';
+import Cardsinside from '../../components/Cards-inside.astro';
+import StoriesApp from '../../components/react/StoriesApp.jsx';
+
+
+const { blok } = Astro.props
+
+const data = [
+  { title1: 'Привлекаем инвестиции', description1: '<a href="/images/JustTalk Pitch Deck Rus.pdf" class="hover:text-red-600">Скачать питч</a>', id:'1', link1: '/page1' },
+  
+ 
+  // Add more data as needed
+];
+---
+
+<style>
+.steps {
+  background: var(--light);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: min(90vw, 250px);
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 5rem 5vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+  }
+}
+
+@media (min-width: 1050px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+  }
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
+}
+
+.stepHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+</style>
+
+<Layout
+  title="JustTalk AI"
+  description="Сегодня большинство новых приложений для изучения языков стремятся заменить живого преподавателя его виртуальным аватаром. Без эмоций, без реального контакта и без вовлечённости. Студент теряет мотивацию, не понимает, как движется вперёд, а у виртуального “преподавателя” нет ни контекста, ни эмпатии. Мы в JustTalk верим, что живое общение — это ключ эффективного изучения языков. Настоящий преподаватель вдохновляет, поддерживает и вовлекает. А искусственный интеллект должен помогать, а не заменять его. Наша миссия — соединить лучшее из двух миров: оставить живого преподавателя в центре процесса, а рутину, подготовку и анализ прогресса делегировать ИИ. Это делает обучение персонализированным, учитывая интересы, темп и уровень студента, и позволяет преподавателю фокусироваться на главном — на взаимодействии. JustTalk — не про будущее без людей. Это про будущее, где технологии работают на людей."
+  home="false"
+  lang="ru"
+>
+
+<main>
+  
+  <div class="absolute -left-32 top-1/2 blur-3xl w-72 h-72 rounded-full -z-10" style="background-color: var(--blue-700);"></div>
+  
+<div class="grid content-start pt-40 w-fit">
+{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl blue-text druk pb-2" />)}
+</div>
+
+<StoriesApp client:only="react"/> 
+
+
+  </main>
+</Layout>
+<script>
+  for (let id = 1; id <= 3; id++) {
+    const el = document.getElementById(`hidden-img-${id}`);
+    const hiddenDiv = document.getElementById(`hidden-img-div-${id}`);
+
+    // ✅ Show hidden DIV on hover
+    el.addEventListener('mouseenter', function handleMouseEnter() {
+      hiddenDiv.style.display = 'block';
+      setTimeout(() => {
+        hiddenDiv.style.opacity = '1';
+        hiddenDiv.style.transform = 'translateY(0)';
+      }, 0);
+    });
+
+    // ✅ (optionally) Hide DIV on mouse out
+    el.addEventListener('mouseleave', function handleMouseLeave() {
+      hiddenDiv.style.opacity = '0';
+      hiddenDiv.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        hiddenDiv.style.display = 'none';
+      }, 500); // Adjust the timing to match your transition duration
+    });
+  }
+</script>

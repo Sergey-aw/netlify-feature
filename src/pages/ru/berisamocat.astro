@@ -1,8 +1,6 @@
 ---
-import Layout from '../components/layout.astro';
-import Cardsinside from '../components/Cards-inside.astro';
-import StoriesApp from '../components/react/StoriesApp.jsx';
-import { ExternalLink } from 'lucide-astro';
+import Layout from '../../components/layout.astro';
+import Cardsinside from '../../components/Cards-inside.astro';
 
 
 const { blok } = Astro.props
@@ -66,10 +64,10 @@ druk {
 </style>
 
 <Layout
-  title="JustTalk AI"
-  description={`JustTalk AI is an English speaking practice platform for intermediate and advanced learners. Practice speaking with AI that remembers every conversation and builds on previous sessions—no more random drills or scripted exercises. Get real-time pronunciation feedback, track your progress over time, and when you're ready, seamlessly connect with live tutors who see your full history. It's progress that actually compounds.<p class='pt-2'><a href='https://justtalk.ai/' class='underline underline-offset-2 decoration-red-500/50 hover:text-red-500 inline-flex items-center'>JustTalk.ai <ExternalLink size={16} class='inline ml-1' /></a></p>`}
+  title="Берисамокат"
+  description="CEO и сооснователь. Первый год руководил R&D, контролируя исследования модулей IoT и протоколов обработки данных электросамокатом. Вёл переговоры с глобальными производителями самокатов и IoT- модулей и инженерам. Разработал бизнес-модель и юнит-экономику для расширения бизнеса по модели франчайзинга. Сформулировал и реализовал стратегию развития продукта мобильного приложения и платформы управления IoT. Успешно развил компанию с 1 до 28 городов с 2020 по 2024 год."
   home="false"
-  lang="en"
+  lang="ru"
 >
 
 <main>
@@ -90,7 +88,7 @@ druk {
     const el = document.getElementById(`hidden-img-${id}`);
     const hiddenDiv = document.getElementById(`hidden-img-div-${id}`);
 
-    // Show hidden DIV on hover
+    // ✅ Show hidden DIV on hover
     el.addEventListener('mouseenter', function handleMouseEnter() {
       hiddenDiv.style.display = 'block';
       setTimeout(() => {
@@ -99,13 +97,13 @@ druk {
       }, 0);
     });
 
-    // Hide DIV on mouse out
+    // ✅ (optionally) Hide DIV on mouse out
     el.addEventListener('mouseleave', function handleMouseLeave() {
       hiddenDiv.style.opacity = '0';
       hiddenDiv.style.transform = 'translateY(-20px)';
       setTimeout(() => {
         hiddenDiv.style.display = 'none';
-      }, 500);
+      }, 500); // Adjust the timing to match your transition duration
     });
   }
 </script>

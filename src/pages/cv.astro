@@ -1,4 +1,4 @@
----
+p---
 import LayoutCV from '../components/layout_cv.astro';
 import Cardsinside from '../components/Cards-cv.astro';
 
@@ -6,27 +6,28 @@ import Cardsinside from '../components/Cards-cv.astro';
 const { blok } = Astro.props
 
 const data = [
-  { title1: 'опыт', description1: '<p class="font-formabold">Июнь, 2020 - настоящее время</p><ul class="list-disc"><li>Первый год руководил R&D, контролируя исследования модулей IoT и  протоколов обработки данных с электросамокатами.</li><li>Вел переговоры с глобальными производителями самокатов и IoT-модулей и инженерами</li><li>Разработал бизнес-модель и  юнит-экономику для расширения бизнес по модели франчайзинга</li><li>Сформулировал и реализовал стратегию развития продукта мобильного приложения и платформы управления IoT</li><li>Компания выросла с 1 города до 50 с 2020 по 2024 год</li></ul>', subtitle1:"Сооснователь & CEO, Берисамокат", id:'1', link1: '/page1' },
-  { subtitle1: "Сооснователь & COO, кофейни Кофе Культ", description1: '<p class="font-formabold">май, 2014 - январь 2020</p><ul class="list-disc"><li>Расширил сеть кофеен с момента запуска первой до 10 точек, сгенерировав годовой оборот в 150 миллионов рублей</li><li>Открыл школу бариста, чтобы обучать персонал с использованием собственной программы.</li><li>Реализовал маркетинговую стратегию, сделав Кофе Культ самой большой сетью кофеен в регионе</li><li>Запустил программу франшизы</li></ul>', id:'2', link1: '/page1' },
-  { title1: 'образование', subtitle1: 'Магистр, авиа- и ракетостроение', description1: '<p class="font-formabold">Сентябрь, 2005 - Февраль, 2012</p><ul class="list-disc"><li>Тульский Государственный университет</li></ul>', id:'3', link1: '/page1' },
-  { subtitle1: 'Дополнительное образование' ,description1: '<p class="font-formabold">2018 - 2024</p><ul class="list-disc"><li>Stanford Online, CS229 Machine Learning, Open Course, 2023</li><li>Harvard CS50 online, 2022</li><li>University of Toronto (Coursera), Neural Networks for Machine Learning, 2019</li><li>University of Michigan (Coursera), Python, 2018</li></ul>', id:'4', link1: '/page1' },
+  { subtitle1:"Co-founder & CEO, e-scooter sharing service Berisamocat", title1: 'track record', description1: '<p class="font-formabold">June 2020 &ndash; present</p><ul class="list-disc"><li>Led R&D efforts in the first year, overseeing the research of IoT modules and data protocols with electric scooters.</li><li>Negotiated with international manufacturers and engineers.</li><li>Developed the business model and unit economics for franchise expansion.</li><li>Formulated and executed the product development strategy for the mobile application and IoT management platform.</li><li>Established a predictive analytics system using ML based on trip data across cities.</li><li>Successfully expanded the company from a single city to 30 cities from 2020 to 2024.</li></ul>', id:'1', link1: '/page1' },
+  { subtitle1: "Co-founder & COO, coffee shop chain of Coffee Cult", description1: '<p class="font-formabold">May 2014 &ndash; January 2020</p><ul class="list-disc"><li>Scaled the coffee shop chain from inception to 10 locations, generating an annual turnover of 150 million rubles.</li><li>Run a barista school to train staff using a proprietary program.</li><li>Implemented a marketing strategy, making Coffee Cult the largest coffee shop chain in the region.</li><li>Started franchise sales.</li></ul>', id:'2', link1: '/page1' },
+  { title1: 'education', subtitle1: 'M.Sc. Aerospace Engineering', description1: '<p class="font-formabold">September 2005 &ndash; February 2012</p><ul class="list-disc"><li>Tula State University</li></ul>', id:'3', link1: '' },
+  { subtitle1: 'International student exchange program', description1: '<p class="font-formabold">May 2010 &ndash; September 2010</p><ul class="list-disc"><li>Work & Travel USA</li></ul>', id:'6', link1: '' },
+  { subtitle1: 'Continuing education' ,description1: '<p class="font-formabold">2018 &ndash; 2024</p><ul class="list-disc"><li>Stanford Online, CS229 Machine Learning, Open Course, 2023</li><li>Harvard CS50 online, 2022</li><li>University of Toronto (Coursera), Neural Networks for Machine Learning, 2019</li><li>University of Michigan (Coursera), Python, 2018</li></ul>', id:'4', link1: '/page1' },
 
 
 ];
 
 const data2 = [
-  { title1: 'навыки', description1: '<ul class="list-disc"><li>Использую научные принципы и передовые технологии для решения бизнес-задач.</li><li>Способность создавать и разрабатывать продукты с нуля, охватывая все аспекты от бизнес-моделей до маркетинговых стратегий и продаж.</li><li>Экспертиза в сфере построения команды, планирования развития продукта на основе данных и опыта пользователей.</li></ul>', id:'1', link1: '/page1' },
+  { title1: 'skills', description1: '<ul class="list-disc"><li>Adept at leveraging scientific principles and cutting-edge technologies to devise innovative solutions for business challenges.</li><li>Proven ability to create and develop products from scratch, covering all aspects from business models to marketing strategies and sales.</li><li>Expertise in team building, product development planning based on data and user experience.</li></ul>', id:'1', link1: '/page1' },
   { title1: 'software / tech skills', description1: '<ul class="list-disc columns-2 gap-10"><li>Python (Pandas, Streamlit, PyTorch), SQL, PHP, HTML/CSS, VS Code, Git</li><li>Tableau</li><li>Postman</li><li>Adobe Cloud</li><li>Firebase<li>SimilarWeb</li><li>Appstore Connect</li><li>Google Play Console</li><li>Figma</li></ul>', id:'2', link1: '/page1' },
-  { title1: 'академические достижения', subtitle1: 'Научные форумы и работы', description1: '<p class="font-formabold">Январь, 2012</p><ul class="list-disc"><li>Приз за лучшую научную работу, МГТУ им. Баумана</li></ul>', id:'3', link1: '/page1' },
-  { subtitle1: 'Публикации', description1: '<ul class="list-disc"><li>Научная статья в сборнике работ международного форума «Инженерные системы»</li><li>Научная статья на форуме «Гагаринские чтения», МАТИ</li></ul>', id:'3', link1: '/page1' },
-  { subtitle1: 'Иностранный язык', description1: '<ul class="list-disc"><li>Английский, С1</li></ul>', id:'4', link1: '/page1' },
+  { title1: 'academic achievements', subtitle1: 'Conferences and research papers', description1: '<p class="font-formabold">January 2012</p><ul class="list-disc"><li>Prizeman of the Best Scientific Work Award in Russia, Bauman Moscow State Technical University</li></ul>', id:'3', link1: '/page1' },
+  { subtitle1: 'Research publications', description1: '<ul class="list-disc"><li>Research paper in the proceedings of the “Engineering systems” international forum</li><li>Scientific paper in the proceedings of the “Gagarin’s Readings” forum, MATI &mdash; Russian State Technological University</li></ul>', id:'3', link1: '/page1' },
+  { subtitle1: 'Foreign language', description1: '<ul class="list-disc"><li>English, B2</li></ul>', id:'4', link1: '/page1' },
 ];
 
 
 
 
-const title  = "Сергей Гордеев"
-const description = "Ориентированный на результат предприниматель и технический лидер с бэкграундом в ракетостроении и успешным опытом создания и масштабирования бизнесов. В поиске нового опыта и профессионального развития. Развивал шеринг самокатов с нуля последние 4-года в качество сооснователя и CEO, участвовал в разработке и выполнении стратегий, способствующих развитию продукта и росту бизнеса."
+const title  = "Sergey Gordeev"
+const description = "Results-driven entrepreneur and technical leader with a strong background in aerospace engineering and a proven track record of successfully founding and scaling innovative businesses. Highly skilled in developing and executing strategies that drive product development and growth."
 const home = "false"
  
 ---
@@ -85,6 +86,7 @@ druk {
   title="Сергей Гордеев"
   description="Уже больше 8 лет я консультирую кофейни и рестораны по улучшению качества кофе и сервиса вокруг него, помогаю в выборе поставщиков, работаю с дизайнерами и архитекторами над интерьерами, тренерами и шеф-бариста для обучения персонала. Помогаю составить бизнес-модель, разработать бренд и концепцию заведения, выбрать достойных поставщиков зерна и обрудования и открыть кофейню."
   home="false"
+  lang="en"
 >
 
 <main>
@@ -104,12 +106,13 @@ druk {
         <p class="description fon">{description}</p>
        
         <p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-       <a href='https://t.me/sergey_wa/'>написать в телеграм →</a></p>
+       <a href='https://t.me/sergey_wa/'>contact via telegram →</a></p>
        <p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-        <a href='mailto:hello@sgordeev.xyz'>написать на email →</a>
+        <a href='mailto:hello@sgordeev.xyz'>drop me a line on email →</a>
        </p>
        
        
+      
 
 <div class="grid content-start pt-40 w-fit">
 
@@ -120,7 +123,7 @@ druk {
 </div></div>
 <div class="w-full md:w-1/3">
   <div class="h-full -p-5 pl-0 md:-mt-16 sm:-mt-8">
-    <img src="/images/me_studio_sm.jpg" alt="Image Description" class="object-cover w-full pb-8">
+    <img src="/images/me_studio_sm.jpg" alt="Sergey Gordeev — entreprenuer and tech leader" class="object-cover w-full pb-8">
     {data2.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl druk pb-2"/>)}
   </div>
   </div>
@@ -131,5 +134,8 @@ druk {
 </LayoutCV>
 
 <p class="hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-  <a href='/images/CV_SGordeev.pdf'>Скачать резюме в pdf</a></p>
-<p class="text-sm">Обновлено 25 сентября, 2024</p>
+  <a href='/images/CV_SGordeev_en.pdf'>Download as pdf</a></p>
+<p class="text-sm">Updated on 1 December, 2024</p>
+<p class="pt-0 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a class="footer-link" href="/ru/cv/">Ru</a>
+</p>

@@ -4,8 +4,9 @@ const { title, description, home = false } = Astro.props;
 const currentLocale = Astro.currentLocale;
 
 import { getRelativeLocaleUrl } from "astro:i18n";
-const linktoen=getRelativeLocaleUrl("en");
-const linktoenn=linktoen+Astro.url.pathname.substring(1)
+// Remove the current locale prefix from the path before constructing the new URL
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|ru)/, '') || '/';
+const linktoenn = getRelativeLocaleUrl("en", pathWithoutLocale);
 
 ---
 
@@ -14,9 +15,17 @@ const linktoenn=linktoen+Astro.url.pathname.substring(1)
     <nav>
       <ul>
         <li>
-            <p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+          <p class="pt-2 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+          <a class="footer-link inline-flex items-center gap-1" href="https://x.com/sergei_goo/"> 
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M11.9 9.4L18.9 1H17.2L11.2 8.3L6.5 1H1L8.3 10.9L1 20H2.7L9 12.3L14 20H19.5L11.9 9.4ZM9.8 11.2L9 10.1L3.3 2.3H5.7L10.3 8.7L11.1 9.8L17.2 18.7H14.8L9.8 11.2Z"/>
+            </svg>
+          
+          </a></p>
+            <p class="pt-0 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
           <a class="footer-link" href="https://t.me/sergey_wa/"> {currentLocale === 'ru' ? 'Написать в телеграм' : 'Contact via Telegram'}
           </a></p>
+          
           <p class="pt-0 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
             {currentLocale === 'ru' ? <a class="footer-link" href={linktoenn}>En</a> : '' }
             </a></p>

@@ -1,12 +1,14 @@
 ---
 import Footer from "../components/footer.astro";
 import { getRelativeLocaleUrl } from 'astro:i18n';
-const { title, description,home = false } = Astro.props;
+const { title, description, home = false } = Astro.props;
+const { lang } = Astro.props;
+const backLink = lang === 'ru' ? '/ru/' : '/';
 import Metrika from '../components/metrika.astro';
 
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang || 'en'}>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,11 +75,11 @@ import Metrika from '../components/metrika.astro';
     )}
 
 
-    <p class="description">{description}</p>
+    <p class="description"><Fragment set:html={description}/></p>
   </div>
     {home !== true && (
       <p class="pt-5 hover:text-blue-500 transition transform ease-in-out hover:-translate-x-2 duration-300 ">
-        <a href="/">&larr; назад</a>
+        <a href={backLink}>&larr; {lang === 'ru' ? 'назад' : 'back'}</a>
         
         
       </p>

@@ -1,0 +1,123 @@
+---
+import Layout from '../../components/layout.astro';
+import Cards from '../../components/Cards.astro';
+import Color from '../../components/react/Color';
+import { ExternalLink } from 'lucide-astro'
+
+const { blok } = Astro.props
+
+
+const data = [
+
+  { title1: 'JustTalk AI ', description1: 'ed-tech стартап в изучении языков', id:'4', link1: '/ru/justtalk' },  
+  { title1: 'meerch', description1: 'агентство по созданию стильного мерча', id:'5', link1: 'https://meerch.xyz', external: true },
+  { title1: 'кикшеринг Берисамокат', description1: 'сервис краткосрочной аренды самокатов', id:'2', link1: '/ru/berisamocat' },
+  { title1: 'кофейный консалтинг', description1: 'консультации или открытие кофейни под ключ', id:'1', link1: '/ru/coffee' },
+  { title1: 'худи Цирк', description1: 'лимитированный худи с авторским дизайном от горожан, которым не всё равно', id:'3', link1: 'https://hooodie.ru', external: true},
+
+];
+---
+
+<style>
+.steps {
+  background: var(--light);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: min(90vw, 250px);
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 5rem 5vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+  }
+}
+
+@media (min-width: 1050px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+  }
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
+}
+
+.stepHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+</style>
+
+<Layout
+  title="Сергей Гордеев"
+  description="Предприниматель, запускаю новый ed-tech стартап JustTalk AI, сооснователь сервиса шеринга самокатов Берисамокат, сети кофеен Кофе Культ. Продюсер мерча для Никола-Ленивца, Архстояния 2022&ndash;2024. Моя страсть к технологиям и инновациям сочетается с интересом к бизнесу, путешествиям и визуальным искусствам."
+  home
+  lang="ru"
+>
+
+<main>
+
+  <p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+    <a href='/ru/cv/'>Резюме &rarr;</a></p>
+  <!-- <Color/>-->
+  <div class="absolute -left-32 sm:top-1/2 md:top-1/3 lg:top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+
+  <div class="absolute -right-2 top-2/3 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+  
+<div class="grid lg:content-center w-fit sm:content-center" style="height:100vh;">
+{data.map((item, index) => <Cards key={index} {...item}>
+  {item.external && <ExternalLink size={24} class="inline ml-2 mb-1" />}
+</Cards>
+)}
+</div>
+
+ 
+
+
+  </main>
+</Layout>
+
+<script>
+  for (let id = 1; id <= 5; id++) {
+    const el = document.getElementById(`hidden-img-${id}`);
+    const hiddenDiv = document.getElementById(`hidden-img-div-${id}`);
+
+    // ✅ Show hidden DIV on hover
+    el.addEventListener('mouseenter', function handleMouseEnter() {
+      hiddenDiv.style.display = 'block';
+      setTimeout(() => {
+        hiddenDiv.style.opacity = '1';
+        hiddenDiv.style.transform = 'translateY(0)';
+      }, 0);
+    });
+
+    // ✅ (optionally) Hide DIV on mouse out
+    el.addEventListener('mouseleave', function handleMouseLeave() {
+      hiddenDiv.style.opacity = '0';
+      hiddenDiv.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        hiddenDiv.style.display = 'none';
+      }, 500); // Adjust the timing to match your transition duration
+    });
+  }
+</script>
