@@ -1,0 +1,96 @@
+---
+import Layout from '../components/layout.astro';
+import Cardsinside from '../components/Cards-inside.astro';
+
+
+const { blok } = Astro.props
+
+const data = [
+  { title1: 'My Background', description1: 'I have hands-on experience building AI-powered products from scratch. As co-founder of JustTalk AI, I built the entire tech stack using AI coding tools (Claude Code, OpenAI Codex) for rapid development. As co-founder & CEO of Berisamocat (e-scooter sharing), I scaled the business from 1 to 50 cities, applying data-driven decision making and ML-based predictive analytics.', id:'1', link1: '/page1' },
+  { title1: 'AI Product Strategy', description1: 'I help companies define their AI product roadmap, identify high-impact use cases, and align AI initiatives with business goals. We will work on product strategy, MVP definition, and scaling plans.', id:'1', link1: '/page1' },
+  { title1: 'AI Adoption Acceleration', description1: 'Learn how to integrate AI into your existing products and processes efficiently. I share practical knowledge on building AI-native solutions, selecting the right tools, and avoiding common pitfalls.', id:'1', link1: '/page1' },
+  { title1: 'Data-Driven Product Development', description1: 'Leverage data for product decisions. LTV/CAC analysis, conversion optimization, retention strategies, funnel analysis. Build metrics-driven culture in your team.', id:'1', link1: '/page1' },
+  { title1: 'Building AI Teams', description1: 'Guidance on building and leading cross-functional product teams that can effectively work with AI technologies. From hiring to team structure and processes.', id:'1', link1: '/page1' },
+  { title1: 'Growth & Experimentation', description1: 'A/B testing frameworks, growth experimentation, UX/UI optimization. Learn how to validate hypotheses quickly and iterate based on data.', id:'1', link1: '/page1' },
+  { title1: 'Let\'s Talk', description1: 'Ready to accelerate your AI journey? Reach out to discuss how I can help your company.', id:'1', link1: '/page1' },
+  
+  // Add more data as needed
+];
+---
+
+<style>
+.steps {
+  background: var(--light);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: min(90vw, 250px);
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 5rem 5vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+  }
+}
+
+@media (min-width: 1050px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+  }
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
+}
+
+.stepHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+</style>
+
+<Layout
+  title="AI Consulting"
+  description="I help companies accelerate AI adoption and product growth. With hands-on experience building AI-powered products from scratch (JustTalk AI, Berisamocat), I offer practical guidance on AI strategy, implementation, and building data-driven teams."
+  home="false"
+  lang="en"
+>
+
+<main>
+
+  <div class="absolute -left-32 top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+
+  <div class="absolute -right-2 top-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+
+  <div class="absolute -left-12 -bottom-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 rotate-30"></div>
+  
+<div class="grid content-start pt-40 w-fit">
+{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl red-text druk pb-2"/>)}
+</div>
+
+</main>
+</Layout>
+<p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a href='https://t.me/sergey_wa/'>contact via telegram →</a></p>
+<p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a href='https://www.linkedin.com/in/sergey-gordeev/'>connect on LinkedIn →</a>
+</p>

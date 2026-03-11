@@ -1,0 +1,96 @@
+---
+import Layout from '../../components/layout.astro';
+import Cardsinside from '../../components/Cards-inside.astro';
+
+
+const { blok } = Astro.props
+
+const data = [
+  { title1: 'Мой опыт', description1: 'У меня есть практический опыт создания AI-продуктов с нуля. Как сооснователь JustTalk AI, я построил весь технологический стек с использованием AI-инструментов (Claude Code, OpenAI Codex). Как сооснователь и CEO Берисамокат, масштабировал бизнес с 1 до 50 городов, применяя data-driven подход и ML-аналитику.', id:'1', link1: '/page1' },
+  { title1: 'Продуктовая AI-стратегия', description1: 'Помогу определить roadmap внедрения AI, выявить высокоимпактные сценарии использования и выстроить AI-инициативы в соответствии с бизнес-целями. Работаем над стратегией продукта, определением MVP и планами масштабирования.', id:'1', link1: '/page1' },
+  { title1: 'Ускорение AI-внедрения', description1: 'Узнайте, как эффективно интегрировать AI в существующие продукты и процессы. Делюсь практическим опытом по построению AI-native решений, выбору правильных инструментов и избежанию типичных ошибок.', id:'1', link1: '/page1' },
+  { title1: 'Data-Driven разработка', description1: 'Использование данных для принятия продуктовых решений. LTV/CAC анализ, оптимизация конверсии, стратегии удержания, анализ воронки. Построение метрической культуры в команде.', id:'1', link1: '/page1' },
+  { title1: 'Построение AI-команд', description1: 'Помощь в формировании и управлении кросс-функциональными продуктовыми командами для эффективной работы с AI-технологиями. От найма до структуры команды и процессов.', id:'1', link1: '/page1' },
+  { title1: 'Рост и эксперименты', description1: 'Фреймворки A/B-тестирования, growth-эксперименты, оптимизация UX/UI. Учитесь быстро валидировать гипотезы и итерировать на основе данных.', id:'1', link1: '/page1' },
+  { title1: 'Связаться со мной', description1: 'Готовы ускорить свой AI-путь? Напишите, чтобы обсудить, как я могу помочь вашей компании.', id:'1', link1: '/page1' },
+  
+  // Add more data as needed
+];
+---
+
+<style>
+.steps {
+  background: var(--light);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: min(90vw, 250px);
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 5rem 5vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
+  }
+}
+
+@media (min-width: 1050px) {
+  .steps {
+    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
+  }
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
+  width: fit-content;
+}
+druk {
+  font-family: Druk, Tahoma, sans-serif;
+}
+
+.stepHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+
+</style>
+
+<Layout
+  title="AI Консалтинг"
+  description="Помогаю компаниям ускорить внедрение AI и рост продукта. С практическим опытом создания AI-продуктов с нуля (JustTalk AI, Берисамокат), предлагаю практические консультации по AI-стратегии, внедрению и построению data-driven команд."
+  home="false"
+  lang="ru"
+>
+
+<main>
+
+  <div class="absolute -left-32 top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+
+  <div class="absolute -right-2 top-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+
+  <div class="absolute -left-12 -bottom-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 rotate-30"></div>
+  
+<div class="grid content-start pt-40 w-fit">
+{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl red-text druk pb-2"/>)}
+</div>
+
+</main>
+</Layout>
+<p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a href='https://t.me/sergey_wa/'>написать в телеграм →</a></p>
+<p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
+  <a href='https://www.linkedin.com/in/sergey-gordeev/'>связаться в LinkedIn →</a>
+</p>
