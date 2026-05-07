@@ -33,7 +33,7 @@ import Metrika from '../components/metrika.astro';
   <meta property="og:url" content="https://sgordeev.xyz/ai-consulting/" />
   <meta property="og:title" content="AI Consulting — Sergey Gordeev" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="I help product teams ship AI features in production — usually in under 8 weeks. Strategy, prototyping, RAG, agents, evals, team enablement." />
+  <meta property="og:description" content="I help businesses find where AI can cut costs and save time — then build it with you. Operations audit, custom AI tools, workflow automation." />
   <meta property="og:image" content="/images/me_studio_wb.webp" />
 
   <meta name="msapplication-TileColor" content="#5cebdf" />
@@ -88,9 +88,19 @@ import Metrika from '../components/metrika.astro';
     .aic nav.top .back:hover .arr { transform: translateX(-4px); }
     .aic nav.top .right { display: flex; gap: 28px; color: var(--ink-mute); flex-wrap: wrap; }
     .aic nav.top .right a:hover { color: var(--ink); }
+    .aic .back-short { display: none; }
+    .aic .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .aic .burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; }
+    .aic .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 998; }
+    .aic .sidebar-overlay.open { display: block; }
+    .aic .sidebar { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: var(--bg); z-index: 999; padding: 32px 28px; display: flex; flex-direction: column; gap: 24px; transition: right 0.3s ease; box-shadow: -4px 0 24px rgba(0,0,0,0.1); }
+    .aic .sidebar.open { right: 0; }
+    .aic .sidebar-close { align-self: flex-end; background: none; border: none; font-size: 28px; cursor: pointer; color: var(--ink); padding: 0; line-height: 1; }
+    .aic .sidebar a { text-decoration: none; font-size: 18px; color: var(--ink); padding: 8px 0; border-bottom: 1px solid var(--ink-line); }
+    @media (max-width: 780px) { .aic .back-full { display: none; } .aic .back-short { display: inline; } .aic nav.top .right { display: none; } .aic .burger { display: flex; } }
 
     /* hero */
-    .aic .hero { position: relative; padding: 48px 0 96px; overflow: hidden; }
+    .aic .hero { position: relative; padding: 0px 0 96px; overflow: hidden; }
     .aic .hero .blob-1 { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--red); filter: blur(64px); opacity: 0.55; left: -180px; top: 120px; z-index: 0; pointer-events: none; display: none;}
     .aic .hero .blob-2 { position: absolute; width: 420px; height: 420px; right: -120px; top: 280px; z-index: 0; pointer-events: none; }
     .aic .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.9fr); gap: 56px; align-items: end; }
@@ -116,7 +126,7 @@ import Metrika from '../components/metrika.astro';
 
     /* marquee */
     .aic .marquee { position: relative; overflow: hidden; border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); padding: 22px 0; background: var(--bg); }
-    .aic .marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: aic-scroll 40s linear infinite; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--ink); }
+    .aic .marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: aic-scroll 10s linear infinite; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--ink); }
     .aic .marquee-track > span { display: inline-flex; align-items: center; gap: 48px; flex-shrink: 0; }
     .aic .marquee-track .star { color: var(--red); font-size: 22px; }
     @keyframes aic-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -166,7 +176,8 @@ import Metrika from '../components/metrika.astro';
 
     /* process */
     .aic .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink-line); }
-    .aic .step { padding: 32px 24px 32px 0; border-right: 1px solid var(--ink-line); position: relative; }
+    .aic .step { padding: 32px 24px; border-right: 1px solid var(--ink-line); position: relative; }
+    .aic .step:first-child { padding-left: 0; }
     .aic .step:last-child { border-right: none; }
     .aic .step .n { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 64px; line-height: 1; color: var(--red); margin-bottom: 24px; }
     .aic .step h4 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 20px; margin: 0 0 8px; }
@@ -211,7 +222,7 @@ import Metrika from '../components/metrika.astro';
     .aic .stack-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .aic .chip { padding: 14px 18px; border: 1px solid rgba(255, 247, 237, 0.18); border-radius: 14px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .aic .chip .k { color: rgba(255, 247, 237, 0.7); font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em;  text-transform: uppercase; }
-    @media (max-width: 780px) { .aic .stack-wrap { padding: 40px 24px; } .aic .stack-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 780px) { .aic .stack-wrap { padding: 40px 24px; } .aic .stack-grid { grid-template-columns: repeat(2, 1fr); } .aic .chip { flex-direction: column; align-items: flex-start; gap: 6px; } }
 
     /* quotes */
     .aic .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -235,7 +246,7 @@ import Metrika from '../components/metrika.astro';
     .aic details.q .ans { padding-top: 14px; color: var(--ink-soft); font-size: 16px; max-width: 75ch; }
 
     /* cta */
-    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; background: var(--bg-2); padding: 40px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;}
+    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; -webkit-mask-image: -webkit-radial-gradient(white, black); background: var(--bg-2); padding: 40px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;}
     .aic .cta .blob { position: absolute; left: -160px; top: -160px; width: 480px; height: 480px; background: var(--red); filter: blur(64px); opacity: 0.5; border-radius: 50%; }
     .aic .cta .blob.b2 { left: auto; right: -100px; top: auto; bottom: -220px; width: 380px; height: 380px; background: none; filter: none; border-radius: 0; opacity: 1; }
     .aic .cta-inner { position: relative; z-index: 1; }
@@ -245,7 +256,7 @@ import Metrika from '../components/metrika.astro';
     .aic .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .aic .cta-photo { position: relative; z-index: 1; align-self: stretch; margin-bottom: -40px; overflow: hidden; padding-top: 32px; }
     .aic .cta-photo img {  top: 0; left: 0; width: 100%; height: auto; max-height: 40vw; display: block; object-fit:contain;}
-    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } .aic .cta-photo { display: none; } }
+    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } .aic .cta-photo { display: none; } .aic .cta .blob.b2 { display: none; } }
 
     .aic .aic-red { color: var(--red); }
   </style>
@@ -256,8 +267,20 @@ import Metrika from '../components/metrika.astro';
 
     <div class="container">
       <nav class="top">
-        <a href="/" class="back"><span class="arr">&larr;</span> Sergey Gordeev</a>
+        <a href="/" class="back"><span class="arr">&larr;</span> <span class="back-full">Sergey Gordeev</span><span class="back-short">back</span></a>
         <div class="right">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#cases">Work</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="sidebar-overlay"></div>
+        <div class="sidebar">
+          <button class="sidebar-close" aria-label="Close menu">&times;</button>
           <a href="#services">Services</a>
           <a href="#process">Process</a>
           <a href="#cases">Work</a>
@@ -282,18 +305,18 @@ import Metrika from '../components/metrika.astro';
       <div class="container">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow"><span class="dot"></span> AI Consulting · Booking Q3 2026</div>
-            <h1 class="hero-title">AI that<br />actually ships.</h1>
-            <p class="hero-lead">I help product teams move from <em>"we should do something with AI"</em> to a working feature in production — usually in under 8 weeks. No decks for the sake of decks, no pilot purgatory.</p>
+            <div class="eyebrow"><span class="dot"></span> AI Consulting</div>
+            <h1 class="hero-title">AI that actually ships.</h1>
+            <p class="hero-lead">I help companies find where AI can <em>cut costs, save time, and open new revenue</em> — then build it with you. No jargon, no science projects. Just results you can measure.</p>
             <div class="hero-actions">
-              <a href="#contact" class="btn primary">Book an intro call &rarr;</a>
-              <a href="#services" class="btn ghost">See packages</a>
+              <a href="#contact" class="btn primary">Book a free intro call &rarr;</a>
+              <a href="#services" class="btn ghost">See how it works</a>
             </div>
           </div>
           <aside class="hero-side">
-            <div class="stat"><div class="num">40+</div><div class="lbl">AI features shipped to production across consumer &amp; B2B SaaS</div></div>
-            <div class="stat"><div class="num">8 wk</div><div class="lbl">Median time from kickoff to a working, user-facing prototype</div></div>
-            <div class="stat"><div class="num">2x</div><div class="lbl">Average lift in activation when AI is bolted onto an existing onboarding flow</div></div>
+            <div class="stat"><div class="num">40+</div><div class="lbl">AI solutions delivered across operations, sales, support &amp; logistics</div></div>
+            <div class="stat"><div class="num">8 wk</div><div class="lbl">Average time from first call to a working solution your team can use</div></div>
+            <div class="stat"><div class="num">3x</div><div class="lbl">Typical ROI within the first 6 months after implementation</div></div>
           </aside>
         </div>
       </div>
@@ -301,8 +324,8 @@ import Metrika from '../components/metrika.astro';
 
     <div class="marquee">
       <div class="marquee-track">
-        <span>LLM Strategy <span class="star">&#10038;</span> Product Discovery <span class="star">&#10038;</span> RAG &amp; Evals <span class="star">&#10038;</span> Voice &amp; Multimodal <span class="star">&#10038;</span> AI Onboarding <span class="star">&#10038;</span> Agent Workflows <span class="star">&#10038;</span> Team Enablement <span class="star">&#10038;</span></span>
-        <span>LLM Strategy <span class="star">&#10038;</span> Product Discovery <span class="star">&#10038;</span> RAG &amp; Evals <span class="star">&#10038;</span> Voice &amp; Multimodal <span class="star">&#10038;</span> AI Onboarding <span class="star">&#10038;</span> Agent Workflows <span class="star">&#10038;</span> Team Enablement <span class="star">&#10038;</span></span>
+        <span>Operations Audit <span class="star">&#10038;</span> Process Automation <span class="star">&#10038;</span> AI Assistants <span class="star">&#10038;</span> Cost Reduction <span class="star">&#10038;</span> Custom AI Tools <span class="star">&#10038;</span> Team Training <span class="star">&#10038;</span> Workflow Optimization <span class="star">&#10038;</span></span>
+        <span>Operations Audit <span class="star">&#10038;</span> Process Automation <span class="star">&#10038;</span> AI Assistants <span class="star">&#10038;</span> Cost Reduction <span class="star">&#10038;</span> Custom AI Tools <span class="star">&#10038;</span> Team Training <span class="star">&#10038;</span> Workflow Optimization <span class="star">&#10038;</span></span>
       </div>
     </div>
 
@@ -310,13 +333,13 @@ import Metrika from '../components/metrika.astro';
       <div class="container">
         <div class="section-head">
           <div class="label"><span class="sn">01 /</span> What I do</div>
-          <h2>I'm a builder<br />with a <span class="aic-red">consulting</span> habit.</h2>
+          <h2>Find the waste.<br />Fix it with <span class="aic-red">AI.</span></h2>
         </div>
         <div class="what-grid">
-          <div class="what"><div class="n">&#9312;</div><div><h3>Product strategy for AI</h3><p>Where does AI actually create leverage in your product? We map your funnel, find the 2–3 highest-ROI surfaces, and rank them by build cost. You leave with a roadmap, not a wishlist.</p></div></div>
-          <div class="what"><div class="n">&#9313;</div><div><h3>Prototyping &amp; build</h3><p>I don't just hand you a doc. I co-build the first working prototype — prompts, retrieval, evals, UI — alongside your team, so you ship something real before the engagement ends.</p></div></div>
-          <div class="what"><div class="n">&#9314;</div><div><h3>RAG, agents &amp; evals</h3><p>Hands-on architecture for retrieval-augmented and agentic systems. Vector stores, tool use, structured outputs, and the eval harnesses that keep things from regressing on Friday at 5pm.</p></div></div>
-          <div class="what"><div class="n">&#9315;</div><div><h3>Team enablement</h3><p>Workshops and 1:1 coaching for PMs, designers and engineers. By week three your team is shipping AI features without me in the room — that's the whole point.</p></div></div>
+          <div class="what"><div class="n">&#9312;</div><div><h3>Operations audit</h3><p>I map your workflows end-to-end and find the spots where people spend hours on tasks AI can handle in seconds — data entry, reporting, customer replies, scheduling, document processing.</p></div></div>
+          <div class="what"><div class="n">&#9313;</div><div><h3>AI solution design</h3><p>Not every problem needs AI. I identify what's worth automating, pick the right tools, and give you a clear plan with costs, timelines, and expected ROI — in plain language.</p></div></div>
+          <div class="what"><div class="n">&#9314;</div><div><h3>Build &amp; implement</h3><p>I don't just hand you a report. I build the solution with your team — AI assistants, automated workflows, custom tools — and make sure it actually works before I leave.</p></div></div>
+          <div class="what"><div class="n">&#9315;</div><div><h3>Team training</h3><p>Your people learn to use and maintain what we built. By the end of the engagement, your team runs the AI tools independently — that's the whole point.</p></div></div>
         </div>
       </div>
     </section>
@@ -330,50 +353,51 @@ import Metrika from '../components/metrika.astro';
         <div class="pkgs">
           <div class="pkg">
             <div class="pkg-name">Audit</div>
-            <h3>The Sprint</h3>
-            <div class="pkg-price">€6,000<small>fixed · 2 weeks</small></div>
-            <div class="pkg-meta">Best for teams who already have ideas and need a sharp opinion.</div>
+            <h3>AI Ops Scan</h3>
+            <div class="pkg-price">$5,000<small>fixed · 2 weeks</small></div>
+            <div class="pkg-meta">Find out exactly where AI can save your business time and money.</div>
             <div class="pkg-divider"></div>
             <ul>
-              <li><span class="check">&#10003;</span><span>Discovery interviews with founders, PM &amp; engineering</span></li>
-              <li><span class="check">&#10003;</span><span>Audit of existing AI / ML surfaces and infra</span></li>
-              <li><span class="check">&#10003;</span><span>Prioritised opportunity map (cost vs. impact)</span></li>
-              <li><span class="check">&#10003;</span><span>Risk register: privacy, hallucination, vendor lock-in</span></li>
-              <li><span class="check">&#10003;</span><span>90-min readout with the leadership team</span></li>
+              <li><span class="check">&#10003;</span><span>Interviews with leadership &amp; key team members</span></li>
+              <li><span class="check">&#10003;</span><span>Full workflow &amp; operations mapping</span></li>
+              <li><span class="check">&#10003;</span><span>Opportunity map ranked by ROI and ease of implementation</span></li>
+              <li><span class="check">&#10003;</span><span>Cost &amp; risk analysis for each opportunity</span></li>
+              <li><span class="check">&#10003;</span><span>90-min readout with your leadership team</span></li>
+              <li><span class="check">&#10003;</span><span>Written roadmap you can act on immediately</span></li>
             </ul>
-            <a href="#contact" class="btn ghost" style="margin-top:auto">Start a Sprint &rarr;</a>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Book an Ops Scan &rarr;</a>
           </div>
           <div class="pkg feature">
             <div class="badge">Most picked</div>
             <div class="pkg-name">Build</div>
             <h3>The Build</h3>
-            <div class="pkg-price">€18,000<small>fixed · 6–8 weeks</small></div>
-            <div class="pkg-meta">From blank page to a feature in production users can actually touch.</div>
+            <div class="pkg-price">$15,000<small>fixed · 6–8 weeks</small></div>
+            <div class="pkg-meta">From idea to a working AI solution your team uses every day.</div>
             <div class="pkg-divider"></div>
             <ul>
-              <li><span class="check">&#10003;</span><span>Everything in <em>The Sprint</em></span></li>
-              <li><span class="check">&#10003;</span><span>One prioritised feature, end-to-end</span></li>
-              <li><span class="check">&#10003;</span><span>Prompt design, retrieval &amp; eval harness</span></li>
-              <li><span class="check">&#10003;</span><span>UX patterns: streaming, citations, fallbacks</span></li>
-              <li><span class="check">&#10003;</span><span>Pair-building with your engineers (4 days/wk)</span></li>
-              <li><span class="check">&#10003;</span><span>Launch playbook + observability dashboards</span></li>
+              <li><span class="check">&#10003;</span><span>Everything in the <em>AI Ops Scan</em></span></li>
+              <li><span class="check">&#10003;</span><span>One high-impact solution, built end-to-end</span></li>
+              <li><span class="check">&#10003;</span><span>Custom AI tools, automations, or assistants</span></li>
+              <li><span class="check">&#10003;</span><span>Integration with your existing systems</span></li>
+              <li><span class="check">&#10003;</span><span>Hands-on team training &amp; documentation</span></li>
+              <li><span class="check">&#10003;</span><span>30-day support window after launch</span></li>
             </ul>
             <a href="#contact" class="btn primary" style="margin-top:auto">Book a Build &rarr;</a>
           </div>
           <div class="pkg">
             <div class="pkg-name">Retainer</div>
-            <h3>On Call</h3>
-            <div class="pkg-price">€4,500<small>per month · min. 3 months</small></div>
-            <div class="pkg-meta">A senior AI partner on speed-dial for your roadmap.</div>
+            <h3>AI Partner</h3>
+            <div class="pkg-price">$3,500<small>per month · min. 3 months</small></div>
+            <div class="pkg-meta">Ongoing AI guidance as your business evolves.</div>
             <div class="pkg-divider"></div>
             <ul>
-              <li><span class="check">&#10003;</span><span>Weekly 60-min strategy session</span></li>
-              <li><span class="check">&#10003;</span><span>Async Slack / Linear access (24h response)</span></li>
-              <li><span class="check">&#10003;</span><span>2 design reviews / month on AI flows</span></li>
-              <li><span class="check">&#10003;</span><span>Vendor &amp; model selection guidance</span></li>
-              <li><span class="check">&#10003;</span><span>Quarterly roadmap workshop with the team</span></li>
+              <li><span class="check">&#10003;</span><span>Weekly 60-min strategy &amp; progress session</span></li>
+              <li><span class="check">&#10003;</span><span>Priority access via Slack or email (24h response)</span></li>
+              <li><span class="check">&#10003;</span><span>Monthly review of new AI opportunities</span></li>
+              <li><span class="check">&#10003;</span><span>Vendor &amp; tool selection guidance</span></li>
+              <li><span class="check">&#10003;</span><span>Quarterly roadmap workshop with your team</span></li>
             </ul>
-            <a href="#contact" class="btn ghost" style="margin-top:auto">Go on retainer &rarr;</a>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Become a partner &rarr;</a>
           </div>
         </div>
       </div>
@@ -382,14 +406,14 @@ import Metrika from '../components/metrika.astro';
     <section class="block" id="process">
       <div class="container">
         <div class="section-head">
-          <div class="label"><span class="sn">03 /</span> How it goes</div>
-          <h2>From <span class="aic-red">"hello"</span><br />to shipped.</h2>
+          <div class="label"><span class="sn">03 /</span> How it works</div>
+          <h2>From <span class="aic-red">"hello"</span><br />to results.</h2>
         </div>
         <div class="process">
-          <div class="step"><div class="n">01</div><div class="when">Week 0 · 30 min free</div><h4>Intro call</h4><p>We figure out if I'm the right fit. If I'm not, I'll point you to someone who is. No pitch deck.</p></div>
-          <div class="step"><div class="n">02</div><div class="when">Week 1 · Discovery</div><h4>Listen, then map</h4><p>Stakeholder interviews, product walkthroughs, customer-call replays. I come back with the map.</p></div>
-          <div class="step"><div class="n">03</div><div class="when">Week 2–7 · Build</div><h4>Co-build the thing</h4><p>We pick one feature and ship it, end-to-end. Daily commits, weekly demos, no theatre.</p></div>
-          <div class="step"><div class="n">04</div><div class="when">Week 8 · Handover</div><h4>Handover &amp; walk away</h4><p>Docs, evals, dashboards, a 30-day on-call window. Then your team owns it. Cleanly.</p></div>
+          <div class="step"><div class="n">01</div><div class="when">Week 0 · 30 min free</div><h4>Intro call</h4><p>We talk about your business and where things feel slow or expensive. No pitch deck, no jargon.</p></div>
+          <div class="step"><div class="n">02</div><div class="when">Week 1–2 · Discovery</div><h4>Map your operations</h4><p>I interview your team, walk through your workflows, and find the 2–3 places where AI will make the biggest difference.</p></div>
+          <div class="step"><div class="n">03</div><div class="when">Week 3–7 · Build</div><h4>Build the solution</h4><p>We pick the highest-impact opportunity and build it together. Weekly demos so you see progress, not surprises.</p></div>
+          <div class="step"><div class="n">04</div><div class="when">Week 8 · Handover</div><h4>Train &amp; hand over</h4><p>Your team learns to run everything independently. Documentation, training sessions, and 30 days of support.</p></div>
         </div>
       </div>
     </section>
@@ -404,19 +428,19 @@ import Metrika from '../components/metrika.astro';
           <div class="col yes">
             <div class="head-row"><span class="pill">Yes</span><h3>This is for you if…</h3></div>
             <ul>
-              <li class="yes"><span class="icn">+</span><span>You have a real product with real users and want AI to make it measurably better.</span></li>
-              <li class="yes"><span class="icn">+</span><span>You're a Series A–C founder, Head of Product, or an indie team punching above your weight.</span></li>
-              <li class="yes"><span class="icn">+</span><span>You're tired of hearing "agents will solve it" and want to see something working this quarter.</span></li>
-              <li class="yes"><span class="icn">+</span><span>You'd rather pay for taste and shipping speed than for a logo on a slide.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You run a business and know some processes are slower or more expensive than they should be.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You've heard about AI but aren't sure where to start or who to trust.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You want practical results this quarter — not a 6-month research project.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You'd rather work with one experienced person than a big consulting firm.</span></li>
             </ul>
           </div>
           <div class="col no">
             <div class="head-row"><span class="pill">Probably not</span><h3>It's not for you if…</h3></div>
             <ul>
-              <li class="no"><span class="icn">&minus;</span><span>You need a 100-page strategy report to circulate at the board. I write short docs.</span></li>
-              <li class="no"><span class="icn">&minus;</span><span>You want to outsource the entire build with no internal team to absorb it.</span></li>
-              <li class="no"><span class="icn">&minus;</span><span>You're looking for someone to train a foundation model from scratch — that's not me.</span></li>
-              <li class="no"><span class="icn">&minus;</span><span>The goal is "AI for the press release." I work on things that ship.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>You need a 100-page strategy document for the board. I write short, actionable plans.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>You want AI just for marketing buzz. I build things people actually use.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>You're looking for a full-time hire or an outsourced dev team — I'm a consultant who builds alongside your people.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>Your company has fewer than 5 employees. The ROI usually doesn't justify it yet.</span></li>
             </ul>
           </div>
         </div>
@@ -427,7 +451,7 @@ import Metrika from '../components/metrika.astro';
       <div class="container">
         <div class="section-head">
           <div class="label"><span class="sn">05 /</span> Selected work</div>
-          <h2>Things that<br />actually <span class="aic-red">shipped.</span></h2>
+          <h2>Real businesses.<br />Real <span class="aic-red">results.</span></h2>
         </div>
         <div class="cases">
           <div class="case">
@@ -435,51 +459,51 @@ import Metrika from '../components/metrika.astro';
             <div>
               <h3>JustTalk AI</h3>
               <div class="role">Co-founder · product &amp; AI lead</div>
-              <p>Language-learning app built around AI personas that remember each user across sessions. I designed the persona memory layer, the realtime voice loop, and the eval harness that keeps personas in character.</p>
+              <p>Built an AI-powered language learning app from scratch. AI tutors remember each student, adapt to their level, and hold natural voice conversations — replacing expensive human teachers.</p>
             </div>
             <div class="results">
-              <div class="res"><span class="v">120k</span><span class="k">conversations / month at peak</span></div>
-              <div class="res"><span class="v">3.4&times;</span><span class="k">D7 retention vs. baseline tutor flow</span></div>
-              <div class="res"><span class="v">€0.04</span><span class="k">average cost per learner-session</span></div>
+              <div class="res"><span class="v">120k</span><span class="k">conversations per month</span></div>
+              <div class="res"><span class="v">3.4&times;</span><span class="k">better retention vs. traditional approach</span></div>
+              <div class="res"><span class="v">$0.04</span><span class="k">per session vs. $15+ for a human tutor</span></div>
             </div>
           </div>
           <div class="case">
             <div class="yr">2025</div>
             <div>
-              <h3>B2B SaaS — onboarding copilot</h3>
-              <div class="role">Fractional AI lead · 10 weeks</div>
-              <p>A vertical SaaS for property managers had a 38% activation rate stuck for two years. We replaced the static setup wizard with an LLM that reads the customer's existing spreadsheet and pre-fills the workspace.</p>
+              <h3>Property management — client onboarding</h3>
+              <div class="role">AI consultant · 10 weeks</div>
+              <p>A property management company spent 2+ hours manually setting up each new client. We built an AI assistant that reads the client's existing documents and does the setup automatically.</p>
             </div>
             <div class="results">
-              <div class="res"><span class="v">+71%</span><span class="k">activation within 7 days</span></div>
-              <div class="res"><span class="v">&minus;42%</span><span class="k">support tickets in first month</span></div>
-              <div class="res"><span class="v">9 wk</span><span class="k">from kickoff to GA</span></div>
+              <div class="res"><span class="v">+71%</span><span class="k">faster client onboarding</span></div>
+              <div class="res"><span class="v">&minus;42%</span><span class="k">fewer support requests</span></div>
+              <div class="res"><span class="v">9 wk</span><span class="k">from first call to live</span></div>
             </div>
           </div>
           <div class="case">
             <div class="yr">2024</div>
             <div>
-              <h3>Fintech — analyst assistant</h3>
-              <div class="role">AI consultant · audit + build</div>
-              <p>Internal tool for credit analysts that summarises 50-page memos and surfaces inconsistencies. Custom RAG over a 12-year archive with citations the compliance team can actually defend.</p>
+              <h3>Financial services — document review</h3>
+              <div class="role">Ops audit + build</div>
+              <p>Credit analysts spent hours reading 50-page reports to find key details. We built an AI tool that reads documents instantly, highlights what matters, and flags inconsistencies.</p>
             </div>
             <div class="results">
-              <div class="res"><span class="v">&minus;61%</span><span class="k">time-to-decision per file</span></div>
-              <div class="res"><span class="v">100%</span><span class="k">of outputs are source-cited</span></div>
-              <div class="res"><span class="v">14</span><span class="k">analysts onboarded in week one</span></div>
+              <div class="res"><span class="v">&minus;61%</span><span class="k">time saved per document review</span></div>
+              <div class="res"><span class="v">100%</span><span class="k">of AI outputs are source-cited</span></div>
+              <div class="res"><span class="v">14</span><span class="k">team members onboarded in week one</span></div>
             </div>
           </div>
           <div class="case">
             <div class="yr">2024</div>
             <div>
-              <h3>Marketplace — search rerank</h3>
+              <h3>E-commerce — smarter search</h3>
               <div class="role">Sprint engagement · 3 weeks</div>
-              <p>Hybrid retrieval and an LLM reranker bolted onto an existing Elasticsearch stack. Same UI, smarter results. Shipped behind a 10% A/B before scaling to all traffic.</p>
+              <p>Customers couldn't find what they wanted. We added AI-powered search that understands what people actually mean — not just keywords. Same interface, dramatically better results.</p>
             </div>
             <div class="results">
-              <div class="res"><span class="v">+18%</span><span class="k">click-through on top-3 results</span></div>
-              <div class="res"><span class="v">+9%</span><span class="k">order conversion in tested cohort</span></div>
-              <div class="res"><span class="v">€0</span><span class="k">extra infra spend (cached)</span></div>
+              <div class="res"><span class="v">+18%</span><span class="k">more customers finding what they need</span></div>
+              <div class="res"><span class="v">+9%</span><span class="k">increase in sales</span></div>
+              <div class="res"><span class="v">$0</span><span class="k">extra infrastructure cost</span></div>
             </div>
           </div>
         </div>
@@ -489,21 +513,21 @@ import Metrika from '../components/metrika.astro';
     <section class="block tight">
       <div class="container">
         <div class="section-head">
-          <div class="label"><span class="sn">06 /</span> Tools I reach for</div>
-          <h2>Pragmatic<br />over <span class="aic-red">trendy.</span></h2>
+          <div class="label"><span class="sn">06 /</span> Tools I use</div>
+          <h2>Proven tools.<br />No <span class="aic-red">experiments.</span></h2>
         </div>
         <div class="stack-wrap">
           <div class="blob"></div>
-          <h3>The current stack — subject to change without notice.</h3>
+          <h3>Technology I build with</h3>
           <div class="stack-grid">
-            <div class="chip"><span>Claude / GPT / Gemini</span><span class="k">Models</span></div>
-            <div class="chip"><span>Anthropic SDK</span><span class="k">Orchestration</span></div>
-            <div class="chip"><span>LangGraph · DSPy</span><span class="k">Agents</span></div>
-            <div class="chip"><span>pgvector · Turbopuffer</span><span class="k">Retrieval</span></div>
-            <div class="chip"><span>Braintrust · Langfuse</span><span class="k">Evals &amp; obs</span></div>
-            <div class="chip"><span>Vercel AI SDK</span><span class="k">Frontend</span></div>
-            <div class="chip"><span>Modal · Replicate</span><span class="k">Inference</span></div>
-            <div class="chip"><span>Postgres · Supabase</span><span class="k">Boring rails</span></div>
+            <div class="chip"><span>ChatGPT / Claude / Gemini</span><span class="k">AI Models</span></div>
+            <div class="chip"><span>Custom AI assistants</span><span class="k">Automation</span></div>
+            <div class="chip"><span>Zapier / Make / n8n</span><span class="k">Workflows</span></div>
+            <div class="chip"><span>Document &amp; data processing</span><span class="k">Extraction</span></div>
+            <div class="chip"><span>Voice &amp; chat interfaces</span><span class="k">Interaction</span></div>
+            <div class="chip"><span>CRM &amp; ERP integrations</span><span class="k">Systems</span></div>
+            <div class="chip"><span>Dashboards &amp; analytics</span><span class="k">Monitoring</span></div>
+            <div class="chip"><span>Cloud hosting</span><span class="k">Infrastructure</span></div>
           </div>
         </div>
       </div>
@@ -517,20 +541,20 @@ import Metrika from '../components/metrika.astro';
         </div>
         <div class="quotes">
           <div class="quote">
-            <blockquote>Sergey is the rare advisor who can hold a strategy conversation in the morning and write the prompts in the afternoon. We shipped a feature in six weeks that two agencies couldn't scope in six months.</blockquote>
-            <div class="who"><div class="av">EM</div><div class="meta"><div class="nm">Elena M.</div><div class="rl">CPO · vertical SaaS, Series B</div></div></div>
+            <blockquote>Sergey understood our business in a week and built a tool that saves our team 20 hours every month. No other consultant even came close to delivering something this practical.</blockquote>
+            <div class="who"><div class="av">EM</div><div class="meta"><div class="nm">Elena M.</div><div class="rl">COO · property management</div></div></div>
           </div>
           <div class="quote">
-            <blockquote>He has zero patience for AI theatre and it's contagious. Our team stopped wishing for "agents" and started shipping evals. Best money we spent last year.</blockquote>
-            <div class="who"><div class="av">DK</div><div class="meta"><div class="nm">Daniil K.</div><div class="rl">Founder · consumer AI app</div></div></div>
+            <blockquote>We had no idea where to start with AI. Sergey mapped our operations, showed us the three biggest opportunities, and built the first one in six weeks. It paid for itself in month two.</blockquote>
+            <div class="who"><div class="av">DK</div><div class="meta"><div class="nm">Daniil K.</div><div class="rl">Founder · logistics company</div></div></div>
           </div>
           <div class="quote">
-            <blockquote>The handover doc alone was worth the engagement. Three months later we're still using the eval harness he built — and we caught two regressions because of it.</blockquote>
-            <div class="who"><div class="av">MR</div><div class="meta"><div class="nm">Marta R.</div><div class="rl">Engineering Lead · fintech</div></div></div>
+            <blockquote>The best part is that our team can actually maintain what he built. He didn't just deliver a tool — he made sure we understood it. Three months later, we're running it ourselves.</blockquote>
+            <div class="who"><div class="av">MR</div><div class="meta"><div class="nm">Marta R.</div><div class="rl">Operations Director · financial services</div></div></div>
           </div>
           <div class="quote">
-            <blockquote>What I appreciated most is what he refused to do. He talked us out of a six-figure agent project and into a one-week prompt change that did the same job.</blockquote>
-            <div class="who"><div class="av">JT</div><div class="meta"><div class="nm">Jonas T.</div><div class="rl">CEO · marketplace, Series A</div></div></div>
+            <blockquote>What I appreciated most is what he refused to do. He talked us out of an expensive custom system and into a simple automation that did the same job for a fraction of the cost.</blockquote>
+            <div class="who"><div class="av">JT</div><div class="meta"><div class="nm">Jonas T.</div><div class="rl">CEO · e-commerce</div></div></div>
           </div>
         </div>
       </div>
@@ -543,13 +567,13 @@ import Metrika from '../components/metrika.astro';
           <h2>Things people<br />tend to <span class="aic-red">ask.</span></h2>
         </div>
         <div class="faq">
-          <details class="q" open><summary>How is this different from hiring an agency?<span class="plus">+</span></summary><div class="ans">It's me, full stop. No account manager, no juniors learning on your dime, no Monday status meetings. I work with one or two clients at a time and I write the prompts and code myself, alongside your team.</div></details>
-          <details class="q"><summary>Do you sign NDAs?<span class="plus">+</span></summary><div class="ans">Yes — happily. I'll send a mutual NDA before the intro call if you want one. Most clients are fine starting with a verbal confidentiality agreement and signing during contracting.</div></details>
-          <details class="q"><summary>What if we don't have an ML team?<span class="plus">+</span></summary><div class="ans">Most of my clients don't. The vast majority of useful AI features today don't need an ML team — they need product taste, prompt craft, and a thoughtful eval loop. If you do need a research-grade model, I'll tell you, and I'll introduce you to the right people.</div></details>
-          <details class="q"><summary>How do you handle data privacy &amp; compliance?<span class="plus">+</span></summary><div class="ans">We pick a model provider that fits your compliance posture (Anthropic, OpenAI Enterprise, Azure, on-prem via vLLM, etc.) and design data flows around it from day one. I've worked under GDPR, SOC 2, and HIPAA-adjacent constraints and can produce a DPIA on request.</div></details>
-          <details class="q"><summary>Can you build us an "AI agent that does everything"?<span class="plus">+</span></summary><div class="ans">No, and you don't want one. The agents that actually work in production today are narrow, well-evaluated, and have humans in the loop on the expensive steps. I'll happily explain why on a call.</div></details>
-          <details class="q"><summary>What languages do you work in?<span class="plus">+</span></summary><div class="ans">English and Russian for the work itself. Documentation in English by default. Most clients are EU- or US-based; I keep my hours in CET but I'm flexible.</div></details>
-          <details class="q"><summary>Do you take equity instead of cash?<span class="plus">+</span></summary><div class="ans">For early-stage companies I work with, sometimes — usually as a small advisory grant on top of cash, not as a replacement. Let's talk specifics on the call.</div></details>
+          <details class="q" open><summary>How is this different from a big consulting firm?<span class="plus">+</span></summary><div class="ans">It's me, personally. No account managers, no junior analysts learning on your budget. I work with one or two clients at a time and I do the work myself, alongside your team. You get senior expertise at a fraction of the cost.</div></details>
+          <details class="q"><summary>We're not a tech company. Can you still help?<span class="plus">+</span></summary><div class="ans">That's exactly who I work with. Most of my clients are in real estate, logistics, finance, e-commerce, and professional services. You don't need a tech team — you need someone who understands both AI and business operations. That's what I do.</div></details>
+          <details class="q"><summary>What kind of results can we expect?<span class="plus">+</span></summary><div class="ans">It depends on your business, but typical outcomes include 40–60% time savings on manual processes, fewer errors in document handling, faster customer response times, and new capabilities that weren't possible before. The Ops Scan will give you specific projections.</div></details>
+          <details class="q"><summary>Is our data safe?<span class="plus">+</span></summary><div class="ans">Absolutely. I choose AI providers that match your security requirements and design everything so your sensitive data stays protected. I've worked with clients under GDPR, SOC 2, and strict financial regulations. Happy to sign an NDA before we even start.</div></details>
+          <details class="q"><summary>Will AI replace our employees?<span class="plus">+</span></summary><div class="ans">No — that's not the goal. AI handles the repetitive, time-consuming tasks so your people can focus on the work that actually requires human judgment, creativity, and relationships. Most clients find their team is happier, not smaller.</div></details>
+          <details class="q"><summary>What languages do you work in?<span class="plus">+</span></summary><div class="ans">English and Russian. Documentation in English by default. Most clients are US- or EU-based. I keep flexible hours and work across time zones.</div></details>
+          <details class="q"><summary>What if AI isn't the right solution for us?<span class="plus">+</span></summary><div class="ans">I'll tell you. The intro call is free and I'll be honest about whether AI makes sense for your situation. If it doesn't, I'll explain why and point you in the right direction. I'd rather lose a project than sell you something that won't work.</div></details>
         </div>
       </div>
     </section>
@@ -569,11 +593,11 @@ import Metrika from '../components/metrika.astro';
             </svg>
           </div>
           <div class="cta-inner">
-            <h2>Want to ship something <span class="aic-red">real</span>?</h2>
-            <p>Tell me what you're working on. If I think I can help, we'll book 30 minutes. If I don't, I'll say so and point you somewhere better.</p>
+            <h2>Ready to make your business <span class="aic-red">smarter</span>?</h2>
+            <p>Tell me about your business. If I think AI can help, we'll book 30 minutes. If it can't, I'll say so and point you in the right direction.</p>
             <div class="actions">
-              <a href="mailto:hi@sgordeev.xyz?subject=AI%20consulting%20—%20intro%20call" class="btn primary">Email me &rarr;</a>
-              <a href="https://cal.com/sgordeev" class="btn ghost">Book on Cal.com</a>
+              <a href="mailto:hello@sgordeev.xyz?subject=AI%20consulting%20—%20intro%20call" class="btn primary">Email me &rarr;</a>
+              <a href="https://cal.com/sgordeev/intro" class="btn ghost">Book on Cal.com</a>
             </div>
           </div>
           <div class="cta-photo">
@@ -587,5 +611,17 @@ import Metrika from '../components/metrika.astro';
 
   <Footer />
   <Metrika />
+<script>
+  const burger = document.querySelector('.burger');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  const closeBtn = document.querySelector('.sidebar-close');
+  function open() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+  function close() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  burger.addEventListener('click', open);
+  overlay.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+</script>
 </body>
 </html>
