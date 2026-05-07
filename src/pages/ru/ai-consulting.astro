@@ -1,96 +1,578 @@
 ---
-import Layout from '../../components/layout.astro';
-import Cardsinside from '../../components/Cards-inside.astro';
-
-
-const { blok } = Astro.props
-
-const data = [
-  { title1: 'Мой опыт', description1: 'У меня есть практический опыт создания AI-продуктов с нуля. Как сооснователь JustTalk AI, я построил весь технологический стек с использованием AI-инструментов (Claude Code, OpenAI Codex). Как сооснователь и CEO Берисамокат, масштабировал бизнес с 1 до 50 городов, применяя data-driven подход и ML-аналитику.', id:'1', link1: '/page1' },
-  { title1: 'Продуктовая AI-стратегия', description1: 'Помогу определить roadmap внедрения AI, выявить высокоимпактные сценарии использования и выстроить AI-инициативы в соответствии с бизнес-целями. Работаем над стратегией продукта, определением MVP и планами масштабирования.', id:'1', link1: '/page1' },
-  { title1: 'Ускорение AI-внедрения', description1: 'Узнайте, как эффективно интегрировать AI в существующие продукты и процессы. Делюсь практическим опытом по построению AI-native решений, выбору правильных инструментов и избежанию типичных ошибок.', id:'1', link1: '/page1' },
-  { title1: 'Data-Driven разработка', description1: 'Использование данных для принятия продуктовых решений. LTV/CAC анализ, оптимизация конверсии, стратегии удержания, анализ воронки. Построение метрической культуры в команде.', id:'1', link1: '/page1' },
-  { title1: 'Построение AI-команд', description1: 'Помощь в формировании и управлении кросс-функциональными продуктовыми командами для эффективной работы с AI-технологиями. От найма до структуры команды и процессов.', id:'1', link1: '/page1' },
-  { title1: 'Рост и эксперименты', description1: 'Фреймворки A/B-тестирования, growth-эксперименты, оптимизация UX/UI. Учитесь быстро валидировать гипотезы и итерировать на основе данных.', id:'1', link1: '/page1' },
-  { title1: 'Связаться со мной', description1: 'Готовы ускорить свой AI-путь? Напишите, чтобы обсудить, как я могу помочь вашей компании.', id:'1', link1: '/page1' },
-  
-  // Add more data as needed
-];
+// Standalone full-bleed page — does not use Layout/Cardsinside,
+// because this page has its own bespoke section system that the
+// generic Layout chrome would clip. Fonts (Druk, Forma) come from
+// /public/fonts/ via the global @font-face declarations already in
+// /public/global.css, so they work automatically.
+import Footer from '../../components/footer.astro';
+import Metrika from '../../components/metrika.astro';
 ---
 
-<style>
-.steps {
-  background: var(--light);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: min(90vw, 250px);
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 5rem 5vw;
-  width: 100vw;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-@media (min-width: 550px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
-  }
-}
+  <link rel="preload" href="/fonts/PacaembuVar-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/MulishVar-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/NormalidadVar-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Druk.ttf" as="font" type="font/truetype" crossorigin />
+  <link rel="preload" href="/fonts/Forma-Regular.woff" as="font" type="font/woff" crossorigin />
 
-@media (min-width: 1050px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
-  }
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
-.step {
-  background: var(--white);
-  border: 1px solid var(--lightBorder);
-  border-radius: var(--card-radius);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.75rem;
-  padding: 1rem 1.5rem 1.5rem;
-  text-align: left;
-  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
-  width: fit-content;
-}
-druk {
-  font-family: Druk, Tahoma, sans-serif;
-}
+  <meta property="og:url" content="https://sgordeev.xyz/ru/ai-consulting/" />
+  <meta property="og:title" content="AI-консалтинг — Сергей Гордеев" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Помогаю продуктовым командам выпускать AI-фичи в прод — обычно меньше чем за 8 недель. Стратегия, прототипирование, RAG, агенты, evals, прокачка команды." />
+  <meta property="og:image" content="/images/me_studio_wb.webp" />
 
-.stepHeading {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-}
+  <meta name="msapplication-TileColor" content="#5cebdf" />
+  <meta name="theme-color" content="#FFF7ED" />
 
+  <title>AI-консалтинг — Сергей Гордеев</title>
 
+  <link rel="stylesheet" href="/global.css" />
 
-</style>
+  <style is:global>
+    :root {
+      --bg: #FFF7ED;          /* matches existing bg-orange-50 */
+      --bg-2: #F4EBDB;
+      --ink: #0E1530;
+      --ink-soft: rgba(14, 21, 48, 0.8);
+      --ink-mute: rgba(14, 21, 48, 0.6);
+      --ink-line: rgba(14, 21, 48, 0.13);
+      --red: #FF3A1F;         /* matches site red */
+      --red-soft: rgba(255, 58, 31, 0.12);
+    }
 
-<Layout
-  title="AI Консалтинг"
-  description="Помогаю компаниям ускорить внедрение AI и рост продукта. С практическим опытом создания AI-продуктов с нуля (JustTalk AI, Берисамокат), предлагаю практические консультации по AI-стратегии, внедрению и построению data-driven команд."
-  home="false"
-  lang="ru"
->
+    @font-face {
+      font-family: 'Druk';
+      src: url('/fonts/Druk.ttf') format('truetype');
+      font-display: swap;
+    }
 
-<main>
+    body.aic-page {
+      max-width: none !important;
+      padding: 0 !important;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Forma, Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <div class="absolute -left-32 top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+    .aic * { box-sizing: border-box; }
+    .aic a { color: inherit; }
+    .aic .display, .aic .druk { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; letter-spacing: -0.01em; line-height: 0.94; }
+    .aic .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-mute);  text-transform: uppercase; }
+    .aic .container { max-width: 1320px; margin: 0 auto; padding: 0 56px; }
+    @media (max-width: 780px) { .aic .container { padding: 0 24px; } }
 
-  <div class="absolute -right-2 top-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+    /* nav */
+    .aic nav.top { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-size: 15px; }
+    .aic nav.top a { text-decoration: none; }
+    .aic nav.top .back { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); opacity: 0.85; }
+    .aic nav.top .back .arr { display: inline-block; transform: translateX(0); transition: transform 0.2s; }
+    .aic nav.top .back:hover .arr { transform: translateX(-4px); }
+    .aic nav.top .right { display: flex; gap: 28px; color: var(--ink-mute); flex-wrap: wrap; }
+    .aic nav.top .right a:hover { color: var(--ink); }
 
-  <div class="absolute -left-12 -bottom-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 rotate-30"></div>
-  
-<div class="grid content-start pt-40 w-fit">
-{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl red-text druk pb-2"/>)}
-</div>
+    /* hero */
+    .aic .hero { position: relative; padding: 48px 0 96px; overflow: hidden; }
+    .aic .hero .blob-1 { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--red); filter: blur(120px); opacity: 0.55; left: -180px; top: 120px; z-index: 0; pointer-events: none; }
+    .aic .hero .blob-2 { position: absolute; width: 420px; height: 420px; background: var(--red); filter: blur(110px); opacity: 0.42; right: -120px; top: 280px; z-index: 0; clip-path: polygon(0 0, 100% 30%, 80% 100%); pointer-events: none; }
+    .aic .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.9fr); gap: 56px; align-items: end; }
+    .aic .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-mute); font-size: 13px; letter-spacing: 0.08em; margin-bottom: 28px;  text-transform: uppercase; }
+    .aic .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+    .aic h1.hero-title { font-size: clamp(56px, 9vw, 128px); color: var(--red); margin: 0 0 36px; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; line-height: 0.92; }
+    .aic .hero-lead { font-size: 22px; line-height: 1.4; max-width: 620px; color: var(--ink-soft); margin: 0 0 36px; }
+    .aic .hero-lead em { font-style: normal; color: var(--ink); background: linear-gradient(180deg, transparent 60%, rgba(255, 58, 31, 0.2) 60%); padding: 0 2px; }
+    .aic .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .aic .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; border: 1px solid transparent; transition: transform 0.15s ease, background 0.15s ease; }
+    .aic .btn:hover { transform: translateY(-1px); }
+    .aic .btn.primary { background: var(--ink); color: var(--bg); }
+    .aic .btn.primary:hover { background: #1a2240; }
+    .aic .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink-line); }
+    .aic .btn.ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .aic .hero-side { display: flex; flex-direction: column; gap: 18px; padding-bottom: 8px; }
+    .aic .stat { display: grid; grid-template-columns: 90px 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--ink-line); }
+    .aic .stat:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .stat .num { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 36px; color: var(--ink); line-height: 1; }
+    .aic .stat .lbl { font-size: 14px; color: var(--ink-mute); align-self: center; }
+    @media (max-width: 900px) { .aic .hero-grid { grid-template-columns: 1fr; gap: 32px; } .aic h1.hero-title { font-size: 64px; } .aic .hero-lead { font-size: 18px; } }
 
-</main>
-</Layout>
-<p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-  <a href='https://t.me/sergey_wa/'>написать в телеграм →</a></p>
-<p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-  <a href='https://www.linkedin.com/in/sergey-gordeev/'>связаться в LinkedIn →</a>
-</p>
+    /* marquee */
+    .aic .marquee { position: relative; overflow: hidden; border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); padding: 22px 0; background: var(--bg); }
+    .aic .marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: aic-scroll 40s linear infinite; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--ink); }
+    .aic .marquee-track > span { display: inline-flex; align-items: center; gap: 48px; flex-shrink: 0; }
+    .aic .marquee-track .star { color: var(--red); font-size: 22px; }
+    @keyframes aic-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* section base */
+    .aic section.block { padding: 96px 0; border-top: 1px solid var(--ink-line); }
+    .aic section.block.tight { padding: 72px 0; }
+    .aic .section-head { display: grid; grid-template-columns: 200px 1fr; gap: 48px; margin-bottom: 64px; align-items: start; }
+    .aic .section-head .label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--ink-mute); padding-top: 12px;  text-transform: uppercase; }
+    .aic .section-head .label .sn { color: var(--red); margin-right: 8px; }
+    .aic .section-head h2 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: clamp(40px, 5.4vw, 72px); line-height: 0.95; margin: 0; max-width: 14ch; }
+    .aic .section-head h2 .red { color: var(--red); }
+    @media (max-width: 780px) { .aic .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; } .aic section.block { padding: 72px 0; } }
+
+    /* what-grid */
+    .aic .what-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .aic .what { padding: 32px 0; border-top: 1px solid var(--ink-line); display: grid; grid-template-columns: 60px 1fr; gap: 24px; }
+    .aic .what:nth-child(odd) { padding-right: 32px; }
+    .aic .what:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--ink-line); }
+    .aic .what .n { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--red); }
+    .aic .what h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 24px; margin: 0 0 8px; }
+    .aic .what p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+    @media (max-width: 780px) { .aic .what-grid { grid-template-columns: 1fr; } .aic .what:nth-child(odd), .aic .what:nth-child(even) { padding: 28px 0; border-left: none; } }
+
+    /* packages */
+    .aic .pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .aic .pkg { position: relative; background: var(--bg-2); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px; min-height: 560px; }
+    .aic .pkg.feature { background: var(--ink); color: var(--bg); }
+    .aic .pkg.feature .pkg-name, .aic .pkg.feature h3, .aic .pkg.feature li, .aic .pkg.feature .pkg-price small { color: var(--bg); }
+    .aic .pkg.feature .pkg-meta { color: rgba(255, 247, 237, 0.7); }
+    .aic .pkg.feature .pkg-divider { background: rgba(255, 247, 237, 0.15); }
+    .aic .pkg.feature .check { background: var(--red); color: var(--bg); }
+    .aic .pkg.feature .btn.primary { background: var(--red); color: var(--bg); }
+    .aic .pkg.feature .btn.primary:hover { background: #ff5236; }
+    .aic .pkg .badge { position: absolute; top: 20px; right: 20px; font-size: 11px; letter-spacing: 0.1em; background: var(--red); color: #fff; padding: 6px 10px; border-radius: 999px; font-weight: 600;  text-transform: uppercase; }
+    .aic .pkg-name { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--ink-mute);  text-transform: uppercase; }
+    .aic .pkg h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 34px; margin: 0; line-height: 1; }
+    .aic .pkg-price { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 42px; line-height: 1; }
+    .aic .pkg-price small { display: block; font-family: Forma, sans-serif; font-weight: 400; font-size: 13px; color: var(--ink-mute); margin-top: 6px; letter-spacing: 0; }
+    .aic .pkg-meta { font-size: 14px; color: var(--ink-mute); }
+    .aic .pkg-divider { height: 1px; background: var(--ink-line); }
+    .aic .pkg ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .aic .pkg li { display: grid; grid-template-columns: 18px 1fr; gap: 12px; font-size: 14.5px; line-height: 1.45; color: var(--ink-soft); }
+    .aic .pkg.feature li { color: rgba(255, 247, 237, 0.9); }
+    .aic .check { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); color: var(--bg); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+    @media (max-width: 900px) { .aic .pkgs { grid-template-columns: 1fr; } }
+
+    /* process */
+    .aic .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink-line); }
+    .aic .step { padding: 32px 24px 32px 0; border-right: 1px solid var(--ink-line); position: relative; }
+    .aic .step:last-child { border-right: none; }
+    .aic .step .n { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 64px; line-height: 1; color: var(--red); margin-bottom: 24px; }
+    .aic .step h4 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 20px; margin: 0 0 8px; }
+    .aic .step .when { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); margin-bottom: 14px; font-family: ui-monospace, monospace;  text-transform: uppercase; }
+    .aic .step p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+    @media (max-width: 900px) { .aic .process { grid-template-columns: 1fr 1fr; } .aic .step { border-right: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); } .aic .step:nth-child(2n) { border-right: none; } }
+    @media (max-width: 560px) { .aic .process { grid-template-columns: 1fr; } .aic .step { border-right: none; } }
+
+    /* fit */
+    .aic .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .aic .fit .col { padding: 28px 28px 32px; border-radius: 24px; background: var(--bg-2); border: 1px solid var(--ink-line); }
+    .aic .fit .col.no { background: transparent; }
+    .aic .fit h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 24px; margin: 0; }
+    .aic .fit .head-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .aic .fit .head-row .pill { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--ink-line);  text-transform: uppercase; }
+    .aic .fit .col.yes .pill { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .aic .fit ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .aic .fit li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; font-size: 15px; color: var(--ink-soft); align-items: start; }
+    .aic .fit .icn { display: inline-flex; align-items: center; justify-content: center; font-size: 14px; line-height: 1; margin-top: 1px; font-weight: 700; }
+    .aic .fit .yes .icn { color: var(--red); }
+    .aic .fit .no .icn { color: var(--ink-mute); }
+    @media (max-width: 780px) { .aic .fit { grid-template-columns: 1fr; } }
+
+    /* cases */
+    .aic .cases { display: flex; flex-direction: column; }
+    .aic .case { display: grid; grid-template-columns: 120px minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; padding: 36px 0; border-top: 1px solid var(--ink-line); align-items: start; }
+    .aic .case:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .case .yr { font-family: ui-monospace, monospace; font-size: 13px; color: var(--ink-mute); padding-top: 8px; letter-spacing: 0.05em; }
+    .aic .case h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 34px; margin: 0 0 6px; line-height: 1; }
+    .aic .case .role { font-size: 13px; color: var(--ink-mute); margin-bottom: 14px; font-family: ui-monospace, monospace; letter-spacing: 0.05em; }
+    .aic .case p { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 50ch; }
+    .aic .case .results { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
+    .aic .case .res { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
+    .aic .case .res .v { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 30px; color: var(--red); line-height: 1; }
+    .aic .case .res .k { font-size: 13px; color: var(--ink-mute); max-width: 18ch; }
+    @media (max-width: 900px) { .aic .case { grid-template-columns: 1fr; gap: 18px; } }
+
+    /* stack */
+    .aic .stack-wrap { position: relative; overflow: hidden; border-radius: 32px; background: var(--ink); color: var(--bg); padding: 56px 48px; }
+    .aic .stack-wrap .blob { position: absolute; right: -100px; bottom: -100px; width: 380px; height: 380px; background: var(--red); filter: blur(110px); opacity: 0.55; border-radius: 50%; }
+    .aic .stack-wrap h3 { position: relative; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 36px; margin: 0 0 28px; }
+    .aic .stack-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .aic .chip { padding: 14px 18px; border: 1px solid rgba(255, 247, 237, 0.18); border-radius: 14px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .aic .chip .k { color: rgba(255, 247, 237, 0.7); font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em;  text-transform: uppercase; }
+    @media (max-width: 780px) { .aic .stack-wrap { padding: 40px 24px; } .aic .stack-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* quotes */
+    .aic .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .aic .quote { padding: 32px; background: var(--bg-2); border-radius: 24px; display: flex; flex-direction: column; gap: 24px; }
+    .aic .quote blockquote { margin: 0; font-size: 20px; line-height: 1.45; color: var(--ink); }
+    .aic .quote blockquote::before { content: "\201C"; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--red); font-size: 48px; line-height: 0.5; display: block; margin-bottom: 8px; }
+    .aic .quote .who { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+    .aic .quote .av { width: 42px; height: 42px; border-radius: 50%; background: repeating-linear-gradient(135deg, var(--ink-line) 0 6px, transparent 6px 12px), var(--bg); border: 1px solid var(--ink-line); display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--ink); font-size: 15px; flex-shrink: 0; }
+    .aic .quote .meta { font-size: 13.5px; line-height: 1.35; }
+    .aic .quote .meta .nm { font-weight: 600; }
+    .aic .quote .meta .rl { color: var(--ink-mute); }
+    @media (max-width: 780px) { .aic .quotes { grid-template-columns: 1fr; } }
+
+    /* faq */
+    .aic .faq { display: flex; flex-direction: column; border-top: 1px solid var(--ink-line); }
+    .aic details.q { border-bottom: 1px solid var(--ink-line); padding: 24px 0; cursor: pointer; }
+    .aic details.q summary { list-style: none; display: grid; grid-template-columns: 1fr 24px; gap: 24px; align-items: center; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 22px; }
+    .aic details.q summary::-webkit-details-marker { display: none; }
+    .aic details.q summary .plus { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--red); font-size: 28px; line-height: 1; transition: transform 0.25s; }
+    .aic details.q[open] summary .plus { transform: rotate(45deg); }
+    .aic details.q .ans { padding-top: 14px; color: var(--ink-soft); font-size: 16px; max-width: 75ch; }
+
+    /* cta */
+    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; background: var(--bg-2); padding: 80px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+    .aic .cta .blob { position: absolute; left: -160px; top: -160px; width: 480px; height: 480px; background: var(--red); filter: blur(120px); opacity: 0.5; border-radius: 50%; }
+    .aic .cta .blob.b2 { left: auto; right: -100px; top: auto; bottom: -220px; width: 380px; height: 380px; clip-path: polygon(0 0, 100% 30%, 80% 100%); border-radius: 0; opacity: 0.45; }
+    .aic .cta-inner { position: relative; z-index: 1; }
+    .aic .cta h2 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: clamp(44px, 5.4vw, 68px); line-height: 0.95; margin: 0 0 20px; }
+    .aic .cta h2 .red { color: var(--red); }
+    .aic .cta p { margin: 0 0 28px; color: var(--ink-soft); font-size: 18px; max-width: 46ch; }
+    .aic .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .aic .cta-side { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+    .aic .cta-row { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--ink-line); font-size: 15px; }
+    .aic .cta-row:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .cta-row .k { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); align-self: center;  text-transform: uppercase; }
+    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } }
+
+    .aic .aic-red { color: var(--red); }
+  </style>
+</head>
+
+<body class="aic-page">
+  <div class="aic">
+
+    <div class="container">
+      <nav class="top">
+        <a href="/ru" class="back"><span class="arr">&larr;</span> Сергей Гордеев</a>
+        <div class="right">
+          <a href="#services">Услуги</a>
+          <a href="#process">Процесс</a>
+          <a href="#cases">Кейсы</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#contact">Контакты</a>
+        </div>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="blob-1"></div>
+      <div class="blob-2"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> AI-консалтинг · Запись на III кв. 2026</div>
+            <h1 class="hero-title">AI, который<br />реально работает.</h1>
+            <p class="hero-lead">Помогаю продуктовым командам перейти от <em>«надо что-то делать с AI»</em> к работающей фиче в проде — обычно меньше чем за 8 недель. Без презентаций ради презентаций, без бесконечных пилотов.</p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn primary">Записаться на звонок &rarr;</a>
+              <a href="#services" class="btn ghost">Посмотреть пакеты</a>
+            </div>
+          </div>
+          <aside class="hero-side">
+            <div class="stat"><div class="num">40+</div><div class="lbl">AI-фич, выпущенных в прод в B2C и B2B SaaS</div></div>
+            <div class="stat"><div class="num">8 нед.</div><div class="lbl">Медианный срок от старта до рабочего прототипа в руках пользователей</div></div>
+            <div class="stat"><div class="num">2&times;</div><div class="lbl">Средний рост активации, когда AI встраивается в существующий онбординг</div></div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>LLM-стратегия <span class="star">&#10038;</span> Продуктовый дискавери <span class="star">&#10038;</span> RAG и evals <span class="star">&#10038;</span> Голос и мультимодальность <span class="star">&#10038;</span> AI-онбординг <span class="star">&#10038;</span> Агентные сценарии <span class="star">&#10038;</span> Прокачка команды <span class="star">&#10038;</span></span>
+        <span>LLM-стратегия <span class="star">&#10038;</span> Продуктовый дискавери <span class="star">&#10038;</span> RAG и evals <span class="star">&#10038;</span> Голос и мультимодальность <span class="star">&#10038;</span> AI-онбординг <span class="star">&#10038;</span> Агентные сценарии <span class="star">&#10038;</span> Прокачка команды <span class="star">&#10038;</span></span>
+      </div>
+    </div>
+
+    <section class="block" id="what">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">01 /</span> Чем занимаюсь</div>
+          <h2>Я строитель,<br />который любит <span class="aic-red">консультировать.</span></h2>
+        </div>
+        <div class="what-grid">
+          <div class="what"><div class="n">&#9312;</div><div><h3>Продуктовая стратегия для AI</h3><p>Где AI реально создаёт ценность в вашем продукте? Разбираем воронку, выбираем 2–3 поверхности с лучшим ROI и ранжируем по стоимости разработки. На выходе — дорожная карта, а не список желаний.</p></div></div>
+          <div class="what"><div class="n">&#9313;</div><div><h3>Прототипирование и разработка</h3><p>Не отдаю «документ и пока». Со-собираю первый рабочий прототип — промты, retrieval, evals, UI — вместе с вашей командой, чтобы вы выпустили что-то реальное ещё до конца проекта.</p></div></div>
+          <div class="what"><div class="n">&#9314;</div><div><h3>RAG, агенты и evals</h3><p>Архитектура retrieval-augmented и агентных систем. Векторные хранилища, tool use, структурированные ответы и eval-харнессы, которые не дают всё сломаться в пятницу в 17:00.</p></div></div>
+          <div class="what"><div class="n">&#9315;</div><div><h3>Прокачка команды</h3><p>Воркшопы и 1:1 для PM, дизайнеров и инженеров. К третьей неделе ваша команда выпускает AI-фичи без меня в комнате — в этом и есть смысл.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">02 /</span> Форматы</div>
+          <h2>Три способа<br />работать <span class="aic-red">вместе.</span></h2>
+        </div>
+        <div class="pkgs">
+          <div class="pkg">
+            <div class="pkg-name">Аудит</div>
+            <h3>Спринт</h3>
+            <div class="pkg-price">€6 000<small>фикс · 2 недели</small></div>
+            <div class="pkg-meta">Подходит командам, у которых уже есть идеи и нужен острый внешний взгляд.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Дискавери-интервью с фаундерами, PM и инженерами</span></li>
+              <li><span class="check">&#10003;</span><span>Аудит существующих AI/ML-поверхностей и инфры</span></li>
+              <li><span class="check">&#10003;</span><span>Карта возможностей с приоритетами (стоимость vs. эффект)</span></li>
+              <li><span class="check">&#10003;</span><span>Реестр рисков: приватность, галлюцинации, vendor lock-in</span></li>
+              <li><span class="check">&#10003;</span><span>90-минутная сессия-разбор с лидершип-командой</span></li>
+            </ul>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Запустить спринт &rarr;</a>
+          </div>
+          <div class="pkg feature">
+            <div class="badge">Чаще всего</div>
+            <div class="pkg-name">Билд</div>
+            <h3>Билд</h3>
+            <div class="pkg-price">€18 000<small>фикс · 6–8 недель</small></div>
+            <div class="pkg-meta">От пустого экрана до фичи в проде, которую пользователи реально могут потрогать.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Всё, что входит в <em>Спринт</em></span></li>
+              <li><span class="check">&#10003;</span><span>Одна приоритетная фича — целиком, end-to-end</span></li>
+              <li><span class="check">&#10003;</span><span>Промт-дизайн, retrieval и eval-харнесс</span></li>
+              <li><span class="check">&#10003;</span><span>UX-паттерны: стриминг, цитаты, фоллбэки</span></li>
+              <li><span class="check">&#10003;</span><span>Парная работа с вашими инженерами (4 дня в неделю)</span></li>
+              <li><span class="check">&#10003;</span><span>Плейбук релиза + дашборды наблюдаемости</span></li>
+            </ul>
+            <a href="#contact" class="btn primary" style="margin-top:auto">Заказать билд &rarr;</a>
+          </div>
+          <div class="pkg">
+            <div class="pkg-name">Ретейнер</div>
+            <h3>На связи</h3>
+            <div class="pkg-price">€4 500<small>в месяц · от 3 месяцев</small></div>
+            <div class="pkg-meta">Senior AI-партнёр на быстром наборе для вашей дорожной карты.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Стратегическая сессия 60 минут раз в неделю</span></li>
+              <li><span class="check">&#10003;</span><span>Асинхронный доступ в Slack / Linear (ответ в течение 24ч)</span></li>
+              <li><span class="check">&#10003;</span><span>2 дизайн-ревью AI-флоу в месяц</span></li>
+              <li><span class="check">&#10003;</span><span>Помощь в выборе вендоров и моделей</span></li>
+              <li><span class="check">&#10003;</span><span>Квартальный воркшоп по дорожной карте с командой</span></li>
+            </ul>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Взять на ретейнер &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">03 /</span> Как это идёт</div>
+          <h2>От <span class="aic-red">«здравствуйте»</span><br />до прода.</h2>
+        </div>
+        <div class="process">
+          <div class="step"><div class="n">01</div><div class="when">Неделя 0 · 30 мин бесплатно</div><h4>Знакомство</h4><p>Решаем, подходим ли мы друг другу. Если нет — порекомендую того, кто подойдёт. Без питч-дека.</p></div>
+          <div class="step"><div class="n">02</div><div class="when">Неделя 1 · Дискавери</div><h4>Сначала слушаю</h4><p>Интервью со стейкхолдерами, прогулки по продукту, записи звонков с клиентами. Возвращаюсь с картой.</p></div>
+          <div class="step"><div class="n">03</div><div class="when">Недели 2–7 · Билд</div><h4>Собираем фичу</h4><p>Выбираем одну фичу и доводим до прода. Ежедневные коммиты, еженедельные демо, без театра.</p></div>
+          <div class="step"><div class="n">04</div><div class="when">Неделя 8 · Передача</div><h4>Передача и уход</h4><p>Документация, evals, дашборды, 30-дневное окно поддержки. Дальше команда владеет всем сама. Чисто.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">04 /</span> Подходим ли</div>
+          <h2>Я <span class="aic-red">подходящий</span><br />человек для этого?</h2>
+        </div>
+        <div class="fit">
+          <div class="col yes">
+            <div class="head-row"><span class="pill">Да</span><h3>Подойдёт, если…</h3></div>
+            <ul>
+              <li class="yes"><span class="icn">+</span><span>У вас есть реальный продукт с реальными пользователями, и вы хотите, чтобы AI измеримо его улучшил.</span></li>
+              <li class="yes"><span class="icn">+</span><span>Вы фаундер на стадии Series A–C, Head of Product или инди-команда, которая бьёт выше своего веса.</span></li>
+              <li class="yes"><span class="icn">+</span><span>Вы устали слушать, что «агенты всё решат», и хотите видеть рабочее решение в этом квартале.</span></li>
+              <li class="yes"><span class="icn">+</span><span>Готовы платить за вкус и скорость, а не за логотип на слайде.</span></li>
+            </ul>
+          </div>
+          <div class="col no">
+            <div class="head-row"><span class="pill">Скорее нет</span><h3>Не подойдёт, если…</h3></div>
+            <ul>
+              <li class="no"><span class="icn">&minus;</span><span>Нужен 100-страничный стратегический отчёт для совета директоров. Я пишу короткие документы.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>Хотите отдать всю разработку наружу — у вас нет команды, которая её подхватит.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>Ищете того, кто обучит вам foundation model с нуля. Это не ко мне.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>Цель — «AI ради пресс-релиза». Я работаю над тем, что выходит в прод.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">05 /</span> Избранные кейсы</div>
+          <h2>То, что<br />реально <span class="aic-red">вышло.</span></h2>
+        </div>
+        <div class="cases">
+          <div class="case">
+            <div class="yr">2025 — наст. время</div>
+            <div>
+              <h3>JustTalk AI</h3>
+              <div class="role">Со-фаундер · продукт и AI</div>
+              <p>Приложение для изучения языков на базе AI-персон, которые помнят пользователя между сессиями. Спроектировал слой памяти персон, голосовой realtime-цикл и eval-харнесс, который держит персон в характере.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">120k</span><span class="k">диалогов в месяц на пике</span></div>
+              <div class="res"><span class="v">3,4&times;</span><span class="k">D7-ретеншн против базового флоу</span></div>
+              <div class="res"><span class="v">€0,04</span><span class="k">средняя стоимость сессии ученика</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2025</div>
+            <div>
+              <h3>B2B SaaS — копилот для онбординга</h3>
+              <div class="role">Фракционный AI-лид · 10 недель</div>
+              <p>Вертикальный SaaS для управляющих недвижимостью два года не мог сдвинуть активацию выше 38%. Заменили статичный визард настройкой через LLM, которая читает существующую таблицу клиента и предзаполняет рабочее пространство.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">+71%</span><span class="k">активация за 7 дней</span></div>
+              <div class="res"><span class="v">&minus;42%</span><span class="k">тикетов в саппорт за первый месяц</span></div>
+              <div class="res"><span class="v">9 нед.</span><span class="k">от старта до GA</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2024</div>
+            <div>
+              <h3>Финтех — ассистент аналитика</h3>
+              <div class="role">AI-консультант · аудит + билд</div>
+              <p>Внутренний инструмент для кредитных аналитиков: суммаризирует 50-страничные меморандумы и подсвечивает несостыковки. Кастомный RAG по 12-летнему архиву с цитатами, которые комплаенс может реально защитить.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">&minus;61%</span><span class="k">время на принятие решения по делу</span></div>
+              <div class="res"><span class="v">100%</span><span class="k">ответов с привязкой к источнику</span></div>
+              <div class="res"><span class="v">14</span><span class="k">аналитиков подключены за первую неделю</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2024</div>
+            <div>
+              <h3>Маркетплейс — переранжирование поиска</h3>
+              <div class="role">Спринт · 3 недели</div>
+              <p>Гибридный retrieval и LLM-реранкер поверх существующего Elasticsearch. Тот же интерфейс, более умные результаты. Запустили в A/B на 10% трафика, потом раскатили на всех.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">+18%</span><span class="k">CTR по топ-3 результатам</span></div>
+              <div class="res"><span class="v">+9%</span><span class="k">конверсия в заказ в тестовой когорте</span></div>
+              <div class="res"><span class="v">€0</span><span class="k">дополнительных расходов на инфру</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">06 /</span> Чем пользуюсь</div>
+          <h2>Прагматично,<br />а не <span class="aic-red">модно.</span></h2>
+        </div>
+        <div class="stack-wrap">
+          <div class="blob"></div>
+          <h3>Текущий стек — может измениться без предупреждения.</h3>
+          <div class="stack-grid">
+            <div class="chip"><span>Claude / GPT / Gemini</span><span class="k">Модели</span></div>
+            <div class="chip"><span>Anthropic SDK</span><span class="k">Оркестрация</span></div>
+            <div class="chip"><span>LangGraph · DSPy</span><span class="k">Агенты</span></div>
+            <div class="chip"><span>pgvector · Turbopuffer</span><span class="k">Retrieval</span></div>
+            <div class="chip"><span>Braintrust · Langfuse</span><span class="k">Evals и наблюдаемость</span></div>
+            <div class="chip"><span>Vercel AI SDK</span><span class="k">Фронт</span></div>
+            <div class="chip"><span>Modal · Replicate</span><span class="k">Инференс</span></div>
+            <div class="chip"><span>Postgres · Supabase</span><span class="k">Скучные рельсы</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">07 /</span> Слова клиентов</div>
+          <h2>Не верьте <span class="aic-red">мне</span><br />на слово.</h2>
+        </div>
+        <div class="quotes">
+          <div class="quote">
+            <blockquote>Сергей — редкий советник, который утром ведёт разговор о стратегии, а днём пишет промты. Мы выпустили фичу за шесть недель, которую два агентства не смогли заскоупить за полгода.</blockquote>
+            <div class="who"><div class="av">ЕМ</div><div class="meta"><div class="nm">Елена М.</div><div class="rl">CPO · вертикальный SaaS, Series B</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>У него нулевая терпимость к AI-театру, и это заразно. Команда перестала мечтать про «агентов» и начала писать evals. Лучшие потраченные деньги в прошлом году.</blockquote>
+            <div class="who"><div class="av">ДК</div><div class="meta"><div class="nm">Даниил К.</div><div class="rl">Фаундер · потребительское AI-приложение</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>Один документ передачи уже стоил всего проекта. Через три месяца мы всё ещё используем eval-харнесс, который он построил, — и поймали с его помощью две регрессии.</blockquote>
+            <div class="who"><div class="av">МР</div><div class="meta"><div class="nm">Марта Р.</div><div class="rl">Engineering Lead · финтех</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>Больше всего я ценю то, от чего он отказался. Отговорил нас от шестизначного агентного проекта в пользу недельного изменения промта, которое решило ту же задачу.</blockquote>
+            <div class="who"><div class="av">ЙТ</div><div class="meta"><div class="nm">Йонас Т.</div><div class="rl">CEO · маркетплейс, Series A</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">08 /</span> Вопросы</div>
+          <h2>То, что обычно<br /><span class="aic-red">спрашивают.</span></h2>
+        </div>
+        <div class="faq">
+          <details class="q" open><summary>Чем это отличается от агентства?<span class="plus">+</span></summary><div class="ans">Это я. Без аккаунт-менеджеров, без джунов, которые учатся на вас, без понедельничных статусов. Я работаю с одним-двумя клиентами одновременно и сам пишу промты и код вместе с вашей командой.</div></details>
+          <details class="q"><summary>Подписываете NDA?<span class="plus">+</span></summary><div class="ans">Да, с радостью. Если хотите, отправлю взаимное NDA до знакомства. Большинство клиентов начинают с устной договорённости и подписывают NDA на этапе контракта.</div></details>
+          <details class="q"><summary>А если у нас нет ML-команды?<span class="plus">+</span></summary><div class="ans">У большинства моих клиентов её и нет. Подавляющее большинство полезных AI-фич сегодня не требуют ML-команды — нужны продуктовый вкус, мастерство промтов и продуманный eval-цикл. Если действительно нужна research-grade модель, я скажу об этом и сведу с правильными людьми.</div></details>
+          <details class="q"><summary>Как с приватностью данных и комплаенсом?<span class="plus">+</span></summary><div class="ans">Подбираем провайдера модели под ваш комплаенс (Anthropic, OpenAI Enterprise, Azure, on-prem через vLLM и т. д.) и сразу проектируем потоки данных вокруг этого. Работал в условиях GDPR, SOC 2 и HIPAA-смежных требований; могу подготовить DPIA по запросу.</div></details>
+          <details class="q"><summary>Можете построить «агента, который делает всё»?<span class="plus">+</span></summary><div class="ans">Нет, и вам это не нужно. Агенты, которые реально работают в проде сегодня, — узкие, хорошо отевалюированы и держат человека в петле на дорогих шагах. С удовольствием объясню это голосом.</div></details>
+          <details class="q"><summary>На каких языках работаете?<span class="plus">+</span></summary><div class="ans">Английский и русский для работы. Документация по умолчанию на английском. Большинство клиентов в EU и US; держу часы в CET, но гибко.</div></details>
+          <details class="q"><summary>Берёте долю вместо денег?<span class="plus">+</span></summary><div class="ans">Для ранних компаний — иногда, обычно как небольшой advisory grant поверх денег, а не вместо. Детали — на звонке.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="container">
+        <div class="cta">
+          <div class="blob"></div>
+          <div class="blob b2"></div>
+          <div class="cta-inner">
+            <h2>Хотите выпустить что-то <span class="aic-red">настоящее</span>?</h2>
+            <p>Расскажите, над чем работаете. Если смогу помочь — забронируем 30 минут. Если нет, скажу прямо и порекомендую того, кто подойдёт лучше.</p>
+            <div class="actions">
+              <a href="mailto:hi@sgordeev.xyz?subject=AI-консалтинг%20—%20звонок" class="btn primary">Написать на почту &rarr;</a>
+              <a href="https://cal.com/sgordeev" class="btn ghost">Забронировать в Cal.com</a>
+            </div>
+          </div>
+          <div class="cta-side">
+            <div class="cta-row"><div class="k">Email</div><div>hi@sgordeev.xyz</div></div>
+            <div class="cta-row"><div class="k">Telegram</div><div>@sgordeev</div></div>
+            <div class="cta-row"><div class="k">База</div><div>Лиссабон · CET</div></div>
+            <div class="cta-row"><div class="k">Доступность</div><div>1 слот · III кв. 2026</div></div>
+            <div class="cta-row"><div class="k">Ответ</div><div>в течение 24ч в будни</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <Footer />
+  <Metrika />
+</body>
+</html>

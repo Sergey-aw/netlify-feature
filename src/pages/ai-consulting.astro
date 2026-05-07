@@ -1,96 +1,578 @@
 ---
-import Layout from '../components/layout.astro';
-import Cardsinside from '../components/Cards-inside.astro';
-
-
-const { blok } = Astro.props
-
-const data = [
-  { title1: 'My Background', description1: 'I have hands-on experience building AI-powered products from scratch. As co-founder of JustTalk AI, I built the entire tech stack using AI coding tools (Claude Code, OpenAI Codex) for rapid development. As co-founder & CEO of Berisamocat (e-scooter sharing), I scaled the business from 1 to 50 cities, applying data-driven decision making and ML-based predictive analytics.', id:'1', link1: '/page1' },
-  { title1: 'AI Product Strategy', description1: 'I help companies define their AI product roadmap, identify high-impact use cases, and align AI initiatives with business goals. We will work on product strategy, MVP definition, and scaling plans.', id:'1', link1: '/page1' },
-  { title1: 'AI Adoption Acceleration', description1: 'Learn how to integrate AI into your existing products and processes efficiently. I share practical knowledge on building AI-native solutions, selecting the right tools, and avoiding common pitfalls.', id:'1', link1: '/page1' },
-  { title1: 'Data-Driven Product Development', description1: 'Leverage data for product decisions. LTV/CAC analysis, conversion optimization, retention strategies, funnel analysis. Build metrics-driven culture in your team.', id:'1', link1: '/page1' },
-  { title1: 'Building AI Teams', description1: 'Guidance on building and leading cross-functional product teams that can effectively work with AI technologies. From hiring to team structure and processes.', id:'1', link1: '/page1' },
-  { title1: 'Growth & Experimentation', description1: 'A/B testing frameworks, growth experimentation, UX/UI optimization. Learn how to validate hypotheses quickly and iterate based on data.', id:'1', link1: '/page1' },
-  { title1: 'Let\'s Talk', description1: 'Ready to accelerate your AI journey? Reach out to discuss how I can help your company.', id:'1', link1: '/page1' },
-  
-  // Add more data as needed
-];
+// Standalone full-bleed page — does not use Layout/Cardsinside,
+// because this page has its own bespoke section system that the
+// generic Layout chrome would clip. Fonts (Druk, Forma) come from
+// /public/fonts/ via the global @font-face declarations already in
+// /public/global.css, so they work automatically.
+import Footer from '../components/footer.astro';
+import Metrika from '../components/metrika.astro';
 ---
 
-<style>
-.steps {
-  background: var(--light);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: min(90vw, 250px);
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 5rem 5vw;
-  width: 100vw;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-@media (min-width: 550px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(50% - 1rem), 250px));
-  }
-}
+  <link rel="preload" href="/fonts/PacaembuVar-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/MulishVar-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/NormalidadVar-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Druk.ttf" as="font" type="font/truetype" crossorigin />
+  <link rel="preload" href="/fonts/Forma-Regular.woff" as="font" type="font/woff" crossorigin />
 
-@media (min-width: 1050px) {
-  .steps {
-    grid-template-columns: repeat(2, min(calc(25% - 1.5rem), 250px));
-  }
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
-.step {
-  background: var(--white);
-  border: 1px solid var(--lightBorder);
-  border-radius: var(--card-radius);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.75rem;
-  padding: 1rem 1.5rem 1.5rem;
-  text-align: left;
-  box-shadow: 0 2px 4px rgb(14 30 37 / 12%);
-  width: fit-content;
-}
-druk {
-  font-family: Druk, Tahoma, sans-serif;
-}
+  <meta property="og:url" content="https://sgordeev.xyz/ai-consulting/" />
+  <meta property="og:title" content="AI Consulting — Sergey Gordeev" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="I help product teams ship AI features in production — usually in under 8 weeks. Strategy, prototyping, RAG, agents, evals, team enablement." />
+  <meta property="og:image" content="/images/me_studio_wb.webp" />
 
-.stepHeading {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-}
+  <meta name="msapplication-TileColor" content="#5cebdf" />
+  <meta name="theme-color" content="#FFF7ED" />
 
+  <title>AI Consulting — Sergey Gordeev</title>
 
+  <link rel="stylesheet" href="/global.css" />
 
-</style>
+  <style is:global>
+    :root {
+      --bg: #FFF7ED;          /* matches existing bg-orange-50 */
+      --bg-2: #F4EBDB;
+      --ink: #0E1530;
+      --ink-soft: rgba(14, 21, 48, 0.8);
+      --ink-mute: rgba(14, 21, 48, 0.6);
+      --ink-line: rgba(14, 21, 48, 0.13);
+      --red: #FF3A1F;         /* matches site red */
+      --red-soft: rgba(255, 58, 31, 0.12);
+    }
 
-<Layout
-  title="AI Consulting"
-  description="I help companies accelerate AI adoption and product growth. With hands-on experience building AI-powered products from scratch (JustTalk AI, Berisamocat), I offer practical guidance on AI strategy, implementation, and building data-driven teams."
-  home="false"
-  lang="en"
->
+    @font-face {
+      font-family: 'Druk';
+      src: url('/fonts/Druk.ttf') format('truetype');
+      font-display: swap;
+    }
 
-<main>
+    body.aic-page {
+      max-width: none !important;
+      padding: 0 !important;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Forma, Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <div class="absolute -left-32 top-1/3 blur-3xl w-72 h-72 rounded-full red -z-10"></div>
+    .aic * { box-sizing: border-box; }
+    .aic a { color: inherit; }
+    .aic .display, .aic .druk { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; letter-spacing: -0.01em; line-height: 0.94; }
+    .aic .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-mute);  text-transform: uppercase; }
+    .aic .container { max-width: 1320px; margin: 0 auto; padding: 0 56px; }
+    @media (max-width: 780px) { .aic .container { padding: 0 24px; } }
 
-  <div class="absolute -right-2 top-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 sm:hidden md:block"></div>
+    /* nav */
+    .aic nav.top { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-size: 15px; }
+    .aic nav.top a { text-decoration: none; }
+    .aic nav.top .back { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); opacity: 0.85; }
+    .aic nav.top .back .arr { display: inline-block; transform: translateX(0); transition: transform 0.2s; }
+    .aic nav.top .back:hover .arr { transform: translateX(-4px); }
+    .aic nav.top .right { display: flex; gap: 28px; color: var(--ink-mute); flex-wrap: wrap; }
+    .aic nav.top .right a:hover { color: var(--ink); }
 
-  <div class="absolute -left-12 -bottom-3/4 blur-2xl w-72 h-72 triangle-svg -z-10 rotate-30"></div>
-  
-<div class="grid content-start pt-40 w-fit">
-{data.map((item, index) => <Cardsinside key={index} {...item} color="text-2xl red-text druk pb-2"/>)}
-</div>
+    /* hero */
+    .aic .hero { position: relative; padding: 48px 0 96px; overflow: hidden; }
+    .aic .hero .blob-1 { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--red); filter: blur(120px); opacity: 0.55; left: -180px; top: 120px; z-index: 0; pointer-events: none; }
+    .aic .hero .blob-2 { position: absolute; width: 420px; height: 420px; background: var(--red); filter: blur(110px); opacity: 0.42; right: -120px; top: 280px; z-index: 0; clip-path: polygon(0 0, 100% 30%, 80% 100%); pointer-events: none; }
+    .aic .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.9fr); gap: 56px; align-items: end; }
+    .aic .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-mute); font-size: 13px; letter-spacing: 0.08em; margin-bottom: 28px;  text-transform: uppercase; }
+    .aic .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+    .aic h1.hero-title { font-size: clamp(56px, 9vw, 128px); color: var(--red); margin: 0 0 36px; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; line-height: 0.92; }
+    .aic .hero-lead { font-size: 22px; line-height: 1.4; max-width: 620px; color: var(--ink-soft); margin: 0 0 36px; }
+    .aic .hero-lead em { font-style: normal; color: var(--ink); background: linear-gradient(180deg, transparent 60%, rgba(255, 58, 31, 0.2) 60%); padding: 0 2px; }
+    .aic .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .aic .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; border: 1px solid transparent; transition: transform 0.15s ease, background 0.15s ease; }
+    .aic .btn:hover { transform: translateY(-1px); }
+    .aic .btn.primary { background: var(--ink); color: var(--bg); }
+    .aic .btn.primary:hover { background: #1a2240; }
+    .aic .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink-line); }
+    .aic .btn.ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .aic .hero-side { display: flex; flex-direction: column; gap: 18px; padding-bottom: 8px; }
+    .aic .stat { display: grid; grid-template-columns: 90px 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--ink-line); }
+    .aic .stat:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .stat .num { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 36px; color: var(--ink); line-height: 1; }
+    .aic .stat .lbl { font-size: 14px; color: var(--ink-mute); align-self: center; }
+    @media (max-width: 900px) { .aic .hero-grid { grid-template-columns: 1fr; gap: 32px; } .aic h1.hero-title { font-size: 64px; } .aic .hero-lead { font-size: 18px; } }
 
-</main>
-</Layout>
-<p class="pt-5 hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-  <a href='https://t.me/sergey_wa/'>contact via telegram →</a></p>
-<p class="pt-0  hover:text-red-500 transition transform ease-in-out hover:translate-x-2 duration-300">
-  <a href='https://www.linkedin.com/in/sergey-gordeev/'>connect on LinkedIn →</a>
-</p>
+    /* marquee */
+    .aic .marquee { position: relative; overflow: hidden; border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); padding: 22px 0; background: var(--bg); }
+    .aic .marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: aic-scroll 40s linear infinite; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--ink); }
+    .aic .marquee-track > span { display: inline-flex; align-items: center; gap: 48px; flex-shrink: 0; }
+    .aic .marquee-track .star { color: var(--red); font-size: 22px; }
+    @keyframes aic-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* section base */
+    .aic section.block { padding: 96px 0; border-top: 1px solid var(--ink-line); }
+    .aic section.block.tight { padding: 72px 0; }
+    .aic .section-head { display: grid; grid-template-columns: 200px 1fr; gap: 48px; margin-bottom: 64px; align-items: start; }
+    .aic .section-head .label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--ink-mute); padding-top: 12px;  text-transform: uppercase; }
+    .aic .section-head .label .sn { color: var(--red); margin-right: 8px; }
+    .aic .section-head h2 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: clamp(40px, 5.4vw, 72px); line-height: 0.95; margin: 0; max-width: 14ch; }
+    .aic .section-head h2 .red { color: var(--red); }
+    @media (max-width: 780px) { .aic .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; } .aic section.block { padding: 72px 0; } }
+
+    /* what-grid */
+    .aic .what-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .aic .what { padding: 32px 0; border-top: 1px solid var(--ink-line); display: grid; grid-template-columns: 60px 1fr; gap: 24px; }
+    .aic .what:nth-child(odd) { padding-right: 32px; }
+    .aic .what:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--ink-line); }
+    .aic .what .n { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 28px; color: var(--red); }
+    .aic .what h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 24px; margin: 0 0 8px; }
+    .aic .what p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+    @media (max-width: 780px) { .aic .what-grid { grid-template-columns: 1fr; } .aic .what:nth-child(odd), .aic .what:nth-child(even) { padding: 28px 0; border-left: none; } }
+
+    /* packages */
+    .aic .pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .aic .pkg { position: relative; background: var(--bg-2); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px; min-height: 560px; }
+    .aic .pkg.feature { background: var(--ink); color: var(--bg); }
+    .aic .pkg.feature .pkg-name, .aic .pkg.feature h3, .aic .pkg.feature li, .aic .pkg.feature .pkg-price small { color: var(--bg); }
+    .aic .pkg.feature .pkg-meta { color: rgba(255, 247, 237, 0.7); }
+    .aic .pkg.feature .pkg-divider { background: rgba(255, 247, 237, 0.15); }
+    .aic .pkg.feature .check { background: var(--red); color: var(--bg); }
+    .aic .pkg.feature .btn.primary { background: var(--red); color: var(--bg); }
+    .aic .pkg.feature .btn.primary:hover { background: #ff5236; }
+    .aic .pkg .badge { position: absolute; top: 20px; right: 20px; font-size: 11px; letter-spacing: 0.1em; background: var(--red); color: #fff; padding: 6px 10px; border-radius: 999px; font-weight: 600;  text-transform: uppercase; }
+    .aic .pkg-name { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--ink-mute);  text-transform: uppercase; }
+    .aic .pkg h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 34px; margin: 0; line-height: 1; }
+    .aic .pkg-price { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 42px; line-height: 1; }
+    .aic .pkg-price small { display: block; font-family: Forma, sans-serif; font-weight: 400; font-size: 13px; color: var(--ink-mute); margin-top: 6px; letter-spacing: 0; }
+    .aic .pkg-meta { font-size: 14px; color: var(--ink-mute); }
+    .aic .pkg-divider { height: 1px; background: var(--ink-line); }
+    .aic .pkg ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .aic .pkg li { display: grid; grid-template-columns: 18px 1fr; gap: 12px; font-size: 14.5px; line-height: 1.45; color: var(--ink-soft); }
+    .aic .pkg.feature li { color: rgba(255, 247, 237, 0.9); }
+    .aic .check { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); color: var(--bg); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+    @media (max-width: 900px) { .aic .pkgs { grid-template-columns: 1fr; } }
+
+    /* process */
+    .aic .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink-line); }
+    .aic .step { padding: 32px 24px 32px 0; border-right: 1px solid var(--ink-line); position: relative; }
+    .aic .step:last-child { border-right: none; }
+    .aic .step .n { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 64px; line-height: 1; color: var(--red); margin-bottom: 24px; }
+    .aic .step h4 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 20px; margin: 0 0 8px; }
+    .aic .step .when { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); margin-bottom: 14px; font-family: ui-monospace, monospace;  text-transform: uppercase; }
+    .aic .step p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+    @media (max-width: 900px) { .aic .process { grid-template-columns: 1fr 1fr; } .aic .step { border-right: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); } .aic .step:nth-child(2n) { border-right: none; } }
+    @media (max-width: 560px) { .aic .process { grid-template-columns: 1fr; } .aic .step { border-right: none; } }
+
+    /* fit */
+    .aic .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .aic .fit .col { padding: 28px 28px 32px; border-radius: 24px; background: var(--bg-2); border: 1px solid var(--ink-line); }
+    .aic .fit .col.no { background: transparent; }
+    .aic .fit h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 24px; margin: 0; }
+    .aic .fit .head-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .aic .fit .head-row .pill { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--ink-line);  text-transform: uppercase; }
+    .aic .fit .col.yes .pill { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .aic .fit ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .aic .fit li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; font-size: 15px; color: var(--ink-soft); align-items: start; }
+    .aic .fit .icn { display: inline-flex; align-items: center; justify-content: center; font-size: 14px; line-height: 1; margin-top: 1px; font-weight: 700; }
+    .aic .fit .yes .icn { color: var(--red); }
+    .aic .fit .no .icn { color: var(--ink-mute); }
+    @media (max-width: 780px) { .aic .fit { grid-template-columns: 1fr; } }
+
+    /* cases */
+    .aic .cases { display: flex; flex-direction: column; }
+    .aic .case { display: grid; grid-template-columns: 120px minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; padding: 36px 0; border-top: 1px solid var(--ink-line); align-items: start; }
+    .aic .case:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .case .yr { font-family: ui-monospace, monospace; font-size: 13px; color: var(--ink-mute); padding-top: 8px; letter-spacing: 0.05em; }
+    .aic .case h3 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 34px; margin: 0 0 6px; line-height: 1; }
+    .aic .case .role { font-size: 13px; color: var(--ink-mute); margin-bottom: 14px; font-family: ui-monospace, monospace; letter-spacing: 0.05em; }
+    .aic .case p { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 50ch; }
+    .aic .case .results { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
+    .aic .case .res { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
+    .aic .case .res .v { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 30px; color: var(--red); line-height: 1; }
+    .aic .case .res .k { font-size: 13px; color: var(--ink-mute); max-width: 18ch; }
+    @media (max-width: 900px) { .aic .case { grid-template-columns: 1fr; gap: 18px; } }
+
+    /* stack */
+    .aic .stack-wrap { position: relative; overflow: hidden; border-radius: 32px; background: var(--ink); color: var(--bg); padding: 56px 48px; }
+    .aic .stack-wrap .blob { position: absolute; right: -100px; bottom: -100px; width: 380px; height: 380px; background: var(--red); filter: blur(110px); opacity: 0.55; border-radius: 50%; }
+    .aic .stack-wrap h3 { position: relative; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 36px; margin: 0 0 28px; }
+    .aic .stack-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .aic .chip { padding: 14px 18px; border: 1px solid rgba(255, 247, 237, 0.18); border-radius: 14px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .aic .chip .k { color: rgba(255, 247, 237, 0.7); font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em;  text-transform: uppercase; }
+    @media (max-width: 780px) { .aic .stack-wrap { padding: 40px 24px; } .aic .stack-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* quotes */
+    .aic .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .aic .quote { padding: 32px; background: var(--bg-2); border-radius: 24px; display: flex; flex-direction: column; gap: 24px; }
+    .aic .quote blockquote { margin: 0; font-size: 20px; line-height: 1.45; color: var(--ink); }
+    .aic .quote blockquote::before { content: "\201C"; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--red); font-size: 48px; line-height: 0.5; display: block; margin-bottom: 8px; }
+    .aic .quote .who { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+    .aic .quote .av { width: 42px; height: 42px; border-radius: 50%; background: repeating-linear-gradient(135deg, var(--ink-line) 0 6px, transparent 6px 12px), var(--bg); border: 1px solid var(--ink-line); display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--ink); font-size: 15px; flex-shrink: 0; }
+    .aic .quote .meta { font-size: 13.5px; line-height: 1.35; }
+    .aic .quote .meta .nm { font-weight: 600; }
+    .aic .quote .meta .rl { color: var(--ink-mute); }
+    @media (max-width: 780px) { .aic .quotes { grid-template-columns: 1fr; } }
+
+    /* faq */
+    .aic .faq { display: flex; flex-direction: column; border-top: 1px solid var(--ink-line); }
+    .aic details.q { border-bottom: 1px solid var(--ink-line); padding: 24px 0; cursor: pointer; }
+    .aic details.q summary { list-style: none; display: grid; grid-template-columns: 1fr 24px; gap: 24px; align-items: center; font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: 22px; }
+    .aic details.q summary::-webkit-details-marker { display: none; }
+    .aic details.q summary .plus { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; color: var(--red); font-size: 28px; line-height: 1; transition: transform 0.25s; }
+    .aic details.q[open] summary .plus { transform: rotate(45deg); }
+    .aic details.q .ans { padding-top: 14px; color: var(--ink-soft); font-size: 16px; max-width: 75ch; }
+
+    /* cta */
+    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; background: var(--bg-2); padding: 80px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+    .aic .cta .blob { position: absolute; left: -160px; top: -160px; width: 480px; height: 480px; background: var(--red); filter: blur(120px); opacity: 0.5; border-radius: 50%; }
+    .aic .cta .blob.b2 { left: auto; right: -100px; top: auto; bottom: -220px; width: 380px; height: 380px; clip-path: polygon(0 0, 100% 30%, 80% 100%); border-radius: 0; opacity: 0.45; }
+    .aic .cta-inner { position: relative; z-index: 1; }
+    .aic .cta h2 { font-family: 'Archivo', 'Druk', Tahoma, sans-serif; font-weight: 900; font-size: clamp(44px, 5.4vw, 68px); line-height: 0.95; margin: 0 0 20px; }
+    .aic .cta h2 .red { color: var(--red); }
+    .aic .cta p { margin: 0 0 28px; color: var(--ink-soft); font-size: 18px; max-width: 46ch; }
+    .aic .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .aic .cta-side { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+    .aic .cta-row { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--ink-line); font-size: 15px; }
+    .aic .cta-row:last-child { border-bottom: 1px solid var(--ink-line); }
+    .aic .cta-row .k { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); align-self: center;  text-transform: uppercase; }
+    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } }
+
+    .aic .aic-red { color: var(--red); }
+  </style>
+</head>
+
+<body class="aic-page">
+  <div class="aic">
+
+    <div class="container">
+      <nav class="top">
+        <a href="/" class="back"><span class="arr">&larr;</span> Sergey Gordeev</a>
+        <div class="right">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#cases">Work</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="blob-1"></div>
+      <div class="blob-2"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> AI Consulting · Booking Q3 2026</div>
+            <h1 class="hero-title">AI that<br />actually ships.</h1>
+            <p class="hero-lead">I help product teams move from <em>"we should do something with AI"</em> to a working feature in production — usually in under 8 weeks. No decks for the sake of decks, no pilot purgatory.</p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn primary">Book an intro call &rarr;</a>
+              <a href="#services" class="btn ghost">See packages</a>
+            </div>
+          </div>
+          <aside class="hero-side">
+            <div class="stat"><div class="num">40+</div><div class="lbl">AI features shipped to production across consumer &amp; B2B SaaS</div></div>
+            <div class="stat"><div class="num">8 wk</div><div class="lbl">Median time from kickoff to a working, user-facing prototype</div></div>
+            <div class="stat"><div class="num">2x</div><div class="lbl">Average lift in activation when AI is bolted onto an existing onboarding flow</div></div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>LLM Strategy <span class="star">&#10038;</span> Product Discovery <span class="star">&#10038;</span> RAG &amp; Evals <span class="star">&#10038;</span> Voice &amp; Multimodal <span class="star">&#10038;</span> AI Onboarding <span class="star">&#10038;</span> Agent Workflows <span class="star">&#10038;</span> Team Enablement <span class="star">&#10038;</span></span>
+        <span>LLM Strategy <span class="star">&#10038;</span> Product Discovery <span class="star">&#10038;</span> RAG &amp; Evals <span class="star">&#10038;</span> Voice &amp; Multimodal <span class="star">&#10038;</span> AI Onboarding <span class="star">&#10038;</span> Agent Workflows <span class="star">&#10038;</span> Team Enablement <span class="star">&#10038;</span></span>
+      </div>
+    </div>
+
+    <section class="block" id="what">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">01 /</span> What I do</div>
+          <h2>I'm a builder<br />with a <span class="aic-red">consulting</span> habit.</h2>
+        </div>
+        <div class="what-grid">
+          <div class="what"><div class="n">&#9312;</div><div><h3>Product strategy for AI</h3><p>Where does AI actually create leverage in your product? We map your funnel, find the 2–3 highest-ROI surfaces, and rank them by build cost. You leave with a roadmap, not a wishlist.</p></div></div>
+          <div class="what"><div class="n">&#9313;</div><div><h3>Prototyping &amp; build</h3><p>I don't just hand you a doc. I co-build the first working prototype — prompts, retrieval, evals, UI — alongside your team, so you ship something real before the engagement ends.</p></div></div>
+          <div class="what"><div class="n">&#9314;</div><div><h3>RAG, agents &amp; evals</h3><p>Hands-on architecture for retrieval-augmented and agentic systems. Vector stores, tool use, structured outputs, and the eval harnesses that keep things from regressing on Friday at 5pm.</p></div></div>
+          <div class="what"><div class="n">&#9315;</div><div><h3>Team enablement</h3><p>Workshops and 1:1 coaching for PMs, designers and engineers. By week three your team is shipping AI features without me in the room — that's the whole point.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">02 /</span> Engagements</div>
+          <h2>Three ways<br />to <span class="aic-red">work together.</span></h2>
+        </div>
+        <div class="pkgs">
+          <div class="pkg">
+            <div class="pkg-name">Audit</div>
+            <h3>The Sprint</h3>
+            <div class="pkg-price">€6,000<small>fixed · 2 weeks</small></div>
+            <div class="pkg-meta">Best for teams who already have ideas and need a sharp opinion.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Discovery interviews with founders, PM &amp; engineering</span></li>
+              <li><span class="check">&#10003;</span><span>Audit of existing AI / ML surfaces and infra</span></li>
+              <li><span class="check">&#10003;</span><span>Prioritised opportunity map (cost vs. impact)</span></li>
+              <li><span class="check">&#10003;</span><span>Risk register: privacy, hallucination, vendor lock-in</span></li>
+              <li><span class="check">&#10003;</span><span>90-min readout with the leadership team</span></li>
+            </ul>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Start a Sprint &rarr;</a>
+          </div>
+          <div class="pkg feature">
+            <div class="badge">Most picked</div>
+            <div class="pkg-name">Build</div>
+            <h3>The Build</h3>
+            <div class="pkg-price">€18,000<small>fixed · 6–8 weeks</small></div>
+            <div class="pkg-meta">From blank page to a feature in production users can actually touch.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Everything in <em>The Sprint</em></span></li>
+              <li><span class="check">&#10003;</span><span>One prioritised feature, end-to-end</span></li>
+              <li><span class="check">&#10003;</span><span>Prompt design, retrieval &amp; eval harness</span></li>
+              <li><span class="check">&#10003;</span><span>UX patterns: streaming, citations, fallbacks</span></li>
+              <li><span class="check">&#10003;</span><span>Pair-building with your engineers (4 days/wk)</span></li>
+              <li><span class="check">&#10003;</span><span>Launch playbook + observability dashboards</span></li>
+            </ul>
+            <a href="#contact" class="btn primary" style="margin-top:auto">Book a Build &rarr;</a>
+          </div>
+          <div class="pkg">
+            <div class="pkg-name">Retainer</div>
+            <h3>On Call</h3>
+            <div class="pkg-price">€4,500<small>per month · min. 3 months</small></div>
+            <div class="pkg-meta">A senior AI partner on speed-dial for your roadmap.</div>
+            <div class="pkg-divider"></div>
+            <ul>
+              <li><span class="check">&#10003;</span><span>Weekly 60-min strategy session</span></li>
+              <li><span class="check">&#10003;</span><span>Async Slack / Linear access (24h response)</span></li>
+              <li><span class="check">&#10003;</span><span>2 design reviews / month on AI flows</span></li>
+              <li><span class="check">&#10003;</span><span>Vendor &amp; model selection guidance</span></li>
+              <li><span class="check">&#10003;</span><span>Quarterly roadmap workshop with the team</span></li>
+            </ul>
+            <a href="#contact" class="btn ghost" style="margin-top:auto">Go on retainer &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">03 /</span> How it goes</div>
+          <h2>From <span class="aic-red">"hello"</span><br />to shipped.</h2>
+        </div>
+        <div class="process">
+          <div class="step"><div class="n">01</div><div class="when">Week 0 · 30 min free</div><h4>Intro call</h4><p>We figure out if I'm the right fit. If I'm not, I'll point you to someone who is. No pitch deck.</p></div>
+          <div class="step"><div class="n">02</div><div class="when">Week 1 · Discovery</div><h4>Listen, then map</h4><p>Stakeholder interviews, product walkthroughs, customer-call replays. I come back with the map.</p></div>
+          <div class="step"><div class="n">03</div><div class="when">Week 2–7 · Build</div><h4>Co-build the thing</h4><p>We pick one feature and ship it, end-to-end. Daily commits, weekly demos, no theatre.</p></div>
+          <div class="step"><div class="n">04</div><div class="when">Week 8 · Handover</div><h4>Handover &amp; walk away</h4><p>Docs, evals, dashboards, a 30-day on-call window. Then your team owns it. Cleanly.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">04 /</span> Fit check</div>
+          <h2>Am I the<br /><span class="aic-red">right person</span> for this?</h2>
+        </div>
+        <div class="fit">
+          <div class="col yes">
+            <div class="head-row"><span class="pill">Yes</span><h3>This is for you if…</h3></div>
+            <ul>
+              <li class="yes"><span class="icn">+</span><span>You have a real product with real users and want AI to make it measurably better.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You're a Series A–C founder, Head of Product, or an indie team punching above your weight.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You're tired of hearing "agents will solve it" and want to see something working this quarter.</span></li>
+              <li class="yes"><span class="icn">+</span><span>You'd rather pay for taste and shipping speed than for a logo on a slide.</span></li>
+            </ul>
+          </div>
+          <div class="col no">
+            <div class="head-row"><span class="pill">Probably not</span><h3>It's not for you if…</h3></div>
+            <ul>
+              <li class="no"><span class="icn">&minus;</span><span>You need a 100-page strategy report to circulate at the board. I write short docs.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>You want to outsource the entire build with no internal team to absorb it.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>You're looking for someone to train a foundation model from scratch — that's not me.</span></li>
+              <li class="no"><span class="icn">&minus;</span><span>The goal is "AI for the press release." I work on things that ship.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">05 /</span> Selected work</div>
+          <h2>Things that<br />actually <span class="aic-red">shipped.</span></h2>
+        </div>
+        <div class="cases">
+          <div class="case">
+            <div class="yr">2025 — present</div>
+            <div>
+              <h3>JustTalk AI</h3>
+              <div class="role">Co-founder · product &amp; AI lead</div>
+              <p>Language-learning app built around AI personas that remember each user across sessions. I designed the persona memory layer, the realtime voice loop, and the eval harness that keeps personas in character.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">120k</span><span class="k">conversations / month at peak</span></div>
+              <div class="res"><span class="v">3.4&times;</span><span class="k">D7 retention vs. baseline tutor flow</span></div>
+              <div class="res"><span class="v">€0.04</span><span class="k">average cost per learner-session</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2025</div>
+            <div>
+              <h3>B2B SaaS — onboarding copilot</h3>
+              <div class="role">Fractional AI lead · 10 weeks</div>
+              <p>A vertical SaaS for property managers had a 38% activation rate stuck for two years. We replaced the static setup wizard with an LLM that reads the customer's existing spreadsheet and pre-fills the workspace.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">+71%</span><span class="k">activation within 7 days</span></div>
+              <div class="res"><span class="v">&minus;42%</span><span class="k">support tickets in first month</span></div>
+              <div class="res"><span class="v">9 wk</span><span class="k">from kickoff to GA</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2024</div>
+            <div>
+              <h3>Fintech — analyst assistant</h3>
+              <div class="role">AI consultant · audit + build</div>
+              <p>Internal tool for credit analysts that summarises 50-page memos and surfaces inconsistencies. Custom RAG over a 12-year archive with citations the compliance team can actually defend.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">&minus;61%</span><span class="k">time-to-decision per file</span></div>
+              <div class="res"><span class="v">100%</span><span class="k">of outputs are source-cited</span></div>
+              <div class="res"><span class="v">14</span><span class="k">analysts onboarded in week one</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="yr">2024</div>
+            <div>
+              <h3>Marketplace — search rerank</h3>
+              <div class="role">Sprint engagement · 3 weeks</div>
+              <p>Hybrid retrieval and an LLM reranker bolted onto an existing Elasticsearch stack. Same UI, smarter results. Shipped behind a 10% A/B before scaling to all traffic.</p>
+            </div>
+            <div class="results">
+              <div class="res"><span class="v">+18%</span><span class="k">click-through on top-3 results</span></div>
+              <div class="res"><span class="v">+9%</span><span class="k">order conversion in tested cohort</span></div>
+              <div class="res"><span class="v">€0</span><span class="k">extra infra spend (cached)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">06 /</span> Tools I reach for</div>
+          <h2>Pragmatic<br />over <span class="aic-red">trendy.</span></h2>
+        </div>
+        <div class="stack-wrap">
+          <div class="blob"></div>
+          <h3>The current stack — subject to change without notice.</h3>
+          <div class="stack-grid">
+            <div class="chip"><span>Claude / GPT / Gemini</span><span class="k">Models</span></div>
+            <div class="chip"><span>Anthropic SDK</span><span class="k">Orchestration</span></div>
+            <div class="chip"><span>LangGraph · DSPy</span><span class="k">Agents</span></div>
+            <div class="chip"><span>pgvector · Turbopuffer</span><span class="k">Retrieval</span></div>
+            <div class="chip"><span>Braintrust · Langfuse</span><span class="k">Evals &amp; obs</span></div>
+            <div class="chip"><span>Vercel AI SDK</span><span class="k">Frontend</span></div>
+            <div class="chip"><span>Modal · Replicate</span><span class="k">Inference</span></div>
+            <div class="chip"><span>Postgres · Supabase</span><span class="k">Boring rails</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block tight">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">07 /</span> Words from clients</div>
+          <h2>Don't take<br /><span class="aic-red">my word</span> for it.</h2>
+        </div>
+        <div class="quotes">
+          <div class="quote">
+            <blockquote>Sergey is the rare advisor who can hold a strategy conversation in the morning and write the prompts in the afternoon. We shipped a feature in six weeks that two agencies couldn't scope in six months.</blockquote>
+            <div class="who"><div class="av">EM</div><div class="meta"><div class="nm">Elena M.</div><div class="rl">CPO · vertical SaaS, Series B</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>He has zero patience for AI theatre and it's contagious. Our team stopped wishing for "agents" and started shipping evals. Best money we spent last year.</blockquote>
+            <div class="who"><div class="av">DK</div><div class="meta"><div class="nm">Daniil K.</div><div class="rl">Founder · consumer AI app</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>The handover doc alone was worth the engagement. Three months later we're still using the eval harness he built — and we caught two regressions because of it.</blockquote>
+            <div class="who"><div class="av">MR</div><div class="meta"><div class="nm">Marta R.</div><div class="rl">Engineering Lead · fintech</div></div></div>
+          </div>
+          <div class="quote">
+            <blockquote>What I appreciated most is what he refused to do. He talked us out of a six-figure agent project and into a one-week prompt change that did the same job.</blockquote>
+            <div class="who"><div class="av">JT</div><div class="meta"><div class="nm">Jonas T.</div><div class="rl">CEO · marketplace, Series A</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="label"><span class="sn">08 /</span> Questions</div>
+          <h2>Things people<br />tend to <span class="aic-red">ask.</span></h2>
+        </div>
+        <div class="faq">
+          <details class="q" open><summary>How is this different from hiring an agency?<span class="plus">+</span></summary><div class="ans">It's me, full stop. No account manager, no juniors learning on your dime, no Monday status meetings. I work with one or two clients at a time and I write the prompts and code myself, alongside your team.</div></details>
+          <details class="q"><summary>Do you sign NDAs?<span class="plus">+</span></summary><div class="ans">Yes — happily. I'll send a mutual NDA before the intro call if you want one. Most clients are fine starting with a verbal confidentiality agreement and signing during contracting.</div></details>
+          <details class="q"><summary>What if we don't have an ML team?<span class="plus">+</span></summary><div class="ans">Most of my clients don't. The vast majority of useful AI features today don't need an ML team — they need product taste, prompt craft, and a thoughtful eval loop. If you do need a research-grade model, I'll tell you, and I'll introduce you to the right people.</div></details>
+          <details class="q"><summary>How do you handle data privacy &amp; compliance?<span class="plus">+</span></summary><div class="ans">We pick a model provider that fits your compliance posture (Anthropic, OpenAI Enterprise, Azure, on-prem via vLLM, etc.) and design data flows around it from day one. I've worked under GDPR, SOC 2, and HIPAA-adjacent constraints and can produce a DPIA on request.</div></details>
+          <details class="q"><summary>Can you build us an "AI agent that does everything"?<span class="plus">+</span></summary><div class="ans">No, and you don't want one. The agents that actually work in production today are narrow, well-evaluated, and have humans in the loop on the expensive steps. I'll happily explain why on a call.</div></details>
+          <details class="q"><summary>What languages do you work in?<span class="plus">+</span></summary><div class="ans">English and Russian for the work itself. Documentation in English by default. Most clients are EU- or US-based; I keep my hours in CET but I'm flexible.</div></details>
+          <details class="q"><summary>Do you take equity instead of cash?<span class="plus">+</span></summary><div class="ans">For early-stage companies I work with, sometimes — usually as a small advisory grant on top of cash, not as a replacement. Let's talk specifics on the call.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="container">
+        <div class="cta">
+          <div class="blob"></div>
+          <div class="blob b2"></div>
+          <div class="cta-inner">
+            <h2>Want to ship something <span class="aic-red">real</span>?</h2>
+            <p>Tell me what you're working on. If I think I can help, we'll book 30 minutes. If I don't, I'll say so and point you somewhere better.</p>
+            <div class="actions">
+              <a href="mailto:hi@sgordeev.xyz?subject=AI%20consulting%20—%20intro%20call" class="btn primary">Email me &rarr;</a>
+              <a href="https://cal.com/sgordeev" class="btn ghost">Book on Cal.com</a>
+            </div>
+          </div>
+          <div class="cta-side">
+            <div class="cta-row"><div class="k">Email</div><div>hi@sgordeev.xyz</div></div>
+            <div class="cta-row"><div class="k">Telegram</div><div>@sgordeev</div></div>
+            <div class="cta-row"><div class="k">Based in</div><div>Lisbon · CET</div></div>
+            <div class="cta-row"><div class="k">Availability</div><div>1 slot open · Q3 2026</div></div>
+            <div class="cta-row"><div class="k">Response</div><div>Within 24 hours, weekdays</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <Footer />
+  <Metrika />
+</body>
+</html>
