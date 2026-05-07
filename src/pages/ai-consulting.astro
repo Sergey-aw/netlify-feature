@@ -235,7 +235,7 @@ import Metrika from '../components/metrika.astro';
     .aic details.q .ans { padding-top: 14px; color: var(--ink-soft); font-size: 16px; max-width: 75ch; }
 
     /* cta */
-    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; background: var(--bg-2); padding: 80px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+    .aic .cta { position: relative; overflow: hidden; border-radius: 32px; background: var(--bg-2); padding: 40px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;}
     .aic .cta .blob { position: absolute; left: -160px; top: -160px; width: 480px; height: 480px; background: var(--red); filter: blur(64px); opacity: 0.5; border-radius: 50%; }
     .aic .cta .blob.b2 { left: auto; right: -100px; top: auto; bottom: -220px; width: 380px; height: 380px; background: none; filter: none; border-radius: 0; opacity: 1; }
     .aic .cta-inner { position: relative; z-index: 1; }
@@ -243,11 +243,9 @@ import Metrika from '../components/metrika.astro';
     .aic .cta h2 .red { color: var(--red); }
     .aic .cta p { margin: 0 0 28px; color: var(--ink-soft); font-size: 18px; max-width: 46ch; }
     .aic .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .aic .cta-side { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
-    .aic .cta-row { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--ink-line); font-size: 15px; }
-    .aic .cta-row:last-child { border-bottom: 1px solid var(--ink-line); }
-    .aic .cta-row .k { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); align-self: center;  text-transform: uppercase; }
-    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } }
+    .aic .cta-photo { position: relative; z-index: 1; align-self: stretch; margin-bottom: -40px; overflow: hidden; padding-top: 32px; }
+    .aic .cta-photo img {  top: 0; left: 0; width: 100%; height: auto; max-height: 40vw; display: block; object-fit:contain;}
+    @media (max-width: 900px) { .aic .cta { grid-template-columns: 1fr; padding: 48px 28px; } .aic .cta-photo { display: none; } }
 
     .aic .aic-red { color: var(--red); }
   </style>
@@ -567,7 +565,7 @@ import Metrika from '../components/metrika.astro';
                   <feGaussianBlur stdDeviation="18" />
                 </filter>
               </defs>
-              <path d="M0 0 L380 114 L304 380 Z" fill="#FF3A1F" opacity="0.85" filter="url(#cta-tri-blur)" />
+              <path d="M0 0 L380 114 L314 380 Z" fill="#FF3A1F" opacity="0.85" filter="url(#cta-tri-blur)" />
             </svg>
           </div>
           <div class="cta-inner">
@@ -578,12 +576,8 @@ import Metrika from '../components/metrika.astro';
               <a href="https://cal.com/sgordeev" class="btn ghost">Book on Cal.com</a>
             </div>
           </div>
-          <div class="cta-side">
-            <div class="cta-row"><div class="k">Email</div><div>hi@sgordeev.xyz</div></div>
-            <div class="cta-row"><div class="k">Telegram</div><div>@sgordeev</div></div>
-            <div class="cta-row"><div class="k">Based in</div><div>Lisbon · CET</div></div>
-            <div class="cta-row"><div class="k">Availability</div><div>1 slot open · Q3 2026</div></div>
-            <div class="cta-row"><div class="k">Response</div><div>Within 24 hours, weekdays</div></div>
+          <div class="cta-photo">
+            <img src="/images/me_studio_wb_1.webp" alt="Sergey Gordeev" />
           </div>
         </div>
       </div>
